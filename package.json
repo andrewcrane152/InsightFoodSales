@@ -1,0 +1,26 @@
+{
+  "name": "InsightFoodSales",
+  "version": "1.0.0",
+  "description": "Insight Website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewcrane152/InsightFoodSales.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "cors": "^2.7.1",
+    "express": "^4.13.1",
+    "mongoose": "^4.0.6",
+  },
+  "bugs": {
+    "url": "https://github.com/andrewcrane152/InsightFoodSales/issues"
+  },
+  "homepage": "https://github.com/andrewcrane152/InsightFoodSales#readme"
+}
