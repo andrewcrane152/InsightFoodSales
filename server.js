@@ -13,10 +13,11 @@ app.use(cors());
 
 
 
-mongoose.connect(mongoUri);
-mongoose.connection.once('open', function(){
-	console.log('Connected to mongodb at ' + mongoUri);
-});
+
+// mongoose.connect(mongoUri);
+// mongoose.connection.once('open', function(){
+// 	console.log('Connected to mongodb at ' + mongoUri);
+// });
 
 app.listen(port, function(){
 	console.log("now listening on port " + port);
