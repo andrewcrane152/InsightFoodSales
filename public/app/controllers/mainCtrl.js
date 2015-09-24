@@ -1,14 +1,14 @@
 angular.module('Insight')
-.controller('mainCtrl', function($scope){});
+.controller('mainCtrl', function($scope){
+	
+	(function($){
+	  $(function(){
 
-(function($){
-  $(function(){
+	    $('.button-collapse').sideNav();
+	    $('.parallax').parallax();
 
-    $('.button-collapse').sideNav();
-    $('.parallax').parallax();
-
-  }); // end of document ready
-})(jQuery); // end of jQuery name space
+	  }); // end of document ready
+	})(jQuery); // end of jQuery name space
 
 
 });
