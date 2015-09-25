@@ -21,4 +21,14 @@ angular.module('Insight')
     });
   };
 
+  $scope.confirmEmail = function(contactName, fromEmail, messageSub, message) {
+    mainService.confirmEmail(contactName, fromEmail, messageSub, message)
+    .then(function(response){
+      $scope.contactName = '';
+      $scope.fromEmail = '';
+      $scope.messageSub = '';
+      $scope.message = '';
+    });
+  };
+
 });
