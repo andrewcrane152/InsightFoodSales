@@ -152,34 +152,34 @@
   
     <div class="row">
       <div class="input-field col s6">
-        <input id="name" type="text" class="validate">
+        <input id="name" type="text" class="validate" ng-model="contactName">
         <label for="name">Your Name</label>
       </div>
    
     
       <div class="input-field col s6">
-        <input id="email" type="email" class="validate">
+        <input id="email" type="email" class="validate" ng-model="fromEmail">
         <label for="email">Your Email</label>
       </div>
     </div><!--row-->
     
      <div class="row">
       <div class="input-field col s12">
-        <input id="message-sub" type="email" class="validate">
+        <input id="message-sub" type="text" class="validate" ng-model="messageSub">
         <label for="message-sub">Message Subject</label>
       </div>
     </div>
     
      <div class="row">
       <div class="input-field col s12">
-         <textarea id="text_area" class="materialize-textarea"></textarea>
+         <textarea id="text_area" type="text" class="materialize-textarea" ng-model="message"></textarea>
         <label for="text_area">Your Message</label>
       </div>
     </div>
     
      
       <div>
-        <a class="waves-effect waves-light btn indigo darken-3">Send Message<i class="mdi-content-send right"></i></a>
+        <a class="waves-effect waves-light btn indigo darken-3" ng-click="sendEmail(contactName, fromEmail, messageSub, message)">Send Message<i class="mdi-content-send right"></i></a>
       </div>
      </form>
      

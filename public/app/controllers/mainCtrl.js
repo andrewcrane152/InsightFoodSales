@@ -1,6 +1,6 @@
 angular.module('Insight')
-.controller('mainCtrl', function($scope){
-	
+.controller('mainCtrl', function($scope, mainService){
+
 	(function($){
 	  $(function(){
 
@@ -10,5 +10,15 @@ angular.module('Insight')
 	  }); // end of document ready
 	})(jQuery); // end of jQuery name space
 
+
+  $scope.sendEmail = function(contactName, fromEmail, messageSub, message) {
+    mainService.sendEmail(contactName, fromEmail, messageSub, message)
+    .then(function(response){
+      $scope.contactName = '';
+      $scope.fromEmail = '';
+      $scope.messageSub = '';
+      $scope.message = '';
+    });
+  };
 
 });
