@@ -1,6 +1,6 @@
 nav ul a,
 nav .brand-logo {
-  color: #444;
+  color: #444 !important;
 }
 
 p {
@@ -33,7 +33,11 @@ p {
 }
 
 .max-img-size{
-    width: inherit;
+    max-width: 100%;
+}
+
+.navbar-logo{
+    max-height: 100%;
 }
 
 .image-container{
@@ -53,6 +57,9 @@ p {
 @media only screen and (max-width : 600px) {
   #index-banner .section {
     top: 0;
+  }
+  .navbar-logo {
+    max-height: 55px;
   }
 }
 
@@ -80,7 +87,7 @@ footer.page-footer {
  @media only screen and (max-width : 600px) {
   .parallax-container
  {
-    color: white;
+    color: #000;
  }
 }
  nav a.button-collapse
