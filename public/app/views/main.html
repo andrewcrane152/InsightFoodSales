@@ -6,15 +6,15 @@
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
       
       <ul class="right hide-on-med-and-down">       
-        <li><a class="head-link" href="#clients">Clients</a></li>
-        <li><a class="head-link" href="#aboutus">About Us</a></li>
-        <li><a class="head-link" href="#contactus">Contact Us</a></li>       
+        <li><a data-scroll class="head-link" href="#clients">Clients</a></li>
+        <li><a data-scroll class="head-link" href="#aboutus">About Us</a></li>
+        <li><a data-scroll class="head-link" href="#contactus">Contact Us</a></li>       
       </ul>
 
       <ul class="right side-nav" id="mobile-demo">
-        <li><a class="head-link" href="#clients">Clients</a></li>
-        <li><a class="head-link" href="#aboutus">About Us</a></li>
-        <li><a class="head-link" href="#contactus">Contact Us</a></li>
+        <li><a data-scroll class="head-link" href="#clients">Clients</a></li>
+        <li><a data-scroll class="head-link" href="#aboutus">About Us</a></li>
+        <li><a data-scroll class="head-link" href="#contactus">Contact Us</a></li>
       </ul>
 
     </div>
@@ -29,7 +29,7 @@
         <h4 class="header center col s12 blue-text text-darken-4 light">Western States Bakery and Deli Broker</h4>        
         <br><br><br>
         <div class="row center">
-          <a href="#features" class="btn-large waves-effect waves-light blue">About Us</a> <!-- data-scroll -->
+          <a data-scroll href="#features" class="btn-large waves-effect waves-light blue">About Us</a> <!-- data-scroll -->
         </div>
         <br><br>
 
@@ -46,27 +46,26 @@
       <div class="row">
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center" style="color:#333"><i class="mdi-av-new-releases"></i></h2>
-            <h5 class="center">Feature one</h5>
+            <h2 class="center" style="color:#333"><i class="fa fa-users"></i></i></h2>
+            <h5 class="center">Account Management</h5>
 
-            <p class="light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
+            <p class="light">Our incredible customer service team is constantly at work for you behind the scenes.  Whether it means processing invoices, meeting with customers, or supporting events, we are there.</p>
           </div>
         </div>
 
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center" style="color:#333"><i class="mdi-hardware-cast"></i></h2>
-            <h5 class="center">Feature two</h5>
-
-            <p class="light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
+            <h2 class="center" style="color:#333"><i class="fa fa-bar-chart"></i></h2>
+            <h5 class="center">Increased Exposure</h5>
+            <p class="light">Grow your footprint overnight!  With strong connections to buyers throughout the Western US, we can help you get that appointment you have been fighting for.</p>
           </div>
         </div>
 
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center" style="color:#333"><i class="mdi-hardware-keyboard-alt"></i></h2>
-            <h5 class="center">Feature three</h5>
-            <p class="light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
+            <h2 class="center" style="color:#333"><i class="fa fa-shopping-cart"></i></h2>
+            <h5 class="center">In-Store Support</h5>
+            <p class="light">With employees strategically placed throughout the West, we are your solution to continued in store support to help close the sale and keep the buyer happy.</p>
           </div>
         </div>
       </div>
@@ -94,19 +93,20 @@
       <br>
       <div class="row">
         <div class="col s6">
-        <img class="materialboxed responsive-img" data-caption="Description about the work or project"  src="styles/img/blur-flowers-nature-471-827x550.jpg">
+        <p>testing</p>
+        <img class="materialboxed responsive-img" data-caption="Description about the work or project"  src="styles/img/chavrie.jpg">
         </div> 
         <div class="col s6">
-        <img class="materialboxed responsive-img" data-caption="Description about the work or project"  src="styles/img/1415117217bc45x.jpg">
+        <img class="materialboxed responsive-img" data-caption="Description about the work or project"  src="styles/img/conagra.jpg">
         </div> 
       </div><!--row-->
       
        <div class="row">
         <div class="col s6">
-        <img class="materialboxed responsive-img" data-caption="Description about the work or project" src="styles/img/1397154567yttyy.jpg">
+        <img class="materialboxed responsive-img" data-caption="Description about the work or project" src="styles/img/daniele.jpg">
         </div> 
         <div class="col s6">
-        <img class="materialboxed responsive-img" data-caption="Description about the work or project" src="styles/img/1399827845b0i1k.jpg">
+        <img class="materialboxed responsive-img" data-caption="Description about the work or project" src="styles/img/lofthouse.jpg">
         </div> 
       </div><!--row-->
       
@@ -161,14 +161,14 @@
       </div>
     </div><!--row-->
     
-     <div class="row">
+    <div class="row">
       <div class="input-field col s12">
         <input id="message-sub" type="text" class="validate" ng-model="messageSub">
         <label for="message-sub">Message Subject</label>
       </div>
     </div>
     
-     <div class="row">
+    <div class="row">
       <div class="input-field col s12">
          <textarea id="text_area" type="text" class="materialize-textarea" ng-model="message"></textarea>
         <label for="text_area">Your Message</label>
@@ -176,16 +176,14 @@
     </div>
     
      
-      <div>
-        <a class="waves-effect waves-light btn indigo darken-3" ng-click="sendEmail(contactName, fromEmail, messageSub, message); confirmEmail(contactName, fromEmail, messageSub, message)">Send Message<i class="mdi-content-send right"></i></a>
+    <div>
+        <a class="waves-effect waves-light btn indigo darken-3" ng-click="sendEmail(contactName, fromEmail, messageSub, message); confirmEmail(contactName, fromEmail, messageSub, message); showConfirmToast()">Send Message<i class="mdi-content-send right"></i></a>
         <p class="small-text">*You will receive a confirmation email with a copy of your message.</p>
       </div>
      </form>
      
     <div class="col s12 m4">
-        <br>
-        <br>
-        <br>
+        <br><br><br>
 
         <ul>
            <li><i class="fa fa-phone"></i> (714)685-9323 </li>

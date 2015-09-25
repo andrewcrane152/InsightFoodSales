@@ -1,5 +1,5 @@
 angular.module('Insight')
-.controller('mainCtrl', function($scope, mainService){
+.controller('mainCtrl', function($scope, emailService){
 
 	(function($){
 	  $(function(){
@@ -12,7 +12,7 @@ angular.module('Insight')
 
 
   $scope.sendEmail = function(contactName, fromEmail, messageSub, message) {
-    mainService.sendEmail(contactName, fromEmail, messageSub, message)
+    emailService.sendEmail(contactName, fromEmail, messageSub, message)
     .then(function(response){
       $scope.contactName = '';
       $scope.fromEmail = '';
@@ -22,7 +22,7 @@ angular.module('Insight')
   };
 
   $scope.confirmEmail = function(contactName, fromEmail, messageSub, message) {
-    mainService.confirmEmail(contactName, fromEmail, messageSub, message)
+    emailService.confirmEmail(contactName, fromEmail, messageSub, message)
     .then(function(response){
       $scope.contactName = '';
       $scope.fromEmail = '';
@@ -30,5 +30,18 @@ angular.module('Insight')
       $scope.message = '';
     });
   };
+
+  // $scope.showConfirmToast = function() {
+  //   $mdToast.show(
+  //     $mdToast.simple()
+  //       .content('Email Sent')
+  //       // .position($scope.getToastPosition())
+  //       .hideDelay(3000)
+  //   );
+  // };
+
+  // $scope.closeToast = function() {
+  //   $mdToast.hide();
+  // };
 
 });
