@@ -21,6 +21,25 @@ p {
     width: 100%;
   }
 
+  .parallax-container .top-background {
+    background-color: rgba(255,255,255,.9);
+  }
+
+.box {
+    margin-bottom: 20px;
+    padding: 30px 15px;
+    background: #fff;
+    background: rgba(255,255,255,0.9);
+}
+
+.max-img-size{
+    width: inherit;
+}
+
+.image-container{
+    /*max-width: 100%;*/
+}
+
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
     position: absolute;
