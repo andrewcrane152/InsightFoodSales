@@ -1,4 +1,4 @@
-var app = angular.module('Insight', ['ngRoute']);
+var app = angular.module('Insight', ['ngRoute', 'ngMaterial']);
 
 app.config(function($routeProvider){
 	$routeProvider

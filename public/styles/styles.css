@@ -25,14 +25,13 @@ h1,h2,h3,h4,h5,h6 {
     width: 100%;
   }
 
-  .parallax-container .top-background {
-    background-color: rgba(255,255,255,.9);
+  .parallax-container{
+    /*background-color: rgba(255,255,255,.9);*/
   }
 
 .box {
     margin-bottom: 20px;
     padding: 30px 15px;
-    background: #fff;
     background: rgba(255,255,255,0.9);
 }
 

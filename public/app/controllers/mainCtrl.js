@@ -1,5 +1,5 @@
 angular.module('Insight')
-.controller('mainCtrl', function($scope, emailService){
+.controller('mainCtrl', function($scope, $mdToast, emailService){
 
 	(function($){
 	  $(function(){
@@ -31,17 +31,12 @@ angular.module('Insight')
     });
   };
 
-  // $scope.showConfirmToast = function() {
-  //   $mdToast.show(
-  //     $mdToast.simple()
-  //       .content('Email Sent')
-  //       // .position($scope.getToastPosition())
-  //       .hideDelay(3000)
-  //   );
-  // };
-
-  // $scope.closeToast = function() {
-  //   $mdToast.hide();
-  // };
+  $scope.openToast = function($event) {
+    $mdToast.show(
+      $mdToast.simple()
+        .content('Email Sent')
+        .hideDelay(3000)
+    );
+  };
 
 });
