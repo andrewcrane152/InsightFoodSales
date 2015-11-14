@@ -1,14 +1,20 @@
 nav ul a,
 nav .brand-logo {
-  color: #444 !important;
+  color: #444;
 }
 
 p {
   line-height: 2rem;
+  font-family: 'Playfair Display', serif;
 }
 
-h1,h2,h3,h4,h5,h6 {
-    font-family: 'Playfair Display', serif;
+iframe {
+  min-width: 250px;
+}
+
+a .black-link{
+  font-style: underline !important;
+  color: black !important;
 }
 
 .button-collapse {
@@ -25,32 +31,14 @@ h1,h2,h3,h4,h5,h6 {
     width: 100%;
   }
 
-  .parallax-container{
-    /*background-color: rgba(255,255,255,.9);*/
-  }
-
-.box {
-    margin-bottom: 20px;
-    padding: 30px 15px;
-    background: rgba(255,255,255,0.9);
-}
-
-.max-img-size{
-    max-width: 100%;
-}
-
-.navbar-logo{
-    max-height: 100%;
-}
-
-.image-container{
-    /*max-width: 100%;*/
-}
-
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
     position: absolute;
-    top: 40%;
+    top: 15%;
+    height: 65%;
+    bottom: 15%;
+    overflow: auto;
+    font-size: 1em;
   }
   #index-banner .section {
     top: 10%;
@@ -58,11 +46,23 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 @media only screen and (max-width : 600px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 8%;
+    height: 80%;
+    bottom: 8%;
+    overflow: auto;
+    color: black;
+    font-size: 1em !important;
+  }
   #index-banner .section {
     top: 0;
   }
-  .navbar-logo {
-    max-height: 55px;
+  iframe {
+    width: 300px;
+  }
+  .brand-logo {
+    height: 55px;
   }
 }
 
@@ -80,22 +80,22 @@ footer.page-footer {
 
  .parallax img 
  {
-     background-repeat: no-repeat;
-     background-size: cover;
+   background-repeat: no-repeat;
+   background-size: cover;
  }
  .parallax-container
  {
-    color: black;
+  color: black;
  }
  @media only screen and (max-width : 600px) {
   .parallax-container
  {
-    color: #000;
+  color: white;
  }
 }
  nav a.button-collapse
  {
-    color:black;
+  color:black;
  }
  .purple.lighten-1 {
   background-color: #CC0066 !important;
@@ -104,23 +104,42 @@ footer.page-footer {
   color: #CC0066 !important;
 }
 .share-buttons{
-    list-style: none;
+  list-style: none;
 }
 
 .share-buttons li{
-    display: inline;
+  display: inline;
 }
 nav
 {
-    overflow: visible;
+  overflow: visible;
 }
 nav li a {
     -webkit-transition: background .3s ease-in-out;
     -moz-transition: background .3s ease-in-out;
     transition: background .3s ease-in-out;
+    color: black !important;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Playfair Display', serif;
+}
+
+.box {
+    margin-bottom: 20px;
+    padding: 30px 15px;
+    background: rgba(255,255,255,0.9);
+}
+
+.max-img-size{
+    max-width: 100%;
+}
+
+.navbar-logo{
+    max-height: 100%;
 }
 
 .small-text {
-    font-size: .8em;
+    font-size: .9em;
     color: #000;
 }
