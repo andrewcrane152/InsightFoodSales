@@ -1,3 +1,14 @@
+  <!--Login Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
 <div id="navbar" class="navbar-fixed scrollspy">
   <nav  class="white">
     <div class="nav-wrapper container">
@@ -86,31 +97,25 @@
       <h4 class="center">Our Clients</h4>
       <br>
       <div class="row">
-        <div class="center col s4">
+        <div class="center col s4 flex-parent">
             <img class="materialboxed responsive-img center valign-wrapper center-align" src="styles/img/chavrie.jpg">
-            <a href="http://www.chavrie.com/" target="blank"  class="black-link"> 
-            <h5>Chavrie</h5>
+            <a href="http://www.chavrie.com/" target="blank"  class="black-link align-self-bottom"> 
+            <h6>Chavrie</h6>
           </a>
             <i class="fa fa-trash-o"></i>
         </div> 
-        <div class="center col s4">
+        <div class="center col s4 flex-parent">
             <img class="materialboxed responsive-img center valign-wrapper center-align" src="styles/img/conagra.jpg">
-            <a href="http://www.chavrie.com/" target="blank"  class="black-link"> 
-            <h5>ConAgra Foods</h5>
-          </a>
+            <a href="http://www.chavrie.com/" target="blank"  class="black-link align-self-bottom"> 
+              <h6>ConAgra Foods</h6>
+            </a>
             <i class="fa fa-trash-o"></i>
         </div> 
         <div class="center col s4">
         <img class="materialboxed responsive-img center valign-wrapper center-align" rc="styles/img/daniele.jpg">
         </div> 
       </div><!--row-->
-      
-       <div class="row">
-        <div class="center col s4">
-        <img class="materialboxed responsive-img center valign-wrapper center-align" rc="styles/img/lofthouse.jpg">
-        </div> 
-      </div><!--row-->
-      
+           
       <div class="center">
         <a class="waves-effect waves-light btn indigo darken-4">Add Manufacturer</a>
       </div>
@@ -208,7 +213,10 @@
    
     <div class="footer-copyright">
       <div class="container">
-       <p>Copyright © InsightFoodSales.com</p>
+       <span class="footer-spacing">Copyright © InsightFoodSales.com</span>
+       <a class="waves-effect waves-dark btn modal-trigger" href="#modal1">
+          <span class="underline">Admin Login</span>
+       </a>
       </div>
     </div>
   </footer>
