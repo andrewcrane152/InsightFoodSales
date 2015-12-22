@@ -48,25 +48,5 @@
 	<script src="app/services/mainService.js"></script>
 	<script src="app/services/emailService.js"></script>
 
-	  <!--  Scripts-->
-    <script>
-  		$(document).ready(function(){
-	    	$('.materialboxed').materialbox();
-	      	$('.button-collapse').sideNav();
-	  	});
-    </script>
-
-    <script>
-        $('.head-link').click(function(e) {
-        	e.preventDefault();
-	        
-        	var goto = $(this).attr('href');
-
-    		$('html, body').animate({
-    		    scrollTop: $(goto).offset().top
-	        }, 800);
-	    });
-	</script>
-
 </body>
 </html>

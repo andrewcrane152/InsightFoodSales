@@ -146,6 +146,11 @@ h1,h2,h3,h4,h5,h6 {
 
 .flex-parent {
   display: flex;
+  flex-direction: column;
+}
+
+.justify-content-center{
+  justify-content: center;
 }
 
 .footer-spacing {
@@ -154,4 +159,12 @@ h1,h2,h3,h4,h5,h6 {
 
 .underline {
   text-decoration: underline;
+}
+
+.larger-font {
+  font-size: 1.3em;
+}
+
+.underline {
+  font-style: underline;
 }

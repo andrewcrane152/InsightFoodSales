@@ -1,5 +1,5 @@
 angular.module('Insight')
-.controller('mainCtrl', function($scope, $mdToast, emailService){
+.controller('mainCtrl', function($scope, $mdToast, emailService, mainService){
 
 	(function($){
 	  $(function(){
@@ -37,6 +37,27 @@ angular.module('Insight')
         .content('Email Sent')
         .hideDelay(3000)
     );
+  };
+
+  $scope.closeMenuBar = function () {
+    console.log('closeMenuBar invoked');
+    $('#mobile-demo').sideNav('hide');
+  };
+
+  $scope.createUser = function (newUser) {
+    mainService.createUser(newUser).then(function(response){
+      console.log('register.js ' + response);
+    }, function(error){
+      console.log(error);
+    })
+  };
+
+  $scope.adminLogin = function (credentials) {
+    mainService.adminLogin(credentials).then(function(response){
+      console.log('logged in');
+    }, function(error){
+      console.log('login error ', error);
+    })
   };
 
 });

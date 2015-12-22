@@ -1,20 +1,15 @@
-  <!--Login Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
-
 <div id="navbar" class="navbar-fixed scrollspy">
   <nav  class="white">
     <div class="nav-wrapper container">
       
-      <div class="container"> <a href="#navbar" class="brand-logo"><img class="navbar-logo" src="styles/img/logo-navbar.jpg"></a></div>     
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      <div class="container"> 
+        <a data-scroll href="#index-banner" class="brand-logo head-link">
+          <img class="navbar-logo" src="styles/img/logo-navbar.jpg">
+        </a>
+      </div>     
+      <a href="#index-banner" data-activates="mobile-demo" class="button-collapse">
+        <i class="mdi-navigation-menu"></i>
+      </a>
       
       <ul class="right hide-on-med-and-down">       
         <li><a data-scroll class="head-link" href="#clients">Clients</a></li>
@@ -23,9 +18,9 @@
       </ul>
 
       <ul class="right side-nav" id="mobile-demo">
-        <li><a data-scroll class="head-link" href="#clients">Clients</a></li>
-        <li><a data-scroll class="head-link" href="#aboutus">About Us</a></li>
-        <li><a data-scroll class="head-link" href="#contactus">Contact Us</a></li>
+        <li><a data-scroll class="head-link" href="#clients" ng-click="closeMenuBar">Clients</a></li>
+        <li><a data-scroll class="head-link" href="#aboutus" ng-click="closeMenuBar">About Us</a></li>
+        <li><a data-scroll class="head-link" href="#contactus" ng-click="closeMenuBar">Contact Us</a></li>
       </ul>
     </div>
   </nav>
@@ -82,8 +77,8 @@
     <div class="section no-pad-bot">
       <div class="container box">
         <div class="row center">
-          <h4 class="header col s12" style="color: #333;">AT INSIGHT FOOD SALES</h4>
-          <p class="header col s12">We have a mission to be the most respected Sales Broker in the Food Industry. To do this, we have established a culture that supports our team members so they can provide exceptional service to both our clients and our customers. We strive to grow the business with honesty and integrity.</p>
+          <h4 class="header col s12 underline" style="color: #333;">AT INSIGHT FOOD SALES</h4>
+          <p class="larger-font header col s12">We have a mission to be the most respected Sales Broker in the Food Industry. To do this, we have established a culture that supports our team members so they can provide exceptional service to both our clients and our customers. We strive to grow the business with honesty and integrity.</p>
         </div>
       </div>
     </div>
@@ -98,26 +93,23 @@
       <br>
       <div class="row">
         <div class="center col s4 flex-parent">
-            <img class="materialboxed responsive-img center valign-wrapper center-align" src="styles/img/chavrie.jpg">
-            <a href="http://www.chavrie.com/" target="blank"  class="black-link align-self-bottom"> 
-            <h6>Chavrie</h6>
+          <a href="http://www.chavrie.com/" target="blank"> 
+            <img class="responsive-img justify-content-center" src="styles/img/chavrie.jpg">
           </a>
+            <h5>Chavrie</h5>
             <i class="fa fa-trash-o"></i>
         </div> 
         <div class="center col s4 flex-parent">
-            <img class="materialboxed responsive-img center valign-wrapper center-align" src="styles/img/conagra.jpg">
-            <a href="http://www.chavrie.com/" target="blank"  class="black-link align-self-bottom"> 
-              <h6>ConAgra Foods</h6>
+            <a href="http://www.chavrie.com/" target="blank" class="center"> 
+              <img class="responsive-img justify-content-center" src="styles/img/conagra.jpg">
             </a>
+            <h5>ConAgra Foods</h5>
             <i class="fa fa-trash-o"></i>
-        </div> 
-        <div class="center col s4">
-        <img class="materialboxed responsive-img center valign-wrapper center-align" rc="styles/img/daniele.jpg">
         </div> 
       </div><!--row-->
            
       <div class="center">
-        <a class="waves-effect waves-light btn indigo darken-4">Add Manufacturer</a>
+        <a href="" data-target="uploadModal" class="modal-trigger waves-effect waves-light btn indigo darken-4">Add Manufacturer</a>
       </div>
 
     </div>
@@ -183,7 +175,7 @@
     
      
     <div>
-        <a class="waves-effect waves-light btn indigo darken-3" ng-click="sendEmail(contactName, fromEmail, messageSub, message); confirmEmail(contactName, fromEmail, messageSub, message); openToast()">Send Message<i class="mdi-content-send right"></i></a>
+        <a class="waves-effect waves-light btn indigo darken-3" ng-click="sendEmail(contactName, fromEmail, messageSub, message); confirmEmail(contactName, fromEmail, messageSub, message)" onclick="Materialize.toast('Email Sent', 4000)">Send Message<i class="mdi-content-send right"></i></a>
         <p class="small-text">*You will receive a confirmation email with a copy of your message.</p>
       </div>
      </form>
@@ -197,9 +189,9 @@
         </ul>
 
         <iframe class="col s12 m12 l12" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ-Z6VExHX3IARof_R1R1ebcM&key=AIzaSyCbgROgMReJ-wvC3Ibi1TUB_Ttg6LmwGSA" allowfullscreen></iframe>
-
+      <br><br>
        <ul class="share-buttons">
-            <li><a href="https://www.facebook.com/insightfoodsales/timeline" target="_blank" title="Find us on Facebook"><i class="fa fa-facebook"></i><span>  Find us on Facebook!</span></a></li>
+            <li><a href="https://www.facebook.com/insightfoodsales/timeline" target="_blank" title="Find us on Facebook"><i class="fa fa-facebook"></i><span>Find us on Facebook!</span></a></li>
         </ul>
     </div>
      
@@ -209,14 +201,117 @@
 </div>
 
 
-  <footer class="page-footer indigo darken-4">
-   
+  <footer class="page-footer indigo darken-4">   
     <div class="footer-copyright">
       <div class="container">
        <span class="footer-spacing">Copyright © InsightFoodSales.com</span>
-       <a class="waves-effect waves-dark btn modal-trigger" href="#modal1">
-          <span class="underline">Admin Login</span>
-       </a>
+          <a href="" data-target="loginModal" class="modal-trigger">Admin Login</a>
       </div>
     </div>
   </footer>
+
+  <!-- LOGIN Modal Structure -->
+  <div id="loginModal" class="modal">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <h2 class="center-align">Login</h2>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email" type="email" class="validate center" ng-model='credentials.email'>
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="pass" type="password" class="validate center" ng-model="credentials.password">
+                            <label for="pass">Password</label>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="col m12">
+                            <p class="right-align">
+                                <button class="btn btn-large waves-effect waves-light" type="submit" ng-click="adminLogin(credentials)">Login</button>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+
+<!-- UPLOAD FILE Modal Structure -->
+  <div id="uploadModal" class="modal">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <h3 class="center-align">Add Manufacturer</h3>
+            <div class="row">
+                <form method="post" action="/addManufacturer" name="addManufacturer" class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <div class="flex-row">
+                            <label for="manuLogo">Manufacturer's Logo</label>
+                            <form enctype="multipart/form-data">
+                                  <input id="manuLogo" class="validate center"type="file" ng-file-select="onFileSelect($files)" required/>
+                            </form>
+                            <b>Preview:</b><br />
+                            <img ng-show="imageSrc" class="image-small" ng-src="{{imageSrc}}" /><br/>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="manuName" type="text" class="validate center" ng-model="manuName">
+                            <label for="manuName">Manufacturer Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="manuLink" type="url" class="validate center" ng-model="manuLink">
+                            <label for="manuLink">Manufacturer's Website URL</label>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="col m12">
+                            <p class="right-align">
+                                <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="addPhoto(imageSrc, file, manuName, manuLink)">Submit</button>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+<!--  Scripts-->
+  <script>
+    $(document).ready(function(){
+      $('.materialboxed').materialbox();
+        $('.button-collapse').sideNav({
+          closeOnClick: true
+        });
+    });
+  </script>
+
+  <script>
+      $('.head-link').click(function(e) {
+        e.preventDefault();
+        
+        var goto = $(this).attr('href');
+
+      $('html, body').animate({
+          scrollTop: $(goto).offset().top
+        }, 800);
+    });
+  </script>
+  
+  <script>
+   $(document).ready(function() {
+     $('.modal-trigger').leanModal();
+    });
+  </script>
