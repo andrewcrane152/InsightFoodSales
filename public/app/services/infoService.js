@@ -4,7 +4,7 @@ app.service('infoService', function($http){
 	this.addManuInfo = function(title, price, image, description, category){
 		return $http({
 			method: 'POST',
-			url: '/admin/products',
+			url: '/info',
 			data: {
 				title: title,
 				price: price,
@@ -18,14 +18,14 @@ app.service('infoService', function($http){
 	this.getManuInfo = function(){
 		return $http({
 			method: 'GET',
-			url: '/admin/products'
+			url: '/info'
 		})
 	}
 
 	this.updateManuInfo = function(id, title, description, price, category){
 		return $http({
 			method: 'PUT',
-			url: '/admin/products?id=' + id,
+			url: '/info?id=' + id,
 			data: {
 
 				title: title,
@@ -39,7 +39,7 @@ app.service('infoService', function($http){
 	this.removeManuInfo = function(id){
 		return $http({
 			method: 'DELETE',
-			url: '/admin/products?id=' + id
+			url: '/info?id=' + id
 		})
 	}
 
