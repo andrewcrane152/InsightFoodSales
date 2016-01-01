@@ -87,24 +87,14 @@ app.get('/logout', function(req, res, next) {
 /////////////////////////////////////////////////
 
 //admin 
-    //products
-app.post('/admin/products', isAdmin, ProductCtrl.create);
+    //Info
+app.post('/info', isAdmin, InfoCtrl.create);
 
-app.get('/admin/products', isAdmin, ProductCtrl.get);
+app.get('/info', isAdmin, InfoCtrl.get);
 
-app.put('/admin/products', isAdmin, ProductCtrl.update);
+app.put('/info', isAdmin, InfoCtrl.update);
 
-app.delete('/admin/products', isAdmin, ProductCtrl.delete);
-
-    //photos
-app.post('/admin/photos', isAdmin, PhotoCtrl.create);
-
-app.get('/admin/photos', isAdmin, PhotoCtrl.get);
-
-app.put('/admin/photos', isAdmin, PhotoCtrl.update);
-
-app.delete('/admin/photos', isAdmin, PhotoCtrl.delete);
-
+app.delete('/info', isAdmin, InfoCtrl.delete);
 
 
 ////////////////////////////////////////////////
