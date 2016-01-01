@@ -7,10 +7,6 @@ var InfoSchema = mongoose.Schema({
 	website: { type: String },
 	image: { type: String }
 
-})
-
-InfoSchema.pre('update', function() {
-  	this.dateUpdated = Date.now();
 });
 
 module.exports = mongoose.model('Info', InfoSchema)
