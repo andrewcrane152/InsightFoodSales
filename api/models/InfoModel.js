@@ -1,4 +1,3 @@
-
 var mongoose = require('mongoose');
 
 var InfoSchema = mongoose.Schema({
@@ -9,4 +8,4 @@ var InfoSchema = mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('Info', InfoSchema)
+module.exports = mongoose.model('Info', InfoSchema);
