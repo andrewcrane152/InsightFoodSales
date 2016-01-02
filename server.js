@@ -36,20 +36,25 @@ app.get('/logout', function(req, res, next) {
 app.post('/user', UserCtrl.register);
 
 // ADMIN ROUTES
-var isAdmin = function(req, res, next) {
+var checkAuth = function(req, res, next) {
   if (!req.isAuthenticated()) return res.status(401).send();
   return next();
 };
 
-app.get('/user', isAdmin, UserCtrl.me);
-app.put('/users/:_id', isAdmin, UserCtrl.update);
+app.get('/users', checkAuth, UserCtrl.get);
+app.get('/users/me', checkAuth, UserCtrl.me);
+app.get('/users/:_id', checkAuth, UserCtrl.show);
+app.post('/users', checkAuth, UserCtrl.create);
+app.put('/users/:_id', checkAuth, UserCtrl.update);
+app.delete('/users/:_id', checkAuth, UserCtrl.destroy);
 
-app.post('/info', isAdmin, InfoCtrl.create);
-app.get('/info', isAdmin, InfoCtrl.get);
-app.put('/info', isAdmin, InfoCtrl.update);
-app.delete('/info', isAdmin, InfoCtrl.delete);
+app.get('/mfgrs', checkAuth, InfoCtrl.get);
+app.get('/mfgrs/:_id', checkAuth, InfoCtrl.show);
+app.post('/mfgrs', checkAuth, InfoCtrl.create);
+app.put('/mfgrs/:_id', checkAuth, InfoCtrl.update);
+app.delete('/mfgrs/:_id', checkAuth, InfoCtrl.destroy);
 
-app.get('/signed_url', isAdmin, s3.getSignedUrl);
+app.get('/s3_signed_url', checkAuth, s3.getSignedUrl);
 
 //CONNECTIONS
 var MONGO_URI = process.env.MONGO_URI || CONFIG.MONGO_URI;
