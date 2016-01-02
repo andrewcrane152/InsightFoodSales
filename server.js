@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 
 var UserCtrl = require('./api/controllers/UserCtrl');
-var InfoCtrl = require('./api/controllers/InfoCtrl');
+var ManufacturerCtrl = require('./api/controllers/ManufacturerCtrl');
 
 var passport = require('./api/services/passport');
 var s3 = require('./api/services/s3');
@@ -25,6 +25,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// ROUTES -- COMMON
 app.post('/login', passport.authenticate('local', {
   successRedirect: '/',
 }));
@@ -32,27 +33,25 @@ app.get('/logout', function(req, res, next) {
   req.logout();
   return res.status(200).send('logged out');
 });
+app.get('/users/me', UserCtrl.me);
 
-app.post('/user', UserCtrl.register);
-
-// ADMIN ROUTES
+// ROUTES -- AUTHED USERS
 var checkAuth = function(req, res, next) {
   if (!req.isAuthenticated()) return res.status(401).send();
   return next();
 };
 
 app.get('/users', checkAuth, UserCtrl.get);
-app.get('/users/me', checkAuth, UserCtrl.me);
 app.get('/users/:_id', checkAuth, UserCtrl.show);
 app.post('/users', checkAuth, UserCtrl.create);
 app.put('/users/:_id', checkAuth, UserCtrl.update);
 app.delete('/users/:_id', checkAuth, UserCtrl.destroy);
 
-app.get('/mfgrs', checkAuth, InfoCtrl.get);
-app.get('/mfgrs/:_id', checkAuth, InfoCtrl.show);
-app.post('/mfgrs', checkAuth, InfoCtrl.create);
-app.put('/mfgrs/:_id', checkAuth, InfoCtrl.update);
-app.delete('/mfgrs/:_id', checkAuth, InfoCtrl.destroy);
+app.get('/mfgrs', checkAuth, ManufacturerCtrl.get);
+app.get('/mfgrs/:_id', checkAuth, ManufacturerCtrl.show);
+app.post('/mfgrs', checkAuth, ManufacturerCtrl.create);
+app.put('/mfgrs/:_id', checkAuth, ManufacturerCtrl.update);
+app.delete('/mfgrs/:_id', checkAuth, ManufacturerCtrl.destroy);
 
 app.get('/s3_signed_url', checkAuth, s3.getSignedUrl);
 
