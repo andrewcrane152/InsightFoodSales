@@ -78,7 +78,7 @@ footer.page-footer {
 
 
 
- .parallax img 
+ .parallax img
  {
    background-repeat: no-repeat;
    background-size: cover;
@@ -110,8 +110,12 @@ footer.page-footer {
 .share-buttons li{
   display: inline;
 }
-nav
-{
+
+ul {
+  font-size: 1.25em;
+}
+
+nav {
   overflow: visible;
 }
 nav li a {
@@ -140,7 +144,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .small-text {
-    font-size: .9em;
+    font-size: .95em;
     color: #000;
 }
 
