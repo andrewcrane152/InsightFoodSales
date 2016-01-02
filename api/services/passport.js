@@ -8,11 +8,12 @@ passport.use(new LocalStrategy({
   passwordField: 'password'
 }, function(email, password, done) {
   User.findOne({ email: email })
-  .exec(function(err, user) {
-    if(err) done(err);
-    if(!user) return done(null, false);
-    if(user.verifyPassword(password)) return done(null, user);
-    return done(null, false);
+    .select('+password')
+    .exec(function(err, user) {
+      if(err) done(err);
+      if(!user) return done(null, false);
+      if(user.verifyPassword(password)) return done(null, user);
+      return done(null, false);
   });
 }));
 

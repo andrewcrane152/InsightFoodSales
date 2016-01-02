@@ -39,7 +39,7 @@ app.use(passport.session());
 
 // ROUTES -- COMMON
 app.post('/login', passport.authenticate('local', {
-  successRedirect: '/me',
+  successRedirect: '/users/me',
 }));
 app.get('/logout', function(req, res, next) {
   req.logout();
