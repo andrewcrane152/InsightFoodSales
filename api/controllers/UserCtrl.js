@@ -3,17 +3,27 @@ var User = require('../models/User');
 module.exports = {
 
   get: function(req, res, next) {
-
+    User
+      .find({ visible: true })
+      .sort({ email: 1 })
+      .exec(function(err, result) {
+        if (err) return next(err);
+        res.status(200).json(result);
+      });
   },
 
   me: function(req, res, next) {
     if (!req.user) return res.status(401).send('current user not defined');
-    req.user.password = null;
-    return res.status(200).json(req.user);
+    res.status(200).json(req.user);
   },
 
   show: function(req, res, next) {
-
+    User
+      .findById(req.params._id)
+      .exec(function(err, result) {
+        if (err) return next(err);
+        res.status(200).json(result);
+      });
   },
 
   create: function(req, res, next) {
@@ -29,11 +39,14 @@ module.exports = {
   update: function(req, res, next) {
     User.findByIdAndUpdate(req.params._id, req.body, { new: true }, function(err, result) {
       if (err) return next(err);
-      res.status(200).send(result);
+      res.status(200).json(result);
     });
   },
 
   destroy: function(req, res, next) {
-
+    User.findByIdAndRemove(req.params._id, function(err, result) {
+      if (err) return next(err);
+      res.status(204).send();
+    });
   }
 };
