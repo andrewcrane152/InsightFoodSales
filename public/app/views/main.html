@@ -1,23 +1,25 @@
 <div id="navbar" class="navbar-fixed scrollspy">
   <nav  class="white">
     <div class="nav-wrapper container">
-      
-      <div class="container"> 
+
+      <div class="container">
         <a data-scroll href="#index-banner" class="brand-logo head-link">
           <img class="navbar-logo" src="styles/img/logo-navbar.jpg">
         </a>
-      </div>     
+      </div>
       <a href="#index-banner" data-activates="mobile-demo" class="button-collapse">
         <i class="mdi-navigation-menu"></i>
       </a>
-      
-      <ul class="right hide-on-med-and-down">       
+
+      <ul class="right hide-on-med-and-down">
+        <li><a data-scroll class="head-link" href="#statement">Our Mission</a></li>
         <li><a data-scroll class="head-link" href="#clients">Clients</a></li>
         <li><a data-scroll class="head-link" href="#aboutus">About Us</a></li>
-        <li><a data-scroll class="head-link" href="#contactus">Contact Us</a></li>       
+        <li><a data-scroll class="head-link" href="#contactus">Contact Us</a></li>
       </ul>
 
       <ul class="right side-nav" id="mobile-demo">
+        <li><a data-scroll class="head-link" href="#statement" ng-click="closeMenuBar">Our Mission</a></li>
         <li><a data-scroll class="head-link" href="#clients" ng-click="closeMenuBar">Clients</a></li>
         <li><a data-scroll class="head-link" href="#aboutus" ng-click="closeMenuBar">About Us</a></li>
         <li><a data-scroll class="head-link" href="#contactus" ng-click="closeMenuBar">Contact Us</a></li>
@@ -26,15 +28,15 @@
   </nav>
 </div>
 
-<div id="index-banner" class="parallax-container">
-    <div class="section no-pad-bot">
+<div id="index-banner">
+  <!-- class="parallax-container" -->
+    <!-- <div class="parallax"><img src="styles/img/bakery.jpg" alt="img"></div> -->
+    <!-- <div class="section no-pad-bot"> -->
       <div class="container box">
-        <br><br>
         <h1 class="header center indigo-text text-darken-4">Insight Food Sales</h1>
-        <h4 class="header center col s12 blue-text text-darken-4 light">Western States Bakery and Deli Broker</h4>        
+        <h4 class="header center col s12 blue-text text-darken-4 light">Western States Bakery and Deli Broker</h4>
       </div>
-    </div>
-    <div class="parallax"><img src="styles/img/bakery.jpg" alt="img"></div>
+    <!-- </div> -->
 </div>
 
 
@@ -73,7 +75,7 @@
   </div>
 
 
-  <div class="parallax-container valign-wrapper section">
+  <div class="parallax-container valign-wrapper section" id="statement">
     <div class="section no-pad-bot">
       <div class="container box">
         <div class="row center">
@@ -93,24 +95,24 @@
       <br>
       <div class="row">
         <div class="center col s4 flex-parent">
-          <a href="http://www.chavrie.com/" target="blank"> 
+          <a href="http://www.chavrie.com/" target="blank">
             <img class="responsive-img justify-content-center" src="styles/img/chavrie.jpg">
           </a>
             <h5>Chavrie</h5>
             <a href="" data-target="editModal" class="modal-trigger"><i class="fa fa-pencil"></i></a>
-        </div> 
+        </div>
         <div class="center col s4 flex-parent">
-            <a href="http://www.chavrie.com/" target="blank" class="center"> 
+            <a href="http://www.chavrie.com/" target="blank" class="center">
               <img class="responsive-img justify-content-center" src="styles/img/conagra.jpg">
             </a>
             <h5>ConAgra Foods</h5>
             <a href="" data-target="editModal" class="modal-trigger"><i class="fa fa-pencil"></i></a>
-        </div> 
+        </div>
 
         <!-- TODO: RETURN MANUFACTURERS IN ALPHABETICAL ORDER -->
 
       </div><!--row-->
-           
+
       <div class="center">
         <a href="" data-target="uploadModal" class="modal-trigger waves-effect waves-light btn indigo darken-4">Add Manufacturer</a>
       </div>
@@ -123,14 +125,14 @@
     <div class="section no-pad-bot">
       <div class="container box">
         <div class="center row col s3">
-            
+
             <h3>About Us</h3>
        </div>
-        <div class="center row col s12">
+        <div class="center row col s12 larger-font">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
        </div>
-       
+
       </div>
     </div>
     <div class="parallax"><img src="styles/img/wine-cheese.jpg" alt="img"></div>
@@ -140,75 +142,75 @@
 
 <div class="container section scrollspy" id="contactus">
     <div class="section">
-    
+
     <br>
     <br>
-    
+
 <div class="row">
-        
+
   <form class="col s12 m8 l8">
-    <h2>Contact Us</h2> 
-  
+    <h2>Contact Us</h2>
+
     <div class="row">
       <div class="input-field col s6">
         <input id="name" type="text" class="validate" ng-model="contactName">
         <label for="name">Your Name</label>
       </div>
-   
-    
+
+
       <div class="input-field col s6">
         <input id="email" type="email" class="validate" ng-model="fromEmail">
         <label for="email">Your Email*</label>
       </div>
     </div><!--row-->
-    
+
     <div class="row">
       <div class="input-field col s12">
         <input id="message-sub" type="text" class="validate" ng-model="messageSub">
         <label for="message-sub">Message Subject</label>
       </div>
     </div>
-    
+
     <div class="row">
       <div class="input-field col s12">
          <textarea id="text_area" type="text" class="materialize-textarea" ng-model="message"></textarea>
         <label for="text_area">Your Message</label>
       </div>
     </div>
-    
-     
+
+
     <div>
         <a class="waves-effect waves-light btn indigo darken-3" ng-click="sendEmail(contactName, fromEmail, messageSub, message); confirmEmail(contactName, fromEmail, messageSub, message)" onclick="Materialize.toast('Email Sent', 4000)">Send Message<i class="mdi-content-send right"></i></a>
         <p class="small-text">*You will receive a confirmation email with a copy of your message.</p>
       </div>
      </form>
-     
-    <div class="col s12 m4">
-        <br><br><br>
 
+    <div class="col s12 m4">
         <ul>
            <li><i class="fa fa-phone"></i> (714)685-9323 </li>
            <li><i class="fa fa-envelope"></i> admin@insightfoodsales.com </li>
         </ul>
 
         <iframe class="col s12 m12 l12" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ-Z6VExHX3IARof_R1R1ebcM&key=AIzaSyCbgROgMReJ-wvC3Ibi1TUB_Ttg6LmwGSA" allowfullscreen></iframe>
-      <br><br>
-       <ul class="share-buttons">
-            <li><a href="https://www.facebook.com/insightfoodsales/timeline" target="_blank" title="Find us on Facebook"><i class="fa fa-facebook"></i><span>Find us on Facebook!</span></a></li>
+
+        <ul class="share-buttons">
+          <li><a href="https://www.facebook.com/insightfoodsales/timeline" target="_blank" title="Find us on Facebook"><p><i class="fa fa-facebook"></i>Find us on Facebook!</p></a></li>
         </ul>
     </div>
-     
-     
+
+
 </div>
 </div>
 </div>
 
 
-  <footer class="page-footer indigo darken-4">   
+  <footer class="page-footer indigo darken-4">
     <div class="footer-copyright">
       <div class="container">
-       <span class="footer-spacing">Copyright © InsightFoodSales.com</span>
-          <a href="" data-target="loginModal" class="modal-trigger">Admin Login</a>
+       <span class="footer-spacing">Copyright © InsightFoodSales.com  2016</span>
+       <span class="footer-spacing"><a href="" data-target="loginModal" class="modal-trigger">Admin Login</a> </span>
+       <span class="footer-spacing"><a href="" data-target="addUserModal" class="modal-trigger">Manage Users</a> </span>
+       <span class="footer-spacing"><a href="" data-target="updateUserModal" class="modal-trigger">Update Current User</a> </span>
       </div>
     </div>
   </footer>
@@ -220,6 +222,12 @@
             <h2 class="center-align">Login</h2>
             <div class="row">
                 <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="name" type="text" class="validate center" ng-model='credentials.name'>
+                            <label for="name">Name</label>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="email" type="email" class="validate center" ng-model='credentials.email'>
@@ -243,8 +251,112 @@
                 </form>
             </div>
         </div>
-    </div>
+      </div>
   </div>
+
+  <!-- MANAGE USERS Modal Structure -->
+  <div id="addUserModal" class="modal">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <h4 class="left-align">Create New User</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="name" type="text" class="validate center" ng-model='newUser.name'>
+                            <label for="name">Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email" type="email" class="validate center" ng-model='newUser.email'>
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password" type="password" class="validate center" ng-model="newUser.password">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col m12">
+                            <p class="right-align">
+                                <button class="btn btn-large waves-effect waves-light" type="submit" ng-click="createNewUser(newUser)">Add User</button>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="divider"></div>
+    <br><br><br>
+
+
+    <div class="col s12 m12 l12">
+        <h4 class="left-align">Delete User</h4>
+        <div class="row">
+            <form class="col s12">
+              <label>Select Name to Delete</label>
+              <select name="deleteUser">
+                <option value="" selected="">Select Name</option>
+                <option value="Mike">Mike</option>
+                <option value="Alex">Alex</option>
+                <option value="John">John</option>
+              </select>
+              <div class="col m12">
+                  <p class="right-align">
+                    <button class="btn btn-large waves-effect waves-light red" ng-click="deleteUser(user.userId)">Delete User</button>
+                  </p>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>
+  </div>
+
+  <!-- LOGIN Modal Structure -->
+  <div id="updateUserModal" class="modal">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <h2 class="center-align">Update Current User</h2>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="name" type="text" class="validate center" ng-model='updatedUser.name'>
+                            <label for="name">Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email" type="email" class="validate center" ng-model='updatedUser.email'>
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="pass" type="password" class="validate center" ng-model="updatedUser.password">
+                            <label for="pass">Password</label>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="col m12">
+                            <p class="right-align">
+                                <button class="btn btn-large waves-effect waves-light" type="submit" ng-click="updateUser(updatedUser)">Update</button>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+      </div>
+  </div>
+
 
 <!-- UPLOAD FILE Modal Structure -->
   <div id="uploadModal" class="modal">
@@ -280,7 +392,7 @@
                     <div class="divider"></div>
                     <div class="row">
                         <div class="col m12">
-                            <p class="right-align">
+                            <p class="center-align">
                                 <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="addManu(imageSrc, file, manuName, manuLink)">Submit</button>
                             </p>
                         </div>
@@ -326,7 +438,7 @@
                         <div class="col m4">
                             <p class="left-align">
                                 <button class="btn btn-large waves-effect waves-light red" type="submit" name="action" ng-click="removeManu(imageSrc, file, manuName, manuLink)">Delete {{name}}</button>
-                            </p>                          
+                            </p>
                         </div>
                         <div class="col m8">
                             <p class="right-align">
@@ -353,7 +465,7 @@
   <script>
       $('.head-link').click(function(e) {
         e.preventDefault();
-        
+
         var goto = $(this).attr('href');
 
       $('html, body').animate({
@@ -361,7 +473,7 @@
         }, 800);
     });
   </script>
-  
+
   <script>
    $(document).ready(function() {
      $('.modal-trigger').leanModal();
