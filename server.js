@@ -61,11 +61,11 @@ app.post('/users', UserCtrl.create);
 app.put('/users/:_id', UserCtrl.update);
 app.delete('/users/:_id', UserCtrl.destroy);
 
-app.post('/mfgrs', checkAuth, ManufacturerCtrl.create);
-app.put('/mfgrs/:_id', checkAuth, ManufacturerCtrl.update);
-app.delete('/mfgrs/:_id', checkAuth, ManufacturerCtrl.destroy);
+app.post('/mfgrs', ManufacturerCtrl.create);
+app.put('/mfgrs/:_id', ManufacturerCtrl.update);
+app.delete('/mfgrs/:_id', ManufacturerCtrl.destroy);
 
-app.get('/s3_signed_url', checkAuth, s3.getSignedUrl);
+app.get('/s3_signed_url', s3.getSignedUrl);
 
 
 //CONNECTIONS

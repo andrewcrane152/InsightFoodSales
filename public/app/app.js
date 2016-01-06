@@ -1,6 +1,6 @@
 var app = angular.module('Insight', ['ngRoute', 'ngMaterial']);
 
-app.config(function($routeProvider){
+app.config(function($routeProvider, $httpProvider){
 	$routeProvider
 	.when('/main', {
 		templateUrl: 'app/views/main.html',
@@ -10,4 +10,6 @@ app.config(function($routeProvider){
 	.otherwise({
 		redirectTo: '/main'
 	});
+
+	$httpProvider.defaults.useXDomain = true;
 });

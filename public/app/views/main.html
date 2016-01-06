@@ -357,26 +357,24 @@
       </div>
   </div>
 
-
 <!-- UPLOAD FILE Modal Structure -->
   <div id="uploadModal" class="modal">
     <div class="row">
         <div class="col s12 m12 l12">
             <h3 class="center-align">Create New Manufacturer</h3>
             <div class="row">
-                <form method="post" action="/addManufacturer" name="addManufacturer" class="col s12">
-                    <div class="row">
-                        <div class="input-field col s12">
-                          <div class="flex-row">
-                            <label for="manuLogo">Manufacturer's Logo</label>
-                            <form enctype="multipart/form-data">
-                                  <input id="manuLogo" class="validate center"type="file" ng-file-select="onFileSelect($files)" required/>
-                            </form>
-                            <b>Preview:</b><br />
-                            <img ng-show="imageSrc" class="image-small" ng-src="{{imageSrc}}" /><br/>
-                          </div>
-                        </div>
-                    </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <div class="flex-row">
+                    <label for="file_input">Manufacturer's Logo</label>
+                    <input type="file" id="file" name="file"/>
+                    <button ng-click="initUpload()">Upload</button>
+                    <p id="status">Please select a file</p>
+                    <!-- <img style="border:1px solid gray;width:300px;" id="preview" src="/images/default.png" /> -->
+                  </div>
+                </div>
+              </div>
+              <form method="POST" action="/addManufacturer" name="addManufacturer" class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="manuName" type="text" class="validate center" ng-model="manuName">
