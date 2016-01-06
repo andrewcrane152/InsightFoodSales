@@ -21,10 +21,7 @@ var s3 = require('./api/services/s3');
 
 // EXPRESS + MIDDLEWARE
 var app = express();
-app.use(express.static(__dirname+'/public'));
-
-// EXPRESS //
-var app = express();
+app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
