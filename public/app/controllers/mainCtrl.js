@@ -30,6 +30,7 @@ angular.module('Insight')
 $scope.login = function (loginEmail, loginPassword) {
 	userService.adminLogin(loginEmail, loginPassword).then(function(response){
 		Materialize.toast("Logged In", 3000);
+		$('#loginModal').closeModal();
 	}, function(error){
 		Materialize.toast("Log In Failed", 3000);
 	});
@@ -46,6 +47,7 @@ $scope.logout = function () {
 $scope.createNewUser = function (newUserName, newUserEmail, newUserPassword) {
 	userService.createNewUser(newUserName, newUserEmail, newUserPassword).then(function(response){
 			Materialize.toast("New User Added", 3000);
+			$('#addUserModal').closeModal();
 		}, function(error){
 			Materialize.toast("Error occured while adding user.", 3000);
 		});
@@ -54,17 +56,18 @@ $scope.createNewUser = function (newUserName, newUserEmail, newUserPassword) {
 $scope.updateUser = function (updatedUser) {
 	userService.updateUser(updatedUser).then(function(response){
 			Materialize.toast("User Updated", 3000);
+			$('#updateUserModal').closeModal();
 		}, function(error){
 			Materialize.toast("Error occured while updating user.", 3000);
 		});
 };
 
 $scope.deleteUser = function (user) {
-	console.log('delete user invoked in controller');
 	var userId = user.userId;
 	if(confirm("Are you sure you want to delete this user?")){
 		userService.deleteUser(userId).then(function(response){
 			Materialize.toast("User Deleted", 3000);
+			$('#addUserModal').closeModal();
 		}, function(error){
 			Materialize.toast("Error occured while adding user.", 3000);
 		});
