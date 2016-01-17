@@ -31,6 +31,8 @@ $scope.login = function (loginEmail, loginPassword) {
 	userService.adminLogin(loginEmail, loginPassword).then(function(response){
 		Materialize.toast("Logged In", 3000);
 		$('#loginModal').closeModal();
+		console.log(response);
+		$scope.user = response.data;
 	}, function(error){
 		Materialize.toast("Log In Failed", 3000);
 	});
@@ -53,8 +55,9 @@ $scope.createNewUser = function (newUserName, newUserEmail, newUserPassword) {
 		});
 };
 
-$scope.updateUser = function (updatedUser) {
-	userService.updateUser(updatedUser).then(function(response){
+$scope.updateUser = function (newName, newEmail, newPassword) {
+	var userId = user._id;
+	userService.updateUser(userId, newName, newEmail, newPassword).then(function(response){
 			Materialize.toast("User Updated", 3000);
 			$('#updateUserModal').closeModal();
 		}, function(error){
@@ -63,7 +66,7 @@ $scope.updateUser = function (updatedUser) {
 };
 
 $scope.deleteUser = function (user) {
-	var userId = user.userId;
+	var userId = user._id;
 	if(confirm("Are you sure you want to delete this user?")){
 		userService.deleteUser(userId).then(function(response){
 			Materialize.toast("User Deleted", 3000);
@@ -74,6 +77,16 @@ $scope.deleteUser = function (user) {
 	}
 };
 
+$scope.getUsers = function () {
+	userService.getUsers()
+	.success(function(response){
+		console.log(response);
+		$scope.allUsers = response;
+	})
+	.error(function(error){
+		console.log(error);
+	});
+};
 /////////////////////////////
 //    PAGE INTERACTIONS    //
 /////////////////////////////
@@ -92,6 +105,10 @@ $scope.deleteUser = function (user) {
         .hideDelay(3000)
     );
   };
+
+	$scope.openThisModal = function (modalName) {
+		$('#updateUserModal').openModal();
+	}
 
   $scope.closeMenuBar = function () {
     console.log('closeMenuBar invoked');

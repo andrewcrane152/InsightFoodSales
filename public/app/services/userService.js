@@ -1,8 +1,10 @@
 angular.module('Insight');
-app.service('userService', function($http){
+app.service('userService', function($http, $q){
+
+	var currentUser;
 
 	this.adminLogin = function (loginEmail, loginPassword){
-		console.log ('adminLogin invoked', loginEmail, loginPassword);
+		var dfrd = $q.defer();
 		return $http({
 			method: 'POST',
 			url: '/login',
@@ -42,13 +44,24 @@ app.service('userService', function($http){
 		});
 	};
 
-	this.updateUser = function(updatedUser){
-		console.log('update user invoked ', updatedUser);
+	this.updateUser = function(userId, newName, newEmail, newPassword){
+		console.log('update user invoked ', userId, newName, newEmail, newPassword);
 		return $http({
 			method: 'PUT',
-			url: '/users/' + updatedUser.userId,
-			data: updatedUser
+			url: '/users/' + userId,
+			data: {
+				name: newName,
+				email: newEmail,
+				password: newPassword,
+			}
 		});
 	};
+
+	this.getUsers = function(){
+		return $http({
+			method: 'GET',
+			url: '/users'
+		});
+	}
 
 });
