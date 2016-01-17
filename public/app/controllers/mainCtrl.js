@@ -64,7 +64,6 @@ $scope.updateUser = function (newName, newEmail, newPassword) {
 	var userId = $scope.user._id;
 	userService.updateUser(userId, newName, newEmail, newPassword)
 		.success(function(response){
-				console.log('updatUser ', response);
 				$scope.user = response;
 				Materialize.toast("User Updated", 3000);
 				$('#updateUserModal').closeModal();
@@ -86,11 +85,67 @@ $scope.deleteUser = function (selectedUser) {
 	// }
 };
 
-$scope.changeSelection = function(val){
-	console.log(val);
+/////////////////////////////
+//    TEXTFIELD CONTROL    //
+/////////////////////////////
+
+//    ABOUT US
+$scope.createAboutUs = function() {
+  textFieldService.createAboutUs(aboutUsTitle, aboutUs)
+    .success(function(response){
+        console.log(response);
+        $scope.aboutUs = response;
+        Materialize.toast("New textfield created", 3000);
+  			$('#aboutUsModal').closeModal();
+      })
+    .error(function(error){
+				Materialize.toast("Error occured while creating text.", 3000);
+			});
 };
 
+$scope.updateAboutUs = function() {
+  var aboutUsId = $scope.aboutUs._id;
+  textFieldService.updateAboutUs(aboutUsTitle, aboutUs, aboutUsId)
+    .success(function(response){
+        console.log(response);
+        $scope.textFields = response;
+        Materialize.toast("Your text has been updated", 3000);
+        Materialize.toast("Refresh page to view changes", 3000);
+  			$('#aboutUsModal').closeModal();
+      })
+    .error(function(error){
+				Materialize.toast("Error occured while creating text.", 3000);
+			});
+};
 
+//    MISSION STATEMENT
+$scope.createMission = function() {
+  textFieldService.createMission(missionStatementTitle, missionStatement)
+    .success(function(response){
+        console.log(response);
+        $scope.mission = response;
+        Materialize.toast("New textfield created", 3000);
+  			$('#missionModal').closeModal();
+      })
+    .error(function(error){
+				Materialize.toast("Error occured while creating text.", 3000);
+			});
+};
+
+$scope.updateMission = function() {
+  var missionId = $scope.mission._id;
+  textFieldService.updateMission(missionStatementTitle, missionStatement, missionId)
+    .success(function(response){
+        console.log(response);
+        $scope.textFields = response;
+        Materialize.toast("Your text has been updated", 3000);
+        Materialize.toast("Refresh page to view changes", 3000);
+  			$('#missionModal').closeModal();
+      })
+    .error(function(error){
+				Materialize.toast("Error occured while creating text.", 3000);
+			});
+};
 /////////////////////////////
 //    PAGE INTERACTIONS    //
 /////////////////////////////
@@ -112,7 +167,7 @@ $scope.changeSelection = function(val){
 
 	$scope.reloadPage = function () {
 		location.reload();
-	}
+	};
 
   $scope.closeMenuBar = function () {
     console.log('closeMenuBar invoked');
@@ -131,6 +186,10 @@ $scope.changeSelection = function(val){
 	$scope.openUpdateUserModal = function () {
 		$('#updateUserModal').openModal();
 	};
+
+  $scope.changeSelection = function(val){
+  	console.log(val);
+  };
 
 	$scope.initUpload = function() {
 		console.log($scope.file);

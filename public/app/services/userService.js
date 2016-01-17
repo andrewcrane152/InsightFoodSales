@@ -1,8 +1,6 @@
 angular.module('Insight');
 app.service('userService', function($http, $q){
 
-	var currentUser;
-
 	this.adminLogin = function (loginEmail, loginPassword){
 		var dfrd = $q.defer();
 		return $http({
@@ -62,6 +60,6 @@ app.service('userService', function($http, $q){
 			method: 'GET',
 			url: '/users'
 		});
-	}
+	};
 
 });

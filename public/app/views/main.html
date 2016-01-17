@@ -92,6 +92,7 @@
         <div class="row center">
           <h4 class="header col s12 underline" style="color: #333;">AT INSIGHT FOOD SALES</h4>
           <p class="larger-font header col s12">We have a mission to be the most respected Sales Broker in the Food Industry. To do this, we have established a culture that supports our team members so they can provide exceptional service to both our clients and our customers. We strive to grow the business with honesty and integrity.</p>
+          <a href="" data-target="editMissionModal" class="modal-trigger"><i class="fa fa-pencil" ng-if="user"></i></a>
         </div>
       </div>
     </div>
@@ -473,26 +474,61 @@
   <div id="editAboutUsModal" class="modal">
     <div class="row">
         <div class="col s12 m12 l12">
-            <h3 class="center-align">Update About Us Field</h3>
+            <h3 class="center-align">Update About Us</h3>
             <div class="row">
                 <form name="updateAboutUs" class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="aboutUsName" type="text" class="validate center" ng-model="aboutUsTitle">
-                            <label for="aboutUsName">Manufacturer Name</label>
+                            <label for="aboutUsName">Text Field Title</label>
                         </div>
                     </div>
                     <div class="row">
                       <div class="input-field col s12">
-                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                        <label for="textarea1">Textarea</label>
+                        <textarea id="aboutUs" class="materialize-textarea" ng-model="aboutUs"></textarea>
+                        <label for="aboutUs">About Insight Food Sales</label>
                       </div>
                     </div>
                     <div class="divider"></div>
                     <div class="row">
                         <div class="col m8">
                             <p class="right-align">
-                                <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="updateAboutUs(imageSrc, file, manuName, manuLink)">Save Changes</button>
+                                <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="createAboutUs(aboutUsTitle, aboutUs)">Save Changes</button>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+
+<!-- /////////////////////////// -->
+<!-- //  EDIT MISSION MODAL  // -->
+<!-- /////////////////////////// -->
+  <div id="editMissionModal" class="modal">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <h3 class="center-align">Update Mission Statement</h3>
+            <div class="row">
+                <form name="updateAboutUs" class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="aboutUsName" type="text" class="validate center" ng-model="missionStatementTitle">
+                            <label for="aboutUsName">Title</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <textarea id="aboutUs" class="materialize-textarea" ng-model="missionStatement"></textarea>
+                        <label for="aboutUs">Your Mission Statement</label>
+                      </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="col m8">
+                            <p class="right-align">
+                                <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="createMission(missionStatementTitle, missionStatement)">Save Changes</button>
                             </p>
                         </div>
                     </div>
