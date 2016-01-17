@@ -29,12 +29,17 @@ angular.module('Insight')
 // ////////////////////////
 $scope.login = function (loginEmail, loginPassword) {
 	userService.adminLogin(loginEmail, loginPassword).then(function(response){
-		Materialize.toast("Logged In", 3000);
 		$('#loginModal').closeModal();
-		console.log(response);
+		console.log("user ", response);
 		$scope.user = response.data;
 	}, function(error){
 		Materialize.toast("Log In Failed", 3000);
+	});
+	userService.getUsers().then(function(response){
+		console.log("allUsers ", response);
+		$scope.allUsers = response;
+	}, function(error){
+		console.log(error);
 	});
 };
 
@@ -56,37 +61,36 @@ $scope.createNewUser = function (newUserName, newUserEmail, newUserPassword) {
 };
 
 $scope.updateUser = function (newName, newEmail, newPassword) {
-	var userId = user._id;
-	userService.updateUser(userId, newName, newEmail, newPassword).then(function(response){
-			Materialize.toast("User Updated", 3000);
-			$('#updateUserModal').closeModal();
-		}, function(error){
-			Materialize.toast("Error occured while updating user.", 3000);
-		});
+	var userId = $scope.user._id;
+	userService.updateUser(userId, newName, newEmail, newPassword)
+		.success(function(response){
+				console.log('updatUser ', response);
+				$scope.user = response;
+				Materialize.toast("User Updated", 3000);
+				$('#updateUserModal').closeModal();
+			})
+		.error(function(error){
+				Materialize.toast("Error occured while updating user.", 3000);
+			});
 };
 
-$scope.deleteUser = function (user) {
-	var userId = user._id;
-	if(confirm("Are you sure you want to delete this user?")){
-		userService.deleteUser(userId).then(function(response){
-			Materialize.toast("User Deleted", 3000);
-			$('#addUserModal').closeModal();
-		}, function(error){
-			Materialize.toast("Error occured while adding user.", 3000);
-		});
-	}
+$scope.deleteUser = function (selectedUser) {
+	console.log(selectedUser);
+	// if(confirm("Are you sure you want to delete {{}}")){
+	// 	userService.deleteUser(userId).then(function(response){
+	// 		Materialize.toast("User Deleted", 3000);
+	// 		$('#addUserModal').closeModal();
+	// 	}, function(error){
+	// 		Materialize.toast("Error occured while adding user.", 3000);
+	// 	});
+	// }
 };
 
-$scope.getUsers = function () {
-	userService.getUsers()
-	.success(function(response){
-		console.log(response);
-		$scope.allUsers = response;
-	})
-	.error(function(error){
-		console.log(error);
-	});
+$scope.changeSelection = function(val){
+	console.log(val);
 };
+
+
 /////////////////////////////
 //    PAGE INTERACTIONS    //
 /////////////////////////////
@@ -106,14 +110,27 @@ $scope.getUsers = function () {
     );
   };
 
-	$scope.openThisModal = function (modalName) {
-		$('#updateUserModal').openModal();
+	$scope.reloadPage = function () {
+		location.reload();
 	}
 
   $scope.closeMenuBar = function () {
     console.log('closeMenuBar invoked');
     $('#mobile-demo').sideNav('hide');
   };
+
+	$scope.openloginModal = function () {
+		$('#loginModal').openModal();
+	};
+
+	$scope.openAddUserModal = function () {
+		console.log('openAddUserModal invoked');
+		$('#addUserModal').openModal();
+	};
+
+	$scope.openUpdateUserModal = function () {
+		$('#updateUserModal').openModal();
+	};
 
 	$scope.initUpload = function() {
 		console.log($scope.file);

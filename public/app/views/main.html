@@ -36,7 +36,7 @@
 <!-- ///////////////////// -->
 <!-- //  LOGOUT BUTTON  // -->
 <!-- ///////////////////// -->
-<button class="btn waves-effect waves-light position-top-right" type="submit" name="action" ng-click="logout(); Location.reload()" ng-if="user">Logout {{user.name}}</button>
+<button class="btn waves-effect waves-light position-top-right" type="submit" name="action" ng-click="logout()" ng-if="user">Logout {{user.name}}</button>
 
 <!-- //////////////////// -->
 <!-- //  INTRO BANNER  // -->
@@ -217,8 +217,8 @@
       <div class="container">
        <span class="footer-spacing">Copyright © InsightFoodSales.com  2016</span>
        <span class="footer-spacing"><a href="" data-target="loginModal" class="modal-trigger">Admin Login</a> </span>
-       <span class="footer-spacing"><a href="" ng-click="getUsers(); openThisModal()" ng-if="user">Manage Users</a> </span>
-       <span class="footer-spacing"><a href="" data-target="updateUserModal" class="modal-trigger" ng-if="user">Update Current User</a> </span>
+       <span class="footer-spacing"><a href="" data-target="addUserModal" class="modal-trigger" ng-click="openAddUserModal()" ng-if="user">Manage Users</a> </span>
+       <span class="footer-spacing"><a href="" data-target="updateUserModal" class="modal-trigger" ng-click="openUpdateUserModal()" ng-if="user">Update Current User</a> </span>
       </div>
     </div>
   </footer>
@@ -264,7 +264,7 @@
   <div id="addUserModal" class="modal">
     <div class="row">
         <div class="col s12 m12 l12">
-            <h4 class="left-align">Create New User</h4>
+            <h4 class="center-align">Create New User</h4>
             <div class="row">
                 <form class="col s12">
                     <div class="row">
@@ -275,7 +275,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="email" type="text" class="validate center" ng-model='newUserEmail'>
+                            <input id="email" type="email" class="validate center" ng-model='newUserEmail'>
                             <label for="email">Email</label>
                         </div>
                     </div>
@@ -299,22 +299,31 @@
     <div class="divider"></div>
     <br><br><br>
     <div class="col s12 m12 l12">
-        <h4 class="left-align">Delete User</h4>
+        <h4 class="center-align">Delete A User</h4>
         <div class="row">
-            <form class="col s12">
-              <label>Select Name to Delete</label>
-              <select name="deleteUser">
-                <option value="" selected="">Select Name</option>
-                <option value="Mike">Mike</option>
-                <option value="Alex">Alex</option>
-                <option value="John">John</option>
-              </select>
-              <div class="col m12">
-                  <p class="right-align">
-                    <button class="btn btn-large waves-effect waves-light red" ng-click="deleteUser(user.userId)">Delete User</button>
-                  </p>
-              </div>
-            </form>
+          <form name="removeUser">
+            <span>Select Name to Delete</span>
+            <ul>
+              <li ng-repeat="data in allUsers.data">
+                <label> {{user.name}}
+                  <input type="radio" ng-model="data.name" name="name" value="{{data._id}}"/>
+                </label>
+              </li>
+            </ul>
+
+            <p ng-repeat="data in allUsers.data">{{user.name}}<p>
+
+            <select ng-model="selection" ng-change="changeSelection(selectedUser)">
+              <option value="">---Select a User---</option>
+              <option ng-repeat="data in allUsers.data" value="{{user.name}}" ng-selected="{{user._id == selectedUser}}"></option>
+            </select>
+
+            <div class="col m12">
+                <p class="right-align">
+                  <button class="btn btn-large waves-effect waves-light red" ng-click="deleteUser(selectedUser)">Delete User</button>
+                </p>
+            </div>
+          </form>
         </div>
     </div>
   </div>
