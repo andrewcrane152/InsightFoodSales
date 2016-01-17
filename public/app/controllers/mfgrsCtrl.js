@@ -1,12 +1,12 @@
 angular.module('Insight')
-.controller('infoCtrl', function($scope, $mdToast, infoService, manuInfo){
+.controller('mfgrsCtrl', function($scope, $mdToast, $http, emailService, mfgrsService, userService){
 
 	$scope.manuInfo = manuInfo;
 
 	$scope.showImageDetails = function(image){
 		image.show = !image.show;
 	};
-	
+
     $scope.getFile = function () {
         $scope.progress = 0;
         fileReader.readAsDataUrl($scope.file, $scope)
@@ -30,10 +30,10 @@ angular.module('Insight')
 				$scope.newManuImage = '';
 				$scope.imageSrc = null;
 				$scope.getManuInfo();
-				Materialize.toast("Manufacturer added.\nYou may need to refresh the page", 1500);
+				Materialize.toast("Manufacturer added.\nYou may need to refresh the page", 3000);
 			});
 		}, function(err){
-			Materialize.toast('product was not added', 1500);
+			Materialize.toast('product was not added', 3000);
 		});
 	};
 
@@ -58,7 +58,7 @@ angular.module('Insight')
 				$scope.getManuInfo();
 				Materialize.toast("Manufacturer successfully deleted");
 			}, function(err){
-				Materialize.toast("something went wrong", 1500);
+				Materialize.toast("something went wrong", 3000);
 			});
 		}
 	};

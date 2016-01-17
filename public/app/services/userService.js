@@ -1,11 +1,15 @@
 angular.module('Insight');
-app.service('mainService', function($http){
+app.service('userService', function($http){
 
-	this.adminLogin = function (credentials){
-		console.log ('adminLogin invoked', credentials);
+	this.adminLogin = function (loginEmail, loginPassword){
+		console.log ('adminLogin invoked', loginEmail, loginPassword);
 		return $http({
 			method: 'POST',
-			url: '/login'
+			url: '/login',
+			data: {
+				email: loginEmail,
+				password: loginPassword,
+			}
 		});
 	};
 
@@ -18,7 +22,6 @@ app.service('mainService', function($http){
 	};
 
 	this.createNewUser = function(newUserName, newUserEmail, newUserPassword){
-		console.log('create new user invoked', newUserName, newUserEmail, newUserPassword);
 		return $http({
 			method: 'POST',
 			url: '/users',

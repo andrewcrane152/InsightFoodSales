@@ -1,5 +1,5 @@
 angular.module('Insight');
-app.service('infoService', function($http){
+app.service('mfgrsService', function($http){
 
 	this.addManu = function(title, price, image, description, category){
 		return $http({

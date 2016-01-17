@@ -2,6 +2,7 @@ angular.module('Insight');
 app.service('emailService', function($http){
 
 	this.sendEmail = function(contactName, fromEmail, messageSub, message){
+		console.log('send email invoked in service');
 		return $http({
 			method: "POST",
 			url: "https://mandrillapp.com/api/1.0/messages/send.json",
