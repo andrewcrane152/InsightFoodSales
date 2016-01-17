@@ -299,33 +299,33 @@
     <div class="divider"></div>
     <br><br><br>
     <div class="col s12 m12 l12">
-        <h4 class="center-align">Delete A User</h4>
-        <div class="row">
-          <form name="removeUser">
-            <span>Select Name to Delete</span>
-            <ul>
-              <li ng-repeat="data in allUsers.data">
-                <label> {{user.name}}
-                  <input type="radio" ng-model="data.name" name="name" value="{{data._id}}"/>
-                </label>
-              </li>
-            </ul>
-
-            <p ng-repeat="data in allUsers.data">{{user.name}}<p>
-
-            <select ng-model="selection" ng-change="changeSelection(selectedUser)">
-              <option value="">---Select a User---</option>
-              <option ng-repeat="data in allUsers.data" value="{{user.name}}" ng-selected="{{user._id == selectedUser}}"></option>
-            </select>
-
-            <div class="col m12">
-                <p class="right-align">
-                  <button class="btn btn-large waves-effect waves-light red" ng-click="deleteUser(selectedUser)">Delete User</button>
-                </p>
-            </div>
-          </form>
-        </div>
+      <h4 class="center-align">Delete A User</h4>
     </div>
+      <!-- <div class="input-field col s12">
+        <select autocomplete="off" style="height:30px;width:100px;">
+          <option value="" disabled selected>Choose your option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+        <label>Materialize Select</label>
+      </div> -->
+      <div class="row input-field" ng-controller="mainCtrl">
+        <!-- <select ng-model="selection" ng-change="changeSelection(selectedUser)">
+          <option value="" disabled selected>---Select a User---</option>
+          <option ng-repeat="data in allUsers.data" value="{{user.name}}" ng-selected="{{user._id == selectedUser}}"></option>
+        </select> -->
+        <select name="userToDelete" ng-model="userDelete" ng-options="user.name for data in allUsers.data"></select>
+        <label>Select Name to Delete</label>
+      </div>
+      <div class="row">
+        <div class="col m12">
+            <p class="right-align">
+              <button class="btn btn-large waves-effect waves-light red" ng-click="deleteUser(selectedUser)">Delete User</button>
+            </p>
+        </div>
+      </div>
+
   </div>
 
 <!-- ///////////////////////// -->
@@ -427,7 +427,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                           <div class="flex-row">
-                            <label for="manuLogo">Manufacturer's Logo</label>
+                            <label for="manuLogo" class="active">Manufacturer's Logo</label>
                             <form enctype="multipart/form-data">
                                   <input id="manuLogo" class="validate center"type="file" ng-file-select="onFileSelect($files)" required/>
                             </form>
@@ -475,18 +475,18 @@
         <div class="col s12 m12 l12">
             <h3 class="center-align">Update About Us Field</h3>
             <div class="row">
-                <form method="post" name="updateManufacturer" class="col s12">
+                <form name="updateAboutUs" class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="manuName" type="text" class="validate center" ng-model="aboutUs.title">
-                            <label for="manuName">Manufacturer Name</label>
+                            <input id="aboutUsName" type="text" class="validate center" ng-model="aboutUsTitle">
+                            <label for="aboutUsName">Manufacturer Name</label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s12">
-                            <input id="manuLink" type="url" class="validate center" ng-model="aboutUs.text">
-                            <label for="manuLink">Manufacturer's Website URL</label>
-                        </div>
+                      <div class="input-field col s12">
+                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label for="textarea1">Textarea</label>
+                      </div>
                     </div>
                     <div class="divider"></div>
                     <div class="row">
