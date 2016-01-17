@@ -10,10 +10,6 @@ module.exports = {
 		});
 	},
 
-	show: function(req, res, next) {
-
-	},
-
 	create: function(req, res, next) {
 		About.create(req.body, function(err, result) {
 			if (err) return next(err);
@@ -27,12 +23,5 @@ module.exports = {
 			res.send(data);
 		});
 	},
-
-	destroy: function(req, res, next) {
-		About.findByIdAndRemove(req.query._id, function(err, data) {
-			if (err) return next(err);
-			res.send(data);
-		});
-	}
 
 };
