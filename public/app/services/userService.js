@@ -5,16 +5,29 @@ app.service('mainService', function($http){
 		console.log ('adminLogin invoked', credentials);
 		return $http({
 			method: 'POST',
-			url: 'http://localhost:5000/login'
+			url: '/login'
 		});
 	};
 
-	this.createNewUser = function(newUser){
-		console.log('create new user invoked', newUser);
+	this.logout = function () {
+		console.log ('logout invoked');
+		return $http({
+			method: 'GET',
+			url: '/logout'
+		});
+	};
+
+	this.createNewUser = function(newUserName, newUserEmail, newUserPassword){
+		console.log('create new user invoked', newUserName, newUserEmail, newUserPassword);
 		return $http({
 			method: 'POST',
 			url: '/users',
-			data: newUser
+			data: {
+				name: newUserName,
+				email: newUserEmail,
+				password: newUserPassword,
+				visible: true,
+			}
 		});
 	};
 
