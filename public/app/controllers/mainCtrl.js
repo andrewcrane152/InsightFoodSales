@@ -45,7 +45,7 @@ $scope.login = function (loginEmail, loginPassword) {
 
 $scope.logout = function () {
 	userService.logout().then(function(response){
-		Materialize.toast("Logged Out", 3000);
+		$scope.reloadPage();
 	}, function(error){
 		Materialize.toast("Log Out Failed", 3000);
 	});
@@ -185,6 +185,14 @@ $scope.updateMission = function() {
 
 	$scope.openUpdateUserModal = function () {
 		$('#updateUserModal').openModal();
+	};
+
+	$scope.openEditManuModal = function () {
+		$('#editModal').openModal();
+	};
+
+	$scope.openCreateManuModal = function () {
+		$('#uploadModal').openModal();
 	};
 
   $scope.changeSelection = function(val){
