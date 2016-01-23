@@ -4,10 +4,16 @@ app.config(function($routeProvider, $httpProvider){
 	$routeProvider
 	.when('/main', {
 		templateUrl: 'app/views/main.html',
-		controller: 'mainCtrl'
-	})
-
-	.otherwise({
+		controller: 'mainCtrl',
+		resolve: {
+			aboutUsData: function (textFieldService) {
+				return textFieldService.getAboutUs();
+			},
+			missionData: function (textFieldService) {
+				return textFieldService.getMission();
+			}
+		}
+	}).otherwise({
 		redirectTo: '/main'
 	});
 

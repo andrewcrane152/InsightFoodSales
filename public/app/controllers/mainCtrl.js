@@ -1,5 +1,5 @@
 angular.module('Insight')
-.controller('mainCtrl', function($scope, $mdToast, $http, emailService, mfgrsService, userService){
+.controller('mainCtrl', function($scope, $mdToast, $http, emailService, mfgrsService, userService, textFieldService){
 
 //////////////////////
 //    SEND EMAIL    //
@@ -90,11 +90,11 @@ $scope.deleteUser = function (selectedUser) {
 /////////////////////////////
 
 //    ABOUT US
-$scope.createAboutUs = function() {
+$scope.createAboutUs = function(aboutUsTitle, aboutUs) {
   textFieldService.createAboutUs(aboutUsTitle, aboutUs)
     .success(function(response){
         console.log(response);
-        $scope.aboutUs = response;
+        $scope.aboutUsResponse = response;
         Materialize.toast("New textfield created", 3000);
   			$('#aboutUsModal').closeModal();
       })
@@ -103,12 +103,12 @@ $scope.createAboutUs = function() {
 			});
 };
 
-$scope.updateAboutUs = function() {
-  var aboutUsId = $scope.aboutUs._id;
+$scope.updateAboutUs = function(aboutUsTitle, aboutUs) {
+  var aboutUsId = $scope.aboutUsResponse._id;
   textFieldService.updateAboutUs(aboutUsTitle, aboutUs, aboutUsId)
     .success(function(response){
         console.log(response);
-        $scope.textFields = response;
+        $scope.aboutUsResponse = response;
         Materialize.toast("Your text has been updated", 3000);
         Materialize.toast("Refresh page to view changes", 3000);
   			$('#aboutUsModal').closeModal();
@@ -118,8 +118,12 @@ $scope.updateAboutUs = function() {
 			});
 };
 
+$scope.getAboutUsData = function(){
+  textFieldService.getAboutUs();
+};
+
 //    MISSION STATEMENT
-$scope.createMission = function() {
+$scope.createMission = function(missionStatementTitle, missionStatement) {
   textFieldService.createMission(missionStatementTitle, missionStatement)
     .success(function(response){
         console.log(response);
@@ -132,7 +136,7 @@ $scope.createMission = function() {
 			});
 };
 
-$scope.updateMission = function() {
+$scope.updateMission = function(missionStatementTitle, missionStatement) {
   var missionId = $scope.mission._id;
   textFieldService.updateMission(missionStatementTitle, missionStatement, missionId)
     .success(function(response){

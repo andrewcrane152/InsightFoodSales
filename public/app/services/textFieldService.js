@@ -28,10 +28,16 @@ app.service('textFieldService', function($http, $q){
 	};
 
 	this.getAboutUs = function(){
-		return $http({
+		var dfrd = $q.defer();
+		$http({
 			method: 'GET',
 			url: '/aboutus',
+		}).then(function (response){
+			dfrd.resolve(response.data);
+		}).catch(function (response){
+			dfrd.reject(err);
 		});
+		return dfrd.promise;
 	};
 
 ///////////////////
@@ -61,10 +67,16 @@ app.service('textFieldService', function($http, $q){
 	};
 
 	this.getMission = function(){
-		return $http({
+		var dfrd = $q.defer();
+		$http({
 			method: 'GET',
 			url: '/mission',
+		}).then(function (response){
+			dfrd.resolve(response.data);
+		}).catch(function (response){
+			dfrd.reject(err);
 		});
+		return dfrd.promise;
 	};
 
 });
