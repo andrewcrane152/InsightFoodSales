@@ -1,6 +1,4 @@
-<!-- ////////////// -->
-<!-- //  NAVBAR  // -->
-<!-- ////////////// -->
+<!-- NAVBAR -->
 <div id="navbar" class="navbar-fixed scrollspy">
   <nav  class="white">
     <div class="nav-wrapper container">
@@ -32,132 +30,168 @@
     </div>
   </nav>
 </div>
+
+
 <div id="backgroundStyle">
   <div id="mainBody">
-    <!-- ///////////////////// -->
-    <!-- //  LOGOUT BUTTON  // -->
-    <!-- ///////////////////// -->
-    <button id="position-top-right" class="btn waves-effect waves-light" type="submit" name="action" ng-click="logout()" ng-if="user">Logout {{user.name}}</button>
 
-    <!-- //////////////////// -->
-    <!-- //  INTRO BANNER  // -->
-    <!-- //////////////////// -->
+    <!-- LOGOUT BUTTON -->
+    <button
+      id="position-top-right"
+      class="btn waves-effect waves-light"
+      type="submit"
+      name="action"
+      ng-click="logout()"
+      ng-if="user">
+      Logout {{user.name}}
+    </button>
+
+    <!-- INTRO BANNER -->
     <div id="index-banner">
       <div class="container box">
-        <h1 class="header center indigo-text text-darken-4">Insight Food Sales</h1>
-        <h4 class="header center col s12 blue-text text-darken-4 light">Western States Bakery and Deli Broker</h4>
+        <h1 class="header center indigo-text text-darken-4">
+          Insight Food Sales
+        </h1>
+        <h4 class="header center col s12 blue-text text-darken-4 light">
+          Western States Bakery and Deli Broker
+        </h4>
       </div>
     </div>
 
-    <!-- //////////////////// -->
-    <!-- //  ICON SECTION  // -->
-    <!-- //////////////////// -->
-      <div id="features" class="container">
-        <!-- <div class="section"> -->
-          <div class="row">
-            <div class="col s12 m4">
-              <div class="icon-block">
-                <h2 class="center" style="color:#333"><i class="fa fa-users"></i></i></h2>
-                <h5 class="center">Account Management</h5>
-
-                <p class="light">Our incredible team is constantly at work for you on the front lines and behind the scenes.  Whether it means paperwork, customer meetings, or event support, we are there.</p>
-              </div>
-            </div>
-
-            <div class="col s12 m4">
-              <div class="icon-block">
-                <h2 class="center" style="color:#333"><i class="fa fa-bar-chart"></i></h2>
-                <h5 class="center">Increased Exposure</h5>
-                <p class="light">Grow your footprint overnight!  With strong connections to buyers throughout the Western US, we can help you get the appointment you have been fighting for.</p>
-              </div>
-            </div>
-
-            <div class="col s12 m4">
-              <div class="icon-block">
-                <h2 class="center" style="color:#333"><i class="fa fa-shopping-cart"></i></h2>
-                <h5 class="center">In-Store Support</h5>
-                <p class="light">With employees strategically placed throughout the West, we are your solution to continued in store support to help close the sale and keep the buyer happy.</p>
-              </div>
+    <!-- ICON SECTION -->
+    <div id="features" class="container">
+      <!-- <div class="section"> -->
+        <div class="row">
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center" style="color:#333">
+                <i class="fa fa-users"></i>
+              </h2>
+              <h5 class="center">Account Management</h5>
+              <p class="light">
+                Our incredible team is constantly at work for you on the front lines and behind the scenes.  Whether it means paperwork, customer meetings, or event support, we are there.
+              </p>
             </div>
           </div>
 
-        <!-- </div> -->
-      </div>
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center" style="color:#333">
+                <i class="fa fa-bar-chart"></i>
+              </h2>
+              <h5 class="center">Increased Exposure</h5>
+              <p class="light">
+                Grow your footprint overnight!  With strong connections to buyers throughout the Western US, we can help you get the appointment you have been fighting for.
+              </p>
+            </div>
+          </div>
 
-    <!-- //////////////////////// -->
-    <!-- //  MISSION STATEMENT // -->
-    <!-- //////////////////////// -->
-
-    <div class="parallax-container valign-wrapper section scrollspy" id="statement">
-     <div class="section no-pad-bot">
-       <div class="container box">
-         <div class="center row col s3">
-             <h3>AT INSIGHT FOOD SALES</h3>
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center" style="color:#333">
+                <i class="fa fa-shopping-cart"></i>
+              </h2>
+              <h5 class="center">In-Store Support</h5>
+              <p class="light">
+                With employees strategically placed throughout the West, we are your solution to continued in store support to help close the sale and keep the buyer happy.
+              </p>
+            </div>
+          </div>
         </div>
-         <div class="center row col s12">
-           <p class="flow-text">We have a mission to be the most respected Sales Broker in the Food Industry. To do this, we have established a culture that supports our team members so they can provide exceptional service to both our clients and our customers. We strive to grow the business with honesty and integrity.</p>
-           <!-- <a href="" data-target="editMissionModal" class="modal-trigger"><i class="fa fa-pencil" ng-if="user"></i></a> -->
-        </div>
-       </div>
-     </div>
-     <div class="parallax"><img src="styles/img/deli-cheese-1b.jpg" alt="img"></div>
+      <!-- </div> -->
     </div>
 
-    <!-- /////////////// -->
-    <!-- //  CLIENTS  // -->
-    <!-- /////////////// -->
-      <div class="container section scrollspy" id="clients">
-        <div class="section">
-            <br>
-            <br>
-          <h4 class="center">Our Clients</h4>
-          <br>
-          <div class="row">
-
-            <!-- TODO: MAKE THIS AN ANGULAR REPEAT (ALPHABETICAL ORDER) -->
-
-            <div class="center col s4 flex-parent">
-              <a href="http://www.chavrie.com/" target="blank">
-                <img class="responsive-img justify-content-center" src="styles/img/chavrie.jpg">
-              </a>
-                <h5>Chavrie</h5>
-                <a href="" data-target="editModal" class="modal-trigger"  ng-click="openEditManuModal()" ng-if="user"><i class="fa fa-pencil"></i></a>
-            </div>
+    <!-- MISSION STATEMENT -->
+    <div id="statement"
+      class="parallax-container valign-wrapper section scrollspy"
+      ng-init="getMission()">
+      <div class="section no-pad-bot">
+        <div class="container box">
+          <div class="center row col s3">
+            <h3>{{ mission.title }}</h3>
           </div>
-
-          <div class="center">
-            <a href="" data-target="uploadModal" class="modal-trigger waves-effect waves-light btn indigo darken-4" ng-click="openCreateManuModal()" ng-if="user">Add Manufacturer</a>
+          <div class="center row col s12">
+            <p class="flow-text">{{ mission.body }}</p>
+            <a href=""
+              data-target="editMissionModal"
+              class="modal-trigger">
+              <i class="fa fa-pencil" ng-if="user"></i>
+            </a>
           </div>
         </div>
       </div>
+      <div class="parallax">
+        <img src="styles/img/deli-cheese-1b.jpg" alt="img">
+      </div>
+    </div>
 
-    <!-- ////////////// -->
+    <!-- CLIENTS -->
+    <div class="container section scrollspy" id="clients">
+      <div class="section">
+        <br><br>
+        <h4 class="center">Our Clients</h4>
+        <br>
+        <div class="row">
+
+          <!-- TODO: MAKE THIS AN ANGULAR REPEAT (ALPHABETICAL ORDER) -->
+          <div class="center col s4 flex-parent">
+            <a href="http://www.chavrie.com/" target="blank">
+              <img class="responsive-img justify-content-center" src="styles/img/chavrie.jpg">
+            </a>
+            <h5>Chavrie</h5>
+            <a href=""
+              data-target="editModal"
+              class="modal-trigger"
+              ng-click="openEditManuModal()"
+              ng-if="user">
+              <i class="fa fa-pencil"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="center">
+          <a href=""
+            data-target="uploadModal"
+            class="modal-trigger waves-effect waves-light btn indigo darken-4"
+            ng-click="openCreateManuModal()" ng-if="user">
+            Add Manufacturer
+          </a>
+        </div>
+      </div>
+    </div>
+
     <!-- // ABOUT US // -->
-    <!-- ////////////// -->
-       <div class="parallax-container valign-wrapper section scrollspy" id="aboutus" ng-init="getAboutUsData()" >
-        <div class="section no-pad-bot">
-          <div class="container box" ng-repeat="about in aboutUs">
-            <div class="center row col s3">
-                <h3>{{about.aboutUsTitle}}</h3>
-           </div>
-            <div class="center row col s12 larger-font">
-              <p>{{about.aboutUs}}</p>
-              <a href="" data-target="editAboutUsModal" class="modal-trigger" ng-click="openEditAboutUsModal()"><i class="fa fa-pencil" ng-if="user"></i></a>
-           </div>
+    <div id="aboutus"
+      class="parallax-container valign-wrapper section scrollspy"
+      ng-init="getAboutUs()">
+      <div class="section no-pad-bot">
+        <div class="container box">
+          <div class="center row col s3">
+            <h3>{{ aboutUs.title }}</h3>
+          </div>
+          <div class="center row col s12 larger-font">
+            <p>{{ aboutUs.body }}</p>
+            <a href=""
+              data-target="editAboutUsModal"
+              class="modal-trigger"
+              ng-click="openEditAboutUsModal()">
+              <i class="fa fa-pencil" ng-if="user"></i>
+            </a>
           </div>
         </div>
-        <div class="parallax"><img src="styles/img/wine-cheese.jpg" alt="img"></div>
       </div>
+      <div class="parallax"><img src="styles/img/wine-cheese.jpg" alt="img">
+      </div>
+    </div>
 
-    <!-- //////////////// -->
     <!-- // SEND EMAIL // -->
-    <!-- //////////////// -->
     <div class="container section scrollspy" id="contactus">
       <div class="section">
         <br><br>
         <div class="row">
           <form class="col s12 m8 l8">
             <h2>Contact Us</h2>
+
             <div class="row">
               <div class="input-field col s6">
                 <input id="name" type="text" class="validate" ng-model="contactName">
@@ -167,7 +201,7 @@
                 <input id="email" type="email" class="validate" ng-model="fromEmail">
                 <label for="email">Your Email*</label>
               </div>
-            </div><!--row-->
+            </div>
 
             <div class="row">
               <div class="input-field col s12">
@@ -178,360 +212,394 @@
 
             <div class="row">
               <div class="input-field col s12">
-                 <textarea id="text_area" type="text" class="materialize-textarea" ng-model="message"></textarea>
+                <textarea id="text_area" type="text" class="materialize-textarea" ng-model="message"></textarea>
                 <label for="text_area">Your Message</label>
               </div>
             </div>
 
             <div>
-                <a class="waves-effect waves-light btn indigo darken-3" ng-click="sendEmail(contactName, fromEmail, messageSub, message); confirmEmail(contactName, fromEmail, messageSub, message)" onclick="Materialize.toast('Email Sent', 4000)">Send Message<i class="mdi-content-send right"></i></a>
-                <p>*You will receive a confirmation email with a copy of your message.</p>
+              <a class="waves-effect waves-light btn indigo darken-3" ng-click="sendEmail(contactName, fromEmail, messageSub, message); confirmEmail(contactName, fromEmail, messageSub, message)" onclick="Materialize.toast('Email Sent', 4000)">Send Message<i class="mdi-content-send right"></i></a>
+              <p>*You will receive a confirmation email with a copy of your message.</p>
             </div>
           </form>
 
-    <!-- //  CONTACT INFORMATION  // -->
+          <!-- CONTACT INFORMATION -->
           <div class="col s12 m4">
-              <ul>
-                 <li><i class="fa fa-phone"></i>(714)685-9323</li>
-                 <li><i class="fa fa-envelope"></i>admin@insightfoodsales.com</li>
-              </ul>
+            <ul>
+              <li><i class="fa fa-phone"></i>(714)685-9323</li>
+              <li><i class="fa fa-envelope"></i>admin@insightfoodsales.com</li>
+            </ul>
 
-              <iframe class="col s12 m12 l12" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ-Z6VExHX3IARof_R1R1ebcM&key=AIzaSyCbgROgMReJ-wvC3Ibi1TUB_Ttg6LmwGSA" allowfullscreen></iframe>
+            <iframe class="col s12 m12 l12" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ-Z6VExHX3IARof_R1R1ebcM&key=AIzaSyCbgROgMReJ-wvC3Ibi1TUB_Ttg6LmwGSA" allowfullscreen></iframe>
 
-              <ul class="share-buttons">
-                <li><a href="https://www.facebook.com/insightfoodsales/timeline" target="_blank" title="Find us on Facebook"><p><i class="fa fa-facebook"></i>Find us on Facebook!</p></a></li>
-              </ul>
+            <ul class="share-buttons">
+              <li>
+                <a href="https://www.facebook.com/insightfoodsales/timeline"
+                  target="_blank"
+                  title="Find us on Facebook">
+                  <p><i class="fa fa-facebook"></i>Find us on Facebook!</p>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ////////////// -->
-    <!-- //  FOOTER  // -->
-    <!-- ////////////// -->
-      <footer class="page-footer indigo darken-4">
-        <div class="footer-copyright">
-          <div class="container">
-           <span class="footer-spacing">Copyright © InsightFoodSales.com  2016</span>
-           <span class="footer-spacing"><a href="" data-target="loginModal" class="modal-trigger">Admin Login</a> </span>
-           <span class="footer-spacing"><a href="" data-target="addUserModal" class="modal-trigger" ng-click="openAddUserModal()" ng-if="user">Manage Users</a> </span>
-           <span class="footer-spacing"><a href="" data-target="updateUserModal" class="modal-trigger" ng-click="openUpdateUserModal()" ng-if="user">Update Current User</a> </span>
-          </div>
-        </div>
-      </footer>
-
-    </div>   <!-- END #MAINBODY -->
-</div>   <!-- END #backgroundStyle -->
-  <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
-<!-- /////////////////// -->
-<!-- //  LOGIN MODAL  // -->
-<!-- /////////////////// -->
-  <div id="loginModal" class="modal">
-    <div class="row">
-        <div class="col s12 m12 l12">
-            <h2 class="center-align">Login</h2>
-            <div class="row">
-                <form class="col s12">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="email" type="email" class="validate center" ng-model='loginEmail' required>
-                            <label for="email">Email</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="pass" type="password" class="validate center" ng-model="loginPassword" required>
-                            <label for="pass">Password</label>
-                        </div>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="row">
-                        <div class="col m12">
-                            <p class="right-align">
-                                <button class="btn btn-large waves-effect waves-light" type="submit" ng-click="login(loginEmail, loginPassword)">Login</button>
-                            </p>
-                        </div>
-                    </div>
-                </form>
-            </div>
+    <!-- FOOTER -->
+    <footer class="page-footer indigo darken-4">
+      <div class="footer-copyright">
+        <div class="container">
+          <span class="footer-spacing">Copyright © InsightFoodSales.com  2016</span>
+          <span class="footer-spacing">
+            <a href="" data-target="loginModal" class="modal-trigger">Admin Login</a>
+          </span>
+          <span class="footer-spacing">
+            <a href=""
+              data-target="addUserModal"
+              class="modal-trigger"
+              ng-click="openAddUserModal()"
+              ng-if="user">
+              Manage Users
+            </a>
+          </span>
+          <span class="footer-spacing">
+             <a href=""
+             data-target="updateUserModal"
+             class="modal-trigger"
+             ng-click="openUpdateUserModal()"
+             ng-if="user">
+             Update Current User
+           </a>
+          </span>
         </div>
       </div>
+    </footer>
   </div>
+</div>
 
-<!-- ////////////////////////// -->
-<!-- //  MANAGE USERS MODAL  // -->
-<!-- ////////////////////////// -->
-  <div id="addUserModal" class="modal">
-    <div class="row">
-        <div class="col s12 m12 l12">
-            <h4 class="center-align">Create New User</h4>
-            <div class="row">
-                <form class="col s12">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="name" type="text" class="validate center" ng-model='newUserName' required>
-                            <label for="name">Name</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="email" type="email" class="validate center" ng-model='newUserEmail' required>
-                            <label for="email">Email</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="password" type="password" class="validate center" ng-model="newUserPassword" required>
-                            <label for="password">Password</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col m12">
-                            <p class="right-align">
-                                <button class="btn btn-large waves-effect waves-light" type="submit" ng-click="createNewUser(newUserName, newUserEmail, newUserPassword)">Add User</button>
-                            </p>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="divider"></div>
-    <br><br><br>
-    <div class="col s12 m12 l12">
-      <h4 class="center-align">Delete A User</h4>
-    </div>
-    <div class="col s12 m12 l12">
-      <h6 class="center-align">Select the user to delete</h6>
-    </div>
-      <ul>
-        <li ng-repeat="data in allUsers.data" class="center">
-          <a ng-click="$parent.triggerTitle=data.name; $parent.triggerEvent=data._id" ng-model="triggerEvent"> {{data.name}} </a>
-        </li>
-      </ul>
-      <br>
-    <div class="row">
-      <div class="col m12">
-          <p class="right-align">
-            <button class="btn btn-large waves-effect waves-light red" ng-click="deleteUser(triggerEvent)">Delete {{triggerTitle}}</button>
-          </p>
-      </div>
-    </div>
-  </div> <!-- END MODAL -->
+<!-- /////////////////////////////////////////////////////////////////////// -->
+<!-- /////////////////////////////////////////////////////////////////////// -->
 
-<!-- ///////////////////////// -->
-<!-- //  UPDATE USER MODAL  // -->
-<!-- ///////////////////////// -->
-  <div id="updateUserModal" class="modal">
-    <div class="row">
-        <div class="col s12 m12 l12">
-            <h2 class="center-align">Update Current User</h2>
-            <div class="row">
-                <form class="col s12">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="name" type="text" class="validate center" ng-model='newName'>
-                            <label for="name">{{user.name}}</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="email" type="email" class="validate center" ng-model='newEmail'>
-                            <label for="email">{{user.email}}</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="pass" type="password" class="validate center" ng-model="newPassword">
-                            <label for="pass">New Password</label>
-                        </div>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="row">
-                        <div class="col m12">
-                            <p class="right-align">
-                                <button class="btn btn-large waves-effect waves-light" type="submit" ng-click="updateUser(newName, newEmail, newPassword)">Update</button>
-                            </p>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-      </div>
-  </div>
-
-<!-- /////////////////////////// -->
-<!-- //  CREATE MANUFACTURER  // -->
-<!-- /////////////////////////// -->
-  <div id="uploadModal" class="modal">
-    <div class="row">
-        <div class="col s12 m12 l12">
-            <h3 class="center-align">Create New Manufacturer</h3>
-            <div class="row">
-              <div class="row">
-                <div class="input-field col s12">
-                  <div class="flex-row">
-                    <label for="file_input">Manufacturer's Logo</label>
-                    <input type="file" id="file" name="file" required/>
-                    <button ng-click="initUpload()">Upload</button>
-                    <p id="status">Please select a file</p>
-                    <img style="border:1px solid gray;width:300px;" id="preview" src="/images/default.png" />
-                  </div>
-                </div>
-              </div>
-              <form method="POST" action="/addManufacturer" name="addManufacturer" class="col s12">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="manuName" type="text" class="validate center" ng-model="manuName" required>
-                            <label for="manuName">Manufacturer Name</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="manuLink" type="url" class="validate center" ng-model="manuLink" required>
-                            <label for="manuLink">Manufacturer's Website URL</label>
-                        </div>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="row">
-                        <div class="col m12">
-                            <p class="center-align">
-                                <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="addManu(imageSrc, file, manuName, manuLink)">Submit</button>
-                            </p>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-  </div>
-
-<!-- /////////////////////////////// -->
-<!-- //  EDIT MANUFACTURER MODAL  // -->
-<!-- /////////////////////////////// -->
-  <div id="editModal" class="modal">
-    <div class="row">
-        <div class="col s12 m12 l12">
-            <h3 class="center-align">Update Info for {{name}}</h3>
-            <div class="row">
-                <form method="post" name="updateManufacturer" class="col s12">
-                    <div class="row">
-                        <div class="input-field col s12">
-                          <div class="flex-row">
-                            <label for="manuLogo" class="active">Manufacturer's Logo</label>
-                            <form enctype="multipart/form-data">
-                                  <input id="manuLogo" class="validate center"type="file" ng-file-select="onFileSelect($files)" required/>
-                            </form>
-                            <b>Preview:</b><br />
-                            <img ng-show="imageSrc" class="image-small" ng-src="{{imageSrc}}" /><br/>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="manuName" type="text" class="validate center" ng-model="manuName">
-                            <label for="manuName">Manufacturer Name</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="manuLink" type="url" class="validate center" ng-model="manuLink">
-                            <label for="manuLink">Manufacturer's Website URL</label>
-                        </div>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="row">
-                        <div class="col m4">
-                            <p class="left-align">
-                                <button class="btn btn-large waves-effect waves-light red" type="submit" name="action" ng-click="removeManu(imageSrc, file, manuName, manuLink)">Delete {{name}}</button>
-                            </p>
-                        </div>
-                        <div class="col m8">
-                            <p class="right-align">
-                                <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="updateManu(imageSrc, file, manuName, manuLink)">Save Changes</button>
-                            </p>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-  </div>
-
-<!-- /////////////////////////// -->
-<!-- //  EDIT ABOUT US MODAL  // -->
-<!-- /////////////////////////// -->
-
-  <div id="editAboutUsModal" class="modal">
-    <div class="row">
-        <div class="col s12 m12 l12">
-            <h3 class="center-align">Update About Us</h3>
-            <div class="row">
-                <form name="updateAboutUs" class="col s12" ng-repeat="about in aboutUs">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="aboutUsName" type="text" class="validate center" ng-model="aboutUsTitle" placeholder="{{about.aboutUsTitle}}" required>
-                            <label for="aboutUsName">About Us Title</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12" >
-                            <textarea id="aboutUsContent" class="materialize-textarea" ng-model="aboutUsContent" placeholder="{{about.aboutUs}}" required></textarea>
-                            <label for="aboutUsContent">About Insight Food Sales</label>
-                        </div>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="row">
-                        <div class="col m8">
-                            <p class="right-align">
-                                <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="updatedAboutUs(aboutUsTitle, aboutUsContent, about._id)">Save Changes</button>
-                            </p>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-  </div>
-
-<!-- /////////////////////////// -->
-<!-- //  EDIT MISSION MODAL  // -->
-<!-- /////////////////////////// -->
-  <!-- <div id="editMissionModal" class="modal">
-    <div class="row">
-        <div class="col s12 m12 l12">
-            <h3 class="center-align">Update Mission Statement</h3>
-            <div class="row">
-                <form name="updateAboutUs" class="col s12">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="aboutUsName" type="text" class="validate center" ng-model="missionStatementTitle">
-                            <label for="aboutUsName">Title</label>
-                        </div>
-                    </div>
-                    <div class="row">
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal">
+  <div class="row">
+      <div class="col s12 m12 l12">
+          <h2 class="center-align">Login</h2>
+          <div class="row">
+              <form class="col s12">
+                  <div class="row">
                       <div class="input-field col s12">
-                        <textarea id="aboutUs" class="materialize-textarea" ng-model="missionStatement"></textarea>
-                        <label for="aboutUs">Your Mission Statement</label>
+                          <input id="email" type="email" class="validate center" ng-model='loginEmail' required>
+                          <label for="email">Email</label>
                       </div>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="row">
-                        <div class="col m8">
-                            <p class="right-align">
-                                <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="createMission(missionStatementTitle, missionStatement)">Save Changes</button>
-                            </p>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+                  </div>
+                  <div class="row">
+                      <div class="input-field col s12">
+                          <input id="pass" type="password" class="validate center" ng-model="loginPassword" required>
+                          <label for="pass">Password</label>
+                      </div>
+                  </div>
+                  <div class="divider"></div>
+                  <div class="row">
+                      <div class="col m12">
+                          <p class="right-align">
+                              <button class="btn btn-large waves-effect waves-light" type="submit" ng-click="login(loginEmail, loginPassword)">Login</button>
+                          </p>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
     </div>
-  </div> -->
+</div>
+
+<!-- MANAGE USERS MODAL -->
+<div id="addUserModal" class="modal">
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <h4 class="center-align">Create New User</h4>
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="name" type="text" class="validate center" ng-model='newUserName' required>
+              <label for="name">Name</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate center" ng-model='newUserEmail' required>
+              <label for="email">Email</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="password" type="password" class="validate center" ng-model="newUserPassword" required>
+              <label for="password">Password</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col m12">
+              <p class="right-align">
+                <button class="btn btn-large waves-effect waves-light"
+                  type="submit"
+                  ng-click="createNewUser(newUserName, newUserEmail, newUserPassword)">
+                  Add User
+                </button>
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <br><br><br>
+  <div class="col s12 m12 l12">
+    <h4 class="center-align">Delete A User</h4>
+  </div>
+  <div class="col s12 m12 l12">
+    <h6 class="center-align">Select the user to delete</h6>
+  </div>
+  <ul>
+    <li ng-repeat="data in allUsers.data" class="center">
+      <a ng-click="$parent.triggerTitle=data.name; $parent.triggerEvent=data._id"
+        ng-model="triggerEvent">
+        {{ data.name }}
+      </a>
+    </li>
+  </ul>
+  <br>
+  <div class="row">
+    <div class="col m12">
+      <p class="right-align">
+        <button class="btn btn-large waves-effect waves-light red" ng-click="deleteUser(triggerEvent)">Delete {{triggerTitle}}</button>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- UPDATE USER MODAL -->
+<div id="updateUserModal" class="modal">
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <h2 class="center-align">Update Current User</h2>
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="name" type="text" class="validate center" ng-model='newName'>
+              <label for="name">{{user.name}}</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate center" ng-model='newEmail'>
+              <label for="email">{{user.email}}</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="pass" type="password" class="validate center" ng-model="newPassword">
+              <label for="pass">New Password</label>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="row">
+            <div class="col m12">
+              <p class="right-align">
+                <button class="btn btn-large waves-effect waves-light" type="submit" ng-click="updateUser(newName, newEmail, newPassword)">Update</button>
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CREATE MANUFACTURER -->
+<div id="uploadModal" class="modal">
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <h3 class="center-align">Create New Manufacturer</h3>
+      <div class="row">
+        <div class="row">
+          <div class="input-field col s12">
+            <div class="flex-row">
+              <label for="file_input">Manufacturer's Logo</label>
+              <input type="file" id="file" name="file" required/>
+              <button ng-click="initUpload()">Upload</button>
+              <p id="status">Please select a file</p>
+              <img style="border:1px solid gray;width:300px;" id="preview" src="/images/default.png" />
+            </div>
+          </div>
+        </div>
+
+        <form method="POST" action="/addManufacturer" name="addManufacturer" class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="manuName" type="text" class="validate center" ng-model="manuName" required>
+              <label for="manuName">Manufacturer Name</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="manuLink" type="url" class="validate center" ng-model="manuLink" required>
+              <label for="manuLink">Manufacturer's Website URL</label>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="row">
+            <div class="col m12">
+              <p class="center-align">
+                <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="addManu(imageSrc, file, manuName, manuLink)">Submit</button>
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT MANUFACTURER MODAL -->
+<div id="editModal" class="modal">
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <h3 class="center-align">Update Info for {{name}}</h3>
+      <div class="row">
+        <form method="post" name="updateManufacturer" class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <div class="flex-row">
+                <label for="manuLogo" class="active">Manufacturer's Logo</label>
+                <form enctype="multipart/form-data">
+                  <input id="manuLogo" class="validate center"type="file" ng-file-select="onFileSelect($files)" required/>
+                </form>
+                <b>Preview:</b><br />
+                <img ng-show="imageSrc" class="image-small" ng-src="{{imageSrc}}" /><br/>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="manuName" type="text" class="validate center" ng-model="manuName">
+              <label for="manuName">Manufacturer Name</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="manuLink" type="url" class="validate center" ng-model="manuLink">
+              <label for="manuLink">Manufacturer's Website URL</label>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="row">
+            <div class="col m4">
+              <p class="left-align">
+                <button class="btn btn-large waves-effect waves-light red" type="submit" name="action" ng-click="removeManu(imageSrc, file, manuName, manuLink)">Delete {{name}}</button>
+              </p>
+            </div>
+            <div class="col m8">
+              <p class="right-align">
+                <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="updateManu(imageSrc, file, manuName, manuLink)">Save Changes</button>
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT ABOUT US MODAL -->
+<div id="editAboutUsModal" class="modal">
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <h3 class="center-align">Update About Us</h3>
+      <div class="row">
+        <form name="updateAboutUs" class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="aboutUsName" type="text" class="validate center" ng-model="newAbout.title" placeholder="{{aboutUs.title}}" required>
+              <label for="aboutUsName">About Us Title</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12" >
+              <textarea id="aboutUsContent" class="materialize-textarea" ng-model="newAbout.body" placeholder="{{aboutUs.body}}" required></textarea>
+              <label for="aboutUsContent">About Insight Food Sales</label>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="row">
+            <div class="col m8">
+              <p class="right-align">
+                <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="updateAboutUs(newAbout)">Save Changes</button>
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT MISSION MODAL -->
+<!-- <div id="editMissionModal" class="modal">
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <h3 class="center-align">Update Mission Statement</h3>
+      <div class="row">
+        <form name="updateAboutUs" class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="aboutUsName" type="text" class="validate center" ng-model="missionStatementTitle">
+              <label for="aboutUsName">Title</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="aboutUs" class="materialize-textarea" ng-model="missionStatement"></textarea>
+              <label for="aboutUs">Your Mission Statement</label>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="row">
+            <div class="col m8">
+              <p class="right-align">
+                <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="createMission(missionStatementTitle, missionStatement)">Save Changes</button>
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
 
 
 <!--  Scripts-->

@@ -1,8 +1,8 @@
 angular.module('Insight')
-.controller('mainCtrl', function($scope, $mdToast, $http, emailService, mfgrsService, userService, textFieldService){
+.controller('mainCtrl', function($scope, $mdToast, $http, emailService, mfgrsService, userService, contentService){
   $scope.triggerTitle = '(select name)';
   $scope.triggerEvent = '';
-  $scope.aboutUsIdForUpdate = '';
+
 //////////////////////
 //    SEND EMAIL    //
 //////////////////////
@@ -87,92 +87,69 @@ $scope.deleteUser = function (userId) {
 	}
 };
 
-/////////////////////////////
-//    TEXTFIELD CONTROL    //
-/////////////////////////////
+  /////////////////////////////
+  //    CONTENT CONTROL      //
+  /////////////////////////////
+  $scope.newAbout = {};
 
-//    ABOUT US
-$scope.createAboutUs = function(aboutUsTitle, aboutUs) {
-  textFieldService.createAboutUs(aboutUsTitle, aboutUs)
-    .success(function(response){
-        console.log(response);
-        $scope.aboutUs = response;
-        Materialize.toast("New textfield created", 3000);
-  			$('#aboutUsModal').closeModal();
-      })
-    .error(function(error){
-				Materialize.toast("Error occured while creating text.", 3000);
-			});
-};
-
-$scope.updatedAboutUs = function(aboutUsTitle, aboutUsContent, aboutUsId) {
-  console.log('updatedAboutUs invoked');
-  console.log(aboutUsId);
-  console.log('about us: ', aboutUsContent);
-  var amendedAboutUs = aboutUsContent.replace("↵", "\n");
-  console.log('amendedAboutUs: ',amendedAboutUs);
-  textFieldService.updateAboutUs(aboutUsTitle, amendedAboutUs, aboutUsId)
-    .success(function(response){
-        console.log(response);
-        $scope.aboutUs = response;
-        Materialize.toast("Your text has been updated", 3000);
-        Materialize.toast("Refresh page to view changes", 3000);
-  			$('#aboutUsModal').closeModal();
-      })
-    .error(function(error){
-				Materialize.toast("Error occured while creating text.", 3000);
-			});
-};
-
-$scope.getAboutUsData = function(){
-  textFieldService.getAboutUs()
-    .success(function(response){
+  $scope.getAboutUs = function() {
+    contentService.get('about')
+    .success(function(response) {
       $scope.aboutUs = response;
-      console.log('$scope.aboutUs ', $scope.aboutUs);
+      $scope.newAbout.title = response.title;
+      $scope.newAbout.body = response.body;
     })
-    .error(function(error){
+    .error(function(error) {
       console.log(error);
     });
-};
+  };
 
-//    MISSION STATEMENT
-
-/////////////////////////////////////////////
-//    THIS FEATURE IS BEING CUT FOR NOW    //
-/////////////////////////////////////////////
-$scope.createMission = function(missionStatementTitle, missionStatement) {
-  textFieldService.createMission(missionStatementTitle, missionStatement)
-    .success(function(response){
-        console.log(response);
-        $scope.mission = response;
-        Materialize.toast("New textfield created", 3000);
-  			$('#missionModal').closeModal();
+  $scope.updateAboutUs = function(newAbout) {
+    var amendedBody = newAbout.body.replace("↵", "\n");
+    contentService.update('about', newAbout.title, amendedBody)
+      .success(function(response) {
+        $scope.aboutUs = response;
+        Materialize.toast("Your text has been updated", 3000);
+        Materialize.toast("Refresh page to view changes", 3000);
+  			$('#aboutUsModal').closeModal();
       })
-    .error(function(error){
-				Materialize.toast("Error occured while creating text.", 3000);
-			});
-};
+      .error(function(error) {
+  			Materialize.toast("Error occured while creating text.", 3000);
+  		});
+  };
 
-$scope.updateMission = function(missionStatementTitle, missionStatement) {
-  var missionId = $scope.mission._id;
-  textFieldService.updateMission(missionStatementTitle, missionStatement, missionId)
-    .success(function(response){
-        console.log(response);
-        $scope.textFields = response;
+  /////////////////////////////////////////////
+  //    MISSION STATEMENT                    //
+  //    THIS FEATURE IS BEING CUT FOR NOW    //
+  /////////////////////////////////////////////
+  $scope.getMission = function() {
+    contentService.get('mission')
+    .success(function(response) {
+      $scope.mission = response;
+    })
+    .error(function(error) {
+      console.log(error);
+    });
+  };
+
+  $scope.updateMission = function(title, body) {
+    contentService.update('mission', title, body)
+      .success(function(response) {
+        $scope.mission = response;
         Materialize.toast("Your text has been updated", 3000);
         Materialize.toast("Refresh page to view changes", 3000);
   			$('#missionModal').closeModal();
       })
-    .error(function(error){
-				Materialize.toast("Error occured while creating text.", 3000);
-			});
-};
+      .error(function(error) {
+  			Materialize.toast("Error occured while creating text.", 3000);
+  		});
+  };
+
 /////////////////////////////
 //    PAGE INTERACTIONS    //
 /////////////////////////////
-
-	(function($){
-	  $(function(){
+	(function($) {
+	  $(function() {
 	    $('.button-collapse').sideNav();
 	    $('.parallax').parallax();
 	  }); // end of document ready

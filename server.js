@@ -13,8 +13,7 @@ var session = require('express-session');
 // CONTROLLERS
 var UserCtrl = require('./api/controllers/UserCtrl');
 var ManufacturerCtrl = require('./api/controllers/ManufacturerCtrl');
-var AboutCtrl = require('./api/controllers/AboutCtrl');
-var MissionCtrl = require('./api/controllers/MissionCtrl');
+var ContentCtrl = require('./api/controllers/ContentCtrl');
 
 // SERVICES
 var passport = require('./api/services/passport');
@@ -42,7 +41,7 @@ app.post('/login', passport.authenticate('local', {
 }));
 app.get('/logout', function(req, res, next) {
   req.logout();
-  return res.status(204).send();
+  res.status(204).send();
 });
 
 app.get('/users/me', UserCtrl.me);
@@ -50,8 +49,7 @@ app.get('/users/me', UserCtrl.me);
 app.get('/mfgrs', ManufacturerCtrl.get);
 app.get('/mfgrs/:_id', ManufacturerCtrl.show);
 
-app.get('/aboutus', AboutCtrl.get);
-app.get('/mission', MissionCtrl.get);
+app.get('/content/:section', ContentCtrl.show);
 
 // ROUTES -- AUTHED USER
 var checkAuth = function(req, res, next) {
@@ -65,15 +63,11 @@ app.post('/users', UserCtrl.create);
 app.put('/users/:_id', UserCtrl.update);
 app.delete('/users/:_id', UserCtrl.destroy);
 
+app.put('/content/:section', ContentCtrl.update);
+
 app.post('/mfgrs', ManufacturerCtrl.create);
 app.put('/mfgrs/:_id', ManufacturerCtrl.update);
 app.delete('/mfgrs/:_id', ManufacturerCtrl.destroy);
-
-app.post('/aboutus', AboutCtrl.create);
-app.put('/aboutus/:_id', AboutCtrl.update);
-
-app.post('/mission', MissionCtrl.create);
-app.put('/mission/_id', MissionCtrl.update);
 
 app.get('/s3_signed_url', s3.getSignedUrl);
 

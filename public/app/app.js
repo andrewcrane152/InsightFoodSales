@@ -6,11 +6,11 @@ app.config(function($routeProvider, $httpProvider){
 		templateUrl: 'app/views/main.html',
 		controller: 'mainCtrl',
 		resolve: {
-			aboutUsData: function (textFieldService) {
-				return textFieldService.getAboutUs();
+			aboutUsData: function (contentService) {
+				return contentService.get('about');
 			},
-			missionData: function (textFieldService) {
-				return textFieldService.getMission();
+			missionData: function (contentService) {
+				return contentService.get('mission');
 			}
 		}
 	}).otherwise({
