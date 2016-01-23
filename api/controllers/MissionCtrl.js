@@ -18,7 +18,7 @@ module.exports = {
 	},
 
 	update: function(req, res, next) {
-		Mission.findByIdAndUpdate(req.query._id, req.body, function(err, data) {
+		Mission.findByIdAndUpdate(req.params._id, req.body, function(err, data) {
 			if (err) return next(err);
 			res.send(data);
 		});

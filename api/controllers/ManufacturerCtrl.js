@@ -22,14 +22,14 @@ module.exports = {
 	},
 
 	update: function(req, res, next) {
-		Manufacturer.findByIdAndUpdate(req.query._id, req.body, function(err, data) {
+		Manufacturer.findByIdAndUpdate(req.params._id, req.body, function(err, data) {
 			if (err) return next(err);
 			res.send(data);
 		});
 	},
 
 	destroy: function(req, res, next) {
-		Manufacturer.findByIdAndRemove(req.query._id, function(err, data) {
+		Manufacturer.findByIdAndRemove(req.params._id, function(err, data) {
 			if (err) return next(err);
 			res.send(data);
 		});
