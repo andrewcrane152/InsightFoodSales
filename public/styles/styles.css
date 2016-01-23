@@ -6,9 +6,9 @@
   max-width: 1300px;
   margin: 0 auto;
   background-color: white;
-  -webkit-box-shadow: 3px 3px 5px 6px #bdbdbd;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  -moz-box-shadow:    3px 3px 5px 6px #bdbdbd;  /* Firefox 3.5 - 3.6 */
-  box-shadow:         3px 3px 5px 6px #bdbdbd;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  -webkit-box-shadow: 0px 0px 25px 6px #e0e0e0;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    0px 0px 25px 6px #e0e0e0;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         0px 0px 25px 6px #e0e0e0;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
 nav ul a,
@@ -205,4 +205,8 @@ h1,h2,h3,h4,h5,h6 {
 #selectField {
   z-index: 900;
   background-color: red;
+}
+
+.pSpacing {
+  margin: 10px;
 }
