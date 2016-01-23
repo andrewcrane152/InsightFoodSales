@@ -67,7 +67,7 @@
           <div class="icon-block">
             <h2 class="center" style="color:#333"><i class="fa fa-bar-chart"></i></h2>
             <h5 class="center">Increased Exposure</h5>
-            <p class="light">Grow your footprint overnight!  With strong connections to buyers throughout the Western US, we can help you get that appointment you have been fighting for.</p>
+            <p class="light">Grow your footprint overnight!  With strong connections to buyers throughout the Western US, we can help you get the appointment you have been fighting for.</p>
           </div>
         </div>
 
@@ -298,32 +298,28 @@
     <div class="col s12 m12 l12">
       <h4 class="center-align">Delete A User</h4>
     </div>
-      <!-- <div class="input-field col s12">
-        <select autocomplete="off" style="height:30px;width:100px;">
-          <option value="" disabled selected>Choose your option</option>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-        </select>
-        <label>Materialize Select</label>
-      </div> -->
-      <div class="row input-field" ng-controller="mainCtrl">
-        <!-- <select ng-model="selection" ng-change="changeSelection(selectedUser)">
-          <option value="" disabled selected>---Select a User---</option>
-          <option ng-repeat="data in allUsers.data" value="{{user.name}}" ng-selected="{{user._id == selectedUser}}"></option>
-        </select> -->
-        <select name="userToDelete" ng-model="userDelete" ng-options="user.name for data in allUsers.data"></select>
-        <label>Select Name to Delete</label>
-      </div>
+    <div class="col s12 m12 l12">
+      <h6 class="center-align">Select the user to delete</h6>
+    </div>
+      <ul>
+        <li ng-repeat="data in allUsers.data" class="center">
+          <a ng-click="$parent.triggerTitle=data.name; $parent.triggerEvent=data._id" ng-model="triggerEvent"> {{data.name}} </a>
+        </li>
+      </ul>
+        <!-- <div ng-repeat="data in allUsers.data" id=selectField class="center">
+          <label>
+            <input type="radio" name="data" data-ng-model="role" data-ng-value="data"> {{data.name}}
+          </label>
+        </div> -->
+      <br>
       <div class="row">
         <div class="col m12">
             <p class="right-align">
-              <button class="btn btn-large waves-effect waves-light red" ng-click="deleteUser(selectedUser)">Delete User</button>
+              <button class="btn btn-large waves-effect waves-light red" ng-click="deleteUser(triggerEvent)">Delete {{triggerTitle}}</button>
             </p>
         </div>
       </div>
-
-  </div>
+  </div> <!-- END MODAL -->
 
 <!-- ///////////////////////// -->
 <!-- //  UPDATE USER MODAL  // -->

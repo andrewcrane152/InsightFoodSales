@@ -38,7 +38,7 @@ app.service('userService', function($http, $q){
 		console.log('delete user invoked ', userId);
 		return $http({
 			method: 'DELETE',
-			url: '/users/' + userId
+			url: '/users/:-' + newUserID
 		});
 	};
 

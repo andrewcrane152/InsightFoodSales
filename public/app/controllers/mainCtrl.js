@@ -1,6 +1,7 @@
 angular.module('Insight')
 .controller('mainCtrl', function($scope, $mdToast, $http, emailService, mfgrsService, userService, textFieldService){
-
+  $scope.triggerTitle = '(select name)';
+  $scope.triggerEvent = '';
 //////////////////////
 //    SEND EMAIL    //
 //////////////////////
@@ -73,16 +74,16 @@ $scope.updateUser = function (newName, newEmail, newPassword) {
 			});
 };
 
-$scope.deleteUser = function (selectedUser) {
-	console.log(selectedUser);
-	// if(confirm("Are you sure you want to delete {{}}")){
-	// 	userService.deleteUser(userId).then(function(response){
-	// 		Materialize.toast("User Deleted", 3000);
-	// 		$('#addUserModal').closeModal();
-	// 	}, function(error){
-	// 		Materialize.toast("Error occured while adding user.", 3000);
-	// 	});
-	// }
+$scope.deleteUser = function (userId) {
+	console.log("deleteUser invoked ",userId);
+	if(confirm("ARE YOU SURE YOU WANT TO DELET THIS USER?")){
+		userService.deleteUser(userId).then(function(response){
+			Materialize.toast("User Deleted", 3000);
+			$('#addUserModal').closeModal();
+		}, function(error){
+			Materialize.toast("Error occured while deleting user.", 3000);
+		});
+	}
 };
 
 /////////////////////////////
