@@ -15,29 +15,23 @@ app.service('textFieldService', function($http, $q){
 		});
 	};
 
-	this.updateAboutUs = function(aboutUsTitle, aboutUs, aboutUsId){
+	this.updateAboutUs = function(aboutUsTitle, amendedAboutUs, aboutUsId){
 		console.log('update about us invoked ');
 		return $http({
 			method: 'PUT',
-			url: '/aboutus/' + aboutUsId,
+			url: '/aboutus/:_' + aboutUsId,
 			data: {
 				aboutUsTitle: aboutUsTitle,
-				aboutUs: aboutUs,
+				aboutUs: amendedAboutUs,
 			}
 		});
 	};
 
 	this.getAboutUs = function(){
-		var dfrd = $q.defer();
-		$http({
+		return $http({
 			method: 'GET',
 			url: '/aboutus',
-		}).then(function (response){
-			dfrd.resolve(response.data);
-		}).catch(function (response){
-			dfrd.reject(err);
 		});
-		return dfrd.promise;
 	};
 
 ///////////////////

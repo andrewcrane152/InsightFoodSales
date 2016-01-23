@@ -2,6 +2,7 @@ angular.module('Insight')
 .controller('mainCtrl', function($scope, $mdToast, $http, emailService, mfgrsService, userService, textFieldService){
   $scope.triggerTitle = '(select name)';
   $scope.triggerEvent = '';
+  $scope.aboutUsIdForUpdate = '';
 //////////////////////
 //    SEND EMAIL    //
 //////////////////////
@@ -95,7 +96,7 @@ $scope.createAboutUs = function(aboutUsTitle, aboutUs) {
   textFieldService.createAboutUs(aboutUsTitle, aboutUs)
     .success(function(response){
         console.log(response);
-        $scope.aboutUsResponse = response;
+        $scope.aboutUs = response;
         Materialize.toast("New textfield created", 3000);
   			$('#aboutUsModal').closeModal();
       })
@@ -104,12 +105,16 @@ $scope.createAboutUs = function(aboutUsTitle, aboutUs) {
 			});
 };
 
-$scope.updateAboutUs = function(aboutUsTitle, aboutUs) {
-  var aboutUsId = $scope.aboutUsResponse._id;
-  textFieldService.updateAboutUs(aboutUsTitle, aboutUs, aboutUsId)
+$scope.updatedAboutUs = function(aboutUsTitle, aboutUsContent, aboutUsId) {
+  console.log('updatedAboutUs invoked');
+  console.log(aboutUsId);
+  console.log('about us: ', aboutUsContent);
+  var amendedAboutUs = aboutUsContent.replace("↵", "\n");
+  console.log('amendedAboutUs: ',amendedAboutUs);
+  textFieldService.updateAboutUs(aboutUsTitle, amendedAboutUs, aboutUsId)
     .success(function(response){
         console.log(response);
-        $scope.aboutUsResponse = response;
+        $scope.aboutUs = response;
         Materialize.toast("Your text has been updated", 3000);
         Materialize.toast("Refresh page to view changes", 3000);
   			$('#aboutUsModal').closeModal();
@@ -120,10 +125,21 @@ $scope.updateAboutUs = function(aboutUsTitle, aboutUs) {
 };
 
 $scope.getAboutUsData = function(){
-  textFieldService.getAboutUs();
+  textFieldService.getAboutUs()
+    .success(function(response){
+      $scope.aboutUs = response;
+      console.log('$scope.aboutUs ', $scope.aboutUs);
+    })
+    .error(function(error){
+      console.log(error);
+    });
 };
 
 //    MISSION STATEMENT
+
+/////////////////////////////////////////////
+//    THIS FEATURE IS BEING CUT FOR NOW    //
+/////////////////////////////////////////////
 $scope.createMission = function(missionStatementTitle, missionStatement) {
   textFieldService.createMission(missionStatementTitle, missionStatement)
     .success(function(response){
@@ -198,6 +214,10 @@ $scope.updateMission = function(missionStatementTitle, missionStatement) {
 
 	$scope.openCreateManuModal = function () {
 		$('#uploadModal').openModal();
+	};
+
+	$scope.openEditAboutUsModal = function () {
+		$('#editAboutUsModal').openModal();
 	};
 
   $scope.changeSelection = function(val){

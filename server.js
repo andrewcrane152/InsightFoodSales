@@ -70,7 +70,7 @@ app.put('/mfgrs/:_id', ManufacturerCtrl.update);
 app.delete('/mfgrs/:_id', ManufacturerCtrl.destroy);
 
 app.post('/aboutus', AboutCtrl.create);
-app.put('/aboutus/_id', AboutCtrl.update);
+app.put('/aboutus/:_id', AboutCtrl.update);
 
 app.post('/mission', MissionCtrl.create);
 app.put('/mission/_id', MissionCtrl.update);

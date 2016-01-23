@@ -95,7 +95,7 @@
     </div>
      <div class="center row col s12 larger-font">
        <p>We have a mission to be the most respected Sales Broker in the Food Industry. To do this, we have established a culture that supports our team members so they can provide exceptional service to both our clients and our customers. We strive to grow the business with honesty and integrity.</p>
-       <a href="" data-target="editMissionModal" class="modal-trigger"><i class="fa fa-pencil" ng-if="user"></i></a>
+       <!-- <a href="" data-target="editMissionModal" class="modal-trigger"><i class="fa fa-pencil" ng-if="user"></i></a> -->
     </div>
    </div>
  </div>
@@ -133,16 +133,15 @@
 <!-- ////////////// -->
 <!-- // ABOUT US // -->
 <!-- ////////////// -->
-   <div class="parallax-container valign-wrapper section scrollspy" id="aboutus">
+   <div ng-init="getAboutUsData()" class="parallax-container valign-wrapper section scrollspy" id="aboutus">
     <div class="section no-pad-bot">
-      <div class="container box">
+      <div class="container box" ng-repeat="about in aboutUs">
         <div class="center row col s3">
-            <h3>About Us</h3>
+            <h3>{{about.aboutUsTitle}}</h3>
        </div>
         <div class="center row col s12 larger-font">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-          <a href="" data-target="editAboutUsModal" class="modal-trigger"><i class="fa fa-pencil" ng-if="user"></i></a>
+          <p>{{about.aboutUs}}</p>
+          <a href="" data-target="editAboutUsModal" class="modal-trigger" ng-click="openEditAboutUsModal()"><i class="fa fa-pencil" ng-if="user"></i></a>
        </div>
       </div>
     </div>
@@ -220,6 +219,11 @@
     </div>
   </footer>
 
+  <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
 <!-- /////////////////// -->
 <!-- //  LOGIN MODAL  // -->
 <!-- /////////////////// -->
@@ -231,13 +235,13 @@
                 <form class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="email" type="email" class="validate center" ng-model='loginEmail'>
+                            <input id="email" type="email" class="validate center" ng-model='loginEmail' required>
                             <label for="email">Email</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="pass" type="password" class="validate center" ng-model="loginPassword">
+                            <input id="pass" type="password" class="validate center" ng-model="loginPassword" required>
                             <label for="pass">Password</label>
                         </div>
                     </div>
@@ -266,19 +270,19 @@
                 <form class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="name" type="text" class="validate center" ng-model='newUserName'>
+                            <input id="name" type="text" class="validate center" ng-model='newUserName' required>
                             <label for="name">Name</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="email" type="email" class="validate center" ng-model='newUserEmail'>
+                            <input id="email" type="email" class="validate center" ng-model='newUserEmail' required>
                             <label for="email">Email</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password" type="password" class="validate center" ng-model="newUserPassword">
+                            <input id="password" type="password" class="validate center" ng-model="newUserPassword" required>
                             <label for="password">Password</label>
                         </div>
                     </div>
@@ -306,19 +310,14 @@
           <a ng-click="$parent.triggerTitle=data.name; $parent.triggerEvent=data._id" ng-model="triggerEvent"> {{data.name}} </a>
         </li>
       </ul>
-        <!-- <div ng-repeat="data in allUsers.data" id=selectField class="center">
-          <label>
-            <input type="radio" name="data" data-ng-model="role" data-ng-value="data"> {{data.name}}
-          </label>
-        </div> -->
       <br>
-      <div class="row">
-        <div class="col m12">
-            <p class="right-align">
-              <button class="btn btn-large waves-effect waves-light red" ng-click="deleteUser(triggerEvent)">Delete {{triggerTitle}}</button>
-            </p>
-        </div>
+    <div class="row">
+      <div class="col m12">
+          <p class="right-align">
+            <button class="btn btn-large waves-effect waves-light red" ng-click="deleteUser(triggerEvent)">Delete {{triggerTitle}}</button>
+          </p>
       </div>
+    </div>
   </div> <!-- END MODAL -->
 
 <!-- ///////////////////////// -->
@@ -374,23 +373,23 @@
                 <div class="input-field col s12">
                   <div class="flex-row">
                     <label for="file_input">Manufacturer's Logo</label>
-                    <input type="file" id="file" name="file"/>
+                    <input type="file" id="file" name="file" required/>
                     <button ng-click="initUpload()">Upload</button>
                     <p id="status">Please select a file</p>
-                    <!-- <img style="border:1px solid gray;width:300px;" id="preview" src="/images/default.png" /> -->
+                    <img style="border:1px solid gray;width:300px;" id="preview" src="/images/default.png" />
                   </div>
                 </div>
               </div>
               <form method="POST" action="/addManufacturer" name="addManufacturer" class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="manuName" type="text" class="validate center" ng-model="manuName">
+                            <input id="manuName" type="text" class="validate center" ng-model="manuName" required>
                             <label for="manuName">Manufacturer Name</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="manuLink" type="url" class="validate center" ng-model="manuLink">
+                            <input id="manuLink" type="url" class="validate center" ng-model="manuLink" required>
                             <label for="manuLink">Manufacturer's Website URL</label>
                         </div>
                     </div>
@@ -463,29 +462,30 @@
 <!-- /////////////////////////// -->
 <!-- //  EDIT ABOUT US MODAL  // -->
 <!-- /////////////////////////// -->
+
   <div id="editAboutUsModal" class="modal">
     <div class="row">
         <div class="col s12 m12 l12">
             <h3 class="center-align">Update About Us</h3>
             <div class="row">
-                <form name="updateAboutUs" class="col s12">
+                <form name="updateAboutUs" class="col s12" ng-repeat="about in aboutUs">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="aboutUsName" type="text" class="validate center" ng-model="aboutUsTitle">
-                            <label for="aboutUsName">Text Field Title</label>
+                            <input id="aboutUsName" type="text" class="validate center" ng-model="aboutUsTitle" placeholder="{{about.aboutUsTitle}}" required>
+                            <label for="aboutUsName">About Us Title</label>
                         </div>
                     </div>
                     <div class="row">
-                      <div class="input-field col s12">
-                        <textarea id="aboutUs" class="materialize-textarea" ng-model="aboutUs"></textarea>
-                        <label for="aboutUs">About Insight Food Sales</label>
-                      </div>
+                        <div class="input-field col s12" >
+                            <textarea id="aboutUsContent" class="materialize-textarea" ng-model="aboutUsContent" placeholder="{{about.aboutUs}}" required></textarea>
+                            <label for="aboutUsContent">About Insight Food Sales</label>
+                        </div>
                     </div>
                     <div class="divider"></div>
                     <div class="row">
                         <div class="col m8">
                             <p class="right-align">
-                                <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="createAboutUs(aboutUsTitle, aboutUs)">Save Changes</button>
+                                <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="updatedAboutUs(aboutUsTitle, aboutUsContent, about._id)">Save Changes</button>
                             </p>
                         </div>
                     </div>
@@ -498,7 +498,7 @@
 <!-- /////////////////////////// -->
 <!-- //  EDIT MISSION MODAL  // -->
 <!-- /////////////////////////// -->
-  <div id="editMissionModal" class="modal">
+  <!-- <div id="editMissionModal" class="modal">
     <div class="row">
         <div class="col s12 m12 l12">
             <h3 class="center-align">Update Mission Statement</h3>
@@ -528,7 +528,7 @@
             </div>
         </div>
     </div>
-  </div>
+  </div> -->
 
 
 <!--  Scripts-->
