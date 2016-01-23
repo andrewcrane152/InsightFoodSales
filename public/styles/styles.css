@@ -1,3 +1,13 @@
+#backgroundStyle {
+  background-color: #f5f5f5 !important;
+}
+
+#mainBody {
+  max-width: 1300px;
+  margin: 0 auto;
+  background-color: white;
+}
+
 nav ul a,
 nav .brand-logo {
   color: #444;
@@ -182,6 +192,10 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #statement {
+  z-index: 500;
+}
+
+#aboutus {
   z-index: 500;
 }
 
