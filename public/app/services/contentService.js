@@ -1,4 +1,4 @@
-app.service('contentService', function($http) {
+angular.module('Insight').service('contentService', function($http) {
 	this.get = function(section) {
 		return $http({
 			method: 'GET',

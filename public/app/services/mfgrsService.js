@@ -1,7 +1,5 @@
-angular.module('Insight');
-app.service('mfgrsService', function($http){
-
-	this.addManu = function(title, price, image, description, category){
+angular.module('Insight').service('mfgrsService', function($http) {
+	this.addManu = function(title, price, image, description, category) {
 		return $http({
 			method: 'POST',
 			url: '/',
@@ -20,12 +18,11 @@ app.service('mfgrsService', function($http){
 	// 	});
 	// };
 
-	this.updateManuInfo = function(id, title, description, price, category){
+	this.updateManuInfo = function(id, title, description, price, category) {
 		return $http({
 			method: 'PUT',
-			url: '/info?id=' + id,
+			url: '/info/' + id,
 			data: {
-
 				title: title,
 				description: description,
 				price: price,
@@ -34,10 +31,10 @@ app.service('mfgrsService', function($http){
 		});
 	};
 
-	this.removeManuInfo = function(id){
+	this.removeManuInfo = function(id) {
 		return $http({
 			method: 'DELETE',
-			url: '/info?id=' + id
+			url: '/info/' + id
 		});
 	};
 

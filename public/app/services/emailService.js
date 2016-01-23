@@ -1,8 +1,5 @@
-angular.module('Insight');
-app.service('emailService', function($http){
-
-	this.sendEmail = function(contactName, fromEmail, messageSub, message){
-		console.log('send email invoked in service');
+angular.module('Insight').service('emailService', function($http) {
+	this.sendEmail = function(contactName, fromEmail, messageSub, message) {
 		return $http({
 			method: "POST",
 			url: "https://mandrillapp.com/api/1.0/messages/send.json",
@@ -24,7 +21,7 @@ app.service('emailService', function($http){
 		});
 	};
 
-	this.confirmEmail = function(contactName, fromEmail, messageSub, message){
+	this.confirmEmail = function(contactName, fromEmail, messageSub, message) {
 		return $http({
 			method: "POST",
 			url: "https://mandrillapp.com/api/1.0/messages/send.json",
@@ -38,11 +35,9 @@ app.service('emailService', function($http){
 							'name': contactName,
 							'type': 'to'
 						}],
-					'subject': 'Thank you from Insight Food Sales',
 					'html': contactName + ', <p>Thank you for taking the time to reach out to us.  We have received your message and will be in touch with you.</p><br><br> <strong><p>Insight Food Sales</p><p>(714)685-9323</p></strong> <br><br> <p>Below is a copy of your message</p><p>Subject:' + messageSub + '</p><p>' + message + '</p>'
 				}
 			}
 		});
 	};
-
 });
