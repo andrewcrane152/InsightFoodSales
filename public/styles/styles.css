@@ -202,11 +202,6 @@ h1,h2,h3,h4,h5,h6 {
   z-index: 500;
 }
 
-#selectField {
-  z-index: 900;
-  background-color: red;
-}
-
-.pSpacing {
-  margin: 10px;
+.lean-overlay {
+  display: none !important;
 }

@@ -9,23 +9,12 @@
         </a>
       </div>
 
-      <!-- <a href="#index-banner" data-activates="mobile-demo" class="button-collapse">
-        <i class="mdi-navigation-menu"></i>
-      </a> -->
-
       <ul class="right hide-on-med-and-down">
         <li><a data-scroll class="head-link" href="#statement">Our Mission</a></li>
         <li><a data-scroll class="head-link" href="#clients">Clients</a></li>
         <li><a data-scroll class="head-link" href="#aboutus">About Us</a></li>
         <li><a data-scroll class="head-link" href="#contactus">Contact Us</a></li>
       </ul>
-
-      <!-- <ul class="right side-nav" id="mobile-demo">
-        <li><a data-scroll class="head-link" href="#statement" ng-click="closeMenuBar">Our Mission</a></li>
-        <li><a data-scroll class="head-link" href="#clients" ng-click="closeMenuBar">Clients</a></li>
-        <li><a data-scroll class="head-link" href="#aboutus" ng-click="closeMenuBar">About Us</a></li>
-        <li><a data-scroll class="head-link" href="#contactus" ng-click="closeMenuBar">Contact Us</a></li>
-      </ul> -->
 
     </div>
   </nav>
@@ -114,7 +103,8 @@
             <p class="flow-text">{{ mission.body }}</p>
             <a href=""
               data-target="editMissionModal"
-              class="modal-trigger">
+              class="modal-trigger"
+              ng-click="openThisModal('editMissionModal')">
               <i class="fa fa-pencil" ng-if="user"></i>
             </a>
           </div>
@@ -142,7 +132,7 @@
             <a href=""
               data-target="editModal"
               class="modal-trigger"
-              ng-click="openEditManuModal()"
+              ng-click="openThisModal('editManuModal')"
               ng-if="user">
               <i class="fa fa-pencil"></i>
             </a>
@@ -153,7 +143,7 @@
           <a href=""
             data-target="uploadModal"
             class="modal-trigger waves-effect waves-light btn indigo darken-4"
-            ng-click="openCreateManuModal()" ng-if="user">
+            ng-click="openThisModal(createManuModal)" ng-if="user">
             Add Manufacturer
           </a>
         </div>
@@ -174,7 +164,7 @@
             <a href=""
               data-target="editAboutUsModal"
               class="modal-trigger"
-              ng-click="openEditAboutUsModal()">
+              ng-click="openThisModal(editAboutUsModal)">
               <i class="fa fa-pencil" ng-if="user"></i>
             </a>
           </div>
@@ -252,13 +242,18 @@
         <div class="container">
           <span class="footer-spacing">Copyright © InsightFoodSales.com  2016</span>
           <span class="footer-spacing">
-            <a href="" data-target="loginModal" class="modal-trigger">Admin Login</a>
+            <a href=""
+               data-target="loginModal"
+               class="modal-trigger"
+               ng-click="openThisModal('loginModal')">
+               Admin Login
+            </a>
           </span>
           <span class="footer-spacing">
             <a href=""
               data-target="addUserModal"
               class="modal-trigger"
-              ng-click="openAddUserModal()"
+              ng-click="openThisModal('addUserModal')"
               ng-if="user">
               Manage Users
             </a>
@@ -267,7 +262,7 @@
              <a href=""
              data-target="updateUserModal"
              class="modal-trigger"
-             ng-click="openUpdateUserModal()"
+             ng-click="openThisModal('updateUserModal')"
              ng-if="user">
              Update Current User
            </a>
@@ -566,7 +561,7 @@
 </div>
 
 <!-- EDIT MISSION MODAL -->
-<!-- <div id="editMissionModal" class="modal">
+<div id="editMissionModal" class="modal">
   <div class="row">
     <div class="col s12 m12 l12">
       <h3 class="center-align">Update Mission Statement</h3>
@@ -599,16 +594,16 @@
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
 
 <!--  Scripts-->
   <script>
     $(document).ready(function(){
       $('.materialboxed').materialbox();
-        $('.button-collapse').sideNav({
-          closeOnClick: true
-        });
+      $('.modal-trigger').leanModal({
+        dismissible: true
+      });
     });
   </script>
 
@@ -621,11 +616,5 @@
       $('html, body').animate({
           scrollTop: $(goto).offset().top
         }, 800);
-    });
-  </script>
-
-  <script>
-   $(document).ready(function() {
-     $('.modal-trigger').leanModal();
     });
   </script>

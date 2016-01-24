@@ -30,8 +30,8 @@ angular.module('Insight')
 // //    USER CONTROL    //
 // ////////////////////////
 $scope.login = function (loginEmail, loginPassword) {
+  $scope.closeThisModal('loginModal');
 	userService.adminLogin(loginEmail, loginPassword).then(function(response){
-		$('#loginModal').closeModal();
 		console.log("user ", response);
 		$scope.user = response.data;
 	}, function(error){
@@ -56,7 +56,12 @@ $scope.logout = function () {
 $scope.createNewUser = function (newUserName, newUserEmail, newUserPassword) {
 	userService.createNewUser(newUserName, newUserEmail, newUserPassword).then(function(response){
 			Materialize.toast("New User Added", 3000);
-			$('#addUserModal').closeModal();
+      userService.getUsers().then(function(response){
+        console.log("allUsers ", response);
+        $scope.allUsers = response;
+      }, function(error){
+        console.log(error);
+      });
 		}, function(error){
 			Materialize.toast("Error occured while adding user.", 3000);
 		});
@@ -68,7 +73,7 @@ $scope.updateUser = function (newName, newEmail, newPassword) {
 		.success(function(response){
 				$scope.user = response;
 				Materialize.toast("User Updated", 3000);
-				$('#updateUserModal').closeModal();
+				$scope.closeThisModal('updateUserModal');
 			})
 		.error(function(error){
 				Materialize.toast("Error occured while updating user.", 3000);
@@ -80,7 +85,14 @@ $scope.deleteUser = function (userId) {
 	if(confirm("ARE YOU SURE YOU WANT TO DELET THIS USER?")){
 		userService.deleteUser(userId).then(function(response){
 			Materialize.toast("User Deleted", 3000);
-			$('#addUserModal').closeModal();
+			// Materialize.toast("Refresh page to view change", 3000);
+      userService.getUsers().then(function(response){
+        console.log("allUsers ", response);
+        $scope.allUsers = response;
+      }, function(error){
+        console.log(error);
+      });
+			$scope.closeThisModal('updateUserModal');
 		}, function(error){
 			Materialize.toast("Error occured while deleting user.", 3000);
 		});
@@ -112,7 +124,7 @@ $scope.deleteUser = function (userId) {
         $scope.aboutUs = response;
         Materialize.toast("Your text has been updated", 3000);
         Materialize.toast("Refresh page to view changes", 3000);
-  			$('#aboutUsModal').closeModal();
+  			$scope.closeThisModal('aboutUsModal');
       })
       .error(function(error) {
   			Materialize.toast("Error occured while creating text.", 3000);
@@ -139,7 +151,7 @@ $scope.deleteUser = function (userId) {
         $scope.mission = response;
         Materialize.toast("Your text has been updated", 3000);
         Materialize.toast("Refresh page to view changes", 3000);
-  			$('#missionModal').closeModal();
+  			$scope.closeThisModal('missionModal');
       })
       .error(function(error) {
   			Materialize.toast("Error occured while creating text.", 3000);
@@ -151,7 +163,6 @@ $scope.deleteUser = function (userId) {
 ////////////////////////////
 	(function($) {
 	  $(function() {
-	    $('.button-collapse').sideNav();
 	    $('.parallax').parallax();
 	  }); // end of document ready
 	})(jQuery); // end of jQuery name space
@@ -168,38 +179,19 @@ $scope.deleteUser = function (userId) {
 		location.reload();
 	};
 
-  $scope.closeMenuBar = function () {
-    console.log('closeMenuBar invoked');
-    $('#mobile-demo').sideNav('hide');
-  };
-
-	$scope.openloginModal = function () {
-		$('#loginModal').openModal();
+  $scope.openThisModal = function (modalName) {
+    var openModalName = "#" + modalName;
+    console.log('openThisModal, ', openModalName);
+    $(openModalName).openModal();
 	};
 
-	$scope.openAddUserModal = function () {
-		console.log('openAddUserModal invoked');
-		$('#addUserModal').openModal();
-	};
-
-	$scope.openUpdateUserModal = function () {
-		$('#updateUserModal').openModal();
-	};
-
-	$scope.openEditManuModal = function () {
-		$('#editModal').openModal();
-	};
-
-	$scope.openCreateManuModal = function () {
-		$('#uploadModal').openModal();
-	};
-
-	$scope.openEditAboutUsModal = function () {
-		$('#editAboutUsModal').openModal();
-	};
-
-  $scope.changeSelection = function(val){
-  	console.log(val);
+  $scope.closeThisModal = function(modalName){
+    var closeModalName = "#" + modalName;
+    console.log('closeThisModal, ', closeModalName);
+    $(closeModalName).closeModal();
+    // if (modalName === 'loginModal') {
+    //   document.getElementById('materialize-lean-overlay-1').style.display='none';
+    // }
   };
 
 	$scope.initUpload = function() {
