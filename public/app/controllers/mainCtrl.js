@@ -95,7 +95,7 @@ $scope.deleteUser = function (userId) {
   $scope.getAboutUs = function() {
     contentService.get('about')
     .success(function(response) {
-      $scope.newAbout = response;
+      $scope.aboutUs = response;
       $scope.newAbout.title = response.title;
       $scope.newAbout.body = response.body;
     })
