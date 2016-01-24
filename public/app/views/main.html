@@ -131,7 +131,7 @@
             </a>
             <h5>Chavrie</h5>
             <a href=""
-              data-target="editModal"
+              data-target="editManuModal"
               class="modal-trigger"
               ng-click="openThisModal('editManuModal')"
               ng-if="user">
@@ -142,9 +142,9 @@
 
         <div class="center">
           <a href=""
-            data-target="uploadModal"
+            data-target="uploadManuModal"
             class="modal-trigger waves-effect waves-light btn indigo darken-4"
-            ng-click="openThisModal('createManuModal')" ng-if="user">
+            ng-click="openThisModal('uploadManuModal')" ng-if="user">
             Add Manufacturer
           </a>
         </div>
@@ -256,8 +256,7 @@
               <a href=""
                 data-target="addUserModal"
                 class="modal-trigger"
-                ng-click="openThisModal('addUserModal')"
-                >
+                ng-click="openThisModal('addUserModal')">
                 Manage Users
               </a>
             </span>
@@ -430,9 +429,9 @@
 </div>
 
 <!-- CREATE MANUFACTURER -->
-<div id="uploadModal" class="modal">
+<div id="uploadManuModal" class="modal">
   <div class="row">
-    <a class="hidemodal" href="" ng-click="closeThisModal('uploadModal')"><i class="fa fa-times-circle-o fa-2x"></i></a>
+    <a class="hidemodal" href="" ng-click="closeThisModal('uploadManuModal')"><i class="fa fa-times-circle-o fa-2x"></i></a>
     <div class="col s12 m12 l12">
       <h3 class="center-align">Create New Manufacturer</h3>
       <div class="row">
@@ -479,9 +478,9 @@
 </div>
 
 <!-- EDIT MANUFACTURER MODAL -->
-<div id="editModal" class="modal">
+<div id="editManuModal" class="modal">
   <div class="row">
-    <a class="hidemodal" href="" ng-click="closeThisModal('editModal')"><i class="fa fa-times-circle-o fa-2x"></i></a>
+    <a class="hidemodal" href="" ng-click="closeThisModal('editManuModal')"><i class="fa fa-times-circle-o fa-2x"></i></a>
     <div class="col s12 m12 l12">
       <h3 class="center-align">Update Info for {{name}}</h3>
       <div class="row">
