@@ -188,10 +188,9 @@ $scope.deleteUser = function (userId) {
   $scope.closeThisModal = function(modalName){
     var closeModalName = "#" + modalName;
     console.log('closeThisModal, ', closeModalName);
+    $('body').removeClass('lean-overlay');
+    $('.lean-overlay').remove();
     $(closeModalName).closeModal();
-    // if (modalName === 'loginModal') {
-    //   document.getElementById('materialize-lean-overlay-1').style.display='none';
-    // }
   };
 
 	$scope.initUpload = function() {
