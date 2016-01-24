@@ -101,12 +101,13 @@
           </div>
           <div class="center row col s12">
             <p class="flow-text">{{ mission.body }}</p>
-            <a href=""
+            <!-- <a href=""
               data-target="editMissionModal"
               class="modal-trigger"
-              ng-click="openThisModal('editMissionModal')">
+              ng-click="openThisModal('editMissionModal')"
+              >
               <i class="fa fa-pencil" ng-if="user"></i>
-            </a>
+            </a> -->
           </div>
         </div>
       </div>
@@ -143,7 +144,7 @@
           <a href=""
             data-target="uploadModal"
             class="modal-trigger waves-effect waves-light btn indigo darken-4"
-            ng-click="openThisModal(createManuModal)" ng-if="user">
+            ng-click="openThisModal('createManuModal')" ng-if="user">
             Add Manufacturer
           </a>
         </div>
@@ -164,7 +165,7 @@
             <a href=""
               data-target="editAboutUsModal"
               class="modal-trigger"
-              ng-click="openThisModal(editAboutUsModal)">
+              ng-click="openThisModal('editAboutUsModal')">
               <i class="fa fa-pencil" ng-if="user"></i>
             </a>
           </div>
@@ -239,34 +240,37 @@
     <!-- FOOTER -->
     <footer class="page-footer indigo darken-4">
       <div class="footer-copyright">
-        <div class="container">
+        <div class="container" ng-if="!user">
           <span class="footer-spacing">Copyright © InsightFoodSales.com  2016</span>
           <span class="footer-spacing">
             <a href=""
-               data-target="loginModal"
-               class="modal-trigger"
                ng-click="openThisModal('loginModal')">
                Admin Login
             </a>
           </span>
-          <span class="footer-spacing">
-            <a href=""
-              data-target="addUserModal"
-              class="modal-trigger"
-              ng-click="openThisModal('addUserModal')"
-              ng-if="user">
-              Manage Users
-            </a>
-          </span>
-          <span class="footer-spacing">
-             <a href=""
-             data-target="updateUserModal"
-             class="modal-trigger"
-             ng-click="openThisModal('updateUserModal')"
-             ng-if="user">
-             Update Current User
-           </a>
-          </span>
+        </div>
+        <div class="container" ng-if="user">
+          <div ng-if="user">
+            <span class="footer-spacing">Copyright © InsightFoodSales.com  2016</span>
+            <span class="footer-spacing">
+              <a href=""
+                data-target="addUserModal"
+                class="modal-trigger"
+                ng-click="openThisModal('addUserModal')"
+                >
+                Manage Users
+              </a>
+            </span>
+            <span class="footer-spacing">
+               <a href=""
+               data-target="updateUserModal"
+               class="modal-trigger"
+               ng-click="openThisModal('updateUserModal')"
+               ng-if="user">
+               Update Current User
+             </a>
+            </span>
+          </div>
         </div>
       </div>
     </footer>
@@ -282,6 +286,7 @@
       <div class="col s12 m12 l12">
           <h2 class="center-align">Login</h2>
           <div class="row">
+            <a class="hidemodal" href="" ng-click="closeThisModal('loginModal')"><i class="fa fa-times-circle-o fa-2x"></i></a>
               <form class="col s12">
                   <div class="row">
                       <div class="input-field col s12">
@@ -312,6 +317,7 @@
 <!-- MANAGE USERS MODAL -->
 <div id="addUserModal" class="modal">
   <div class="row">
+    <a class="hidemodal" href="" ng-click="closeThisModal('addUserModal')"><i class="fa fa-times-circle-o fa-2x"></i></a>
     <div class="col s12 m12 l12">
       <h4 class="center-align">Create New User</h4>
       <div class="row">
@@ -382,6 +388,7 @@
 <!-- UPDATE USER MODAL -->
 <div id="updateUserModal" class="modal">
   <div class="row">
+    <a class="hidemodal" href="" ng-click="closeThisModal('updateUserModal')"><i class="fa fa-times-circle-o fa-2x"></i></a>
     <div class="col s12 m12 l12">
       <h2 class="center-align">Update Current User</h2>
       <div class="row">
@@ -425,6 +432,7 @@
 <!-- CREATE MANUFACTURER -->
 <div id="uploadModal" class="modal">
   <div class="row">
+    <a class="hidemodal" href="" ng-click="closeThisModal('uploadModal')"><i class="fa fa-times-circle-o fa-2x"></i></a>
     <div class="col s12 m12 l12">
       <h3 class="center-align">Create New Manufacturer</h3>
       <div class="row">
@@ -473,6 +481,7 @@
 <!-- EDIT MANUFACTURER MODAL -->
 <div id="editModal" class="modal">
   <div class="row">
+    <a class="hidemodal" href="" ng-click="closeThisModal('editModal')"><i class="fa fa-times-circle-o fa-2x"></i></a>
     <div class="col s12 m12 l12">
       <h3 class="center-align">Update Info for {{name}}</h3>
       <div class="row">
@@ -527,6 +536,7 @@
 <!-- EDIT ABOUT US MODAL -->
 <div id="editAboutUsModal" class="modal">
   <div class="row">
+    <a class="hidemodal" href="" ng-click="closeThisModal('editAboutUsModal')"><i class="fa fa-times-circle-o fa-2x"></i></a>
     <div class="col s12 m12 l12">
       <h3 class="center-align">Update About Us</h3>
       <div class="row">
@@ -563,6 +573,7 @@
 <!-- EDIT MISSION MODAL -->
 <div id="editMissionModal" class="modal">
   <div class="row">
+    <a class="hidemodal" href="" ng-click="closeThisModal('editMissionModal')"><i class="fa fa-times-circle-o fa-2x"></i></a>
     <div class="col s12 m12 l12">
       <h3 class="center-align">Update Mission Statement</h3>
       <div class="row">
@@ -586,7 +597,7 @@
           <div class="row">
             <div class="col m8">
               <p class="right-align">
-                <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="createMission(missionStatementTitle, missionStatement)">Save Changes</button>
+                <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="updateMission(missionStatementTitle, missionStatement)">Save Changes</button>
               </p>
             </div>
           </div>
@@ -601,18 +612,14 @@
   <script>
     $(document).ready(function(){
       $('.materialboxed').materialbox();
-      $('.modal-trigger').leanModal({
-        dismissible: true
-      });
+      $('.modal-trigger').leanModal();
     });
   </script>
 
   <script>
       $('.head-link').click(function(e) {
         e.preventDefault();
-
         var goto = $(this).attr('href');
-
       $('html, body').animate({
           scrollTop: $(goto).offset().top
         }, 800);

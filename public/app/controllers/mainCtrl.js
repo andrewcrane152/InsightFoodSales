@@ -30,13 +30,13 @@ angular.module('Insight')
 // //    USER CONTROL    //
 // ////////////////////////
 $scope.login = function (loginEmail, loginPassword) {
-  $scope.closeThisModal('loginModal');
 	userService.adminLogin(loginEmail, loginPassword).then(function(response){
 		console.log("user ", response);
 		$scope.user = response.data;
 	}, function(error){
 		Materialize.toast("Log In Failed", 3000);
 	});
+  $scope.closeThisModal('loginModal');
 	userService.getUsers().then(function(response){
 		console.log("allUsers ", response);
 		$scope.allUsers = response;
@@ -188,8 +188,6 @@ $scope.deleteUser = function (userId) {
   $scope.closeThisModal = function(modalName){
     var closeModalName = "#" + modalName;
     console.log('closeThisModal, ', closeModalName);
-    $('body').removeClass('lean-overlay');
-    $('.lean-overlay').remove();
     $(closeModalName).closeModal();
   };
 
