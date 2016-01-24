@@ -87,15 +87,15 @@ $scope.deleteUser = function (userId) {
 	}
 };
 
-  /////////////////////////////
-  //    CONTENT CONTROL      //
-  /////////////////////////////
+  ///////////////////////////
+  //   CONTENT CONTROL     //
+  ///////////////////////////
   $scope.newAbout = {};
 
   $scope.getAboutUs = function() {
     contentService.get('about')
     .success(function(response) {
-      $scope.aboutUs = response;
+      $scope.newAbout = response;
       $scope.newAbout.title = response.title;
       $scope.newAbout.body = response.body;
     })
@@ -146,9 +146,9 @@ $scope.deleteUser = function (userId) {
   		});
   };
 
-/////////////////////////////
-//    PAGE INTERACTIONS    //
-/////////////////////////////
+////////////////////////////
+//   PAGE INTERACTIONS    //
+////////////////////////////
 	(function($) {
 	  $(function() {
 	    $('.button-collapse').sideNav();
