@@ -106,6 +106,7 @@ $scope.deleteUser = function (userId) {
 
   $scope.updateAboutUs = function(newAbout) {
     var amendedBody = newAbout.body.replace("↵", "\n");
+    console.log(amendedBody);
     contentService.update('about', newAbout.title, amendedBody)
       .success(function(response) {
         $scope.aboutUs = response;
