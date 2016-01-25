@@ -1,4 +1,11 @@
 angular.module('Insight').service('mfgrsService', function($http) {
+	this.getS3SignedURL = function(file_name) {
+		return $http({
+			method: 'GET',
+			url: '/s3_signed_url?file_name=' + file_name
+		});
+	};
+
 	this.addManu = function(title, price, image, description, category) {
 		return $http({
 			method: 'POST',

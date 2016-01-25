@@ -7,6 +7,7 @@ var PORT = process.env.PORT || CONFIG.PORT || 5000;
 // MODULES
 var express = require('express');
 var bodyParser = require('body-parser');
+var multer  = require('multer');
 var mongoose = require('mongoose');
 var session = require('express-session');
 
@@ -33,6 +34,10 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+// MULTER
+var upload = multer({ dest: 'uploads/' });
 
 
 // ROUTES -- COMMON
@@ -65,7 +70,7 @@ app.delete('/users/:_id', UserCtrl.destroy);
 
 app.put('/content/:section', ContentCtrl.update);
 
-app.post('/mfgrs', ManufacturerCtrl.create);
+app.post('/mfgrs', upload.single('logo'), ManufacturerCtrl.create);
 app.put('/mfgrs/:_id', ManufacturerCtrl.update);
 app.delete('/mfgrs/:_id', ManufacturerCtrl.destroy);
 

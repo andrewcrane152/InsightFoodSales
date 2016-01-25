@@ -221,7 +221,7 @@
               <li><i class="fa fa-envelope"></i>admin@insightfoodsales.com</li>
             </ul>
 
-            <iframe class="col s12 m12 l12" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ-Z6VExHX3IARof_R1R1ebcM&key=AIzaSyCbgROgMReJ-wvC3Ibi1TUB_Ttg6LmwGSA" allowfullscreen></iframe>
+            <!-- <iframe class="col s12 m12 l12" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ-Z6VExHX3IARof_R1R1ebcM&key=AIzaSyCbgROgMReJ-wvC3Ibi1TUB_Ttg6LmwGSA" allowfullscreen></iframe> -->
 
             <ul class="share-buttons">
               <li>
@@ -439,11 +439,19 @@
         <div class="row">
           <div class="input-field col s12">
             <div class="flex-row">
-              <label for="file_input">Manufacturer's Logo</label>
-              <input type="file" id="file" name="file" required/>
-              <button ng-click="initUpload()">Upload</button>
-              <p id="status">Please select a file</p>
-              <img style="border:1px solid gray;width:300px;" id="preview" src="/images/default.png" />
+              <form
+                name="manuImgForm"
+                enctype="multipart/form-data"
+                action="/mfgrs"
+                method="POST">
+                <label for="file">Manufacturer's Logo</label>
+                <input type="file" id="file" name="logo" required>
+                <input type="submit" value="Upload">
+                <p id="status">Please select a file</p>
+                <img id="preview"
+                  style="border:1px solid gray;width:300px;"
+                  src="/images/default.png"/>
+              </form>
             </div>
           </div>
         </div>
