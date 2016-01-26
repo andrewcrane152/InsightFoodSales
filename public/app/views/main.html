@@ -70,7 +70,7 @@
               </h2>
               <h5 class="center">Increased Exposure</h5>
               <p class="light">
-                Grow your footprint overnight!  With strong connections to buyers throughout the Western US, we can help you get the appointment you have been fighting for.
+                Grow your footprint overnight!  Our strong connections to key buyers throughout the Western States can help you get the appointment you have been fighting for.
               </p>
             </div>
           </div>
@@ -82,7 +82,7 @@
               </h2>
               <h5 class="center">In-Store Support</h5>
               <p class="light">
-                With employees strategically placed throughout the West, we are your solution to continued in store support to help close the sale and keep the buyer happy.
+                With employees strategically placed throughout the West, we are your solution for continued in-store support and to help close the sale while keeping the buyer happy.
               </p>
             </div>
           </div>
@@ -99,6 +99,7 @@
           <div class="center row col s3">
             <h3>{{ mission.title }}</h3>
           </div>
+          <hr>
           <div class="center row col s12">
             <p class="flow-text">{{ mission.body }}</p>
             <!-- <a href=""
@@ -112,7 +113,7 @@
         </div>
       </div>
       <div class="parallax">
-        <img src="styles/img/deli-cheese-1b.jpg" alt="img">
+        <img src="styles/img/bakery.jpg" alt="img">
       </div>
     </div>
 
@@ -121,6 +122,8 @@
       <div class="section">
         <br><br>
         <h4 class="center">Our Clients</h4>
+        <p class="center">Click on their logo to view their sites.</p>
+        <!-- <hr> -->
         <br>
         <div class="row">
 
@@ -160,6 +163,7 @@
           <div class="center row col s3">
             <h3>{{ aboutUs.title }}</h3>
           </div>
+          <hr>
           <div class="center row col s12 larger-font">
             <p>{{ aboutUs.body }}</p>
             <a href=""
@@ -221,7 +225,7 @@
               <li><i class="fa fa-envelope"></i>admin@insightfoodsales.com</li>
             </ul>
 
-            <!-- <iframe class="col s12 m12 l12" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ-Z6VExHX3IARof_R1R1ebcM&key=AIzaSyCbgROgMReJ-wvC3Ibi1TUB_Ttg6LmwGSA" allowfullscreen></iframe> -->
+            <iframe class="col s12 m12 l12" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ-Z6VExHX3IARof_R1R1ebcM&key=AIzaSyCbgROgMReJ-wvC3Ibi1TUB_Ttg6LmwGSA" allowfullscreen></iframe>
 
             <ul class="share-buttons">
               <li>
@@ -439,12 +443,13 @@
           <div class="row">
             <div class="input-field col s12">
               <div class="flex-row">
-                <label for="file">Manufacturer's Logo</label>
                 <input type="file" id="file_input">
-                <p id="status">Please select a file</p>
+                <p id="status" class="center">Please select an image of the manufacurer's logo to upload</p>
+                <p class="center">Images are not to exceed 300 x 300 pixels in size.</p>
                 <img id="preview"
                   style="border:1px solid gray;width:300px;"
-                  src="/images/default.png"/>
+                  src="styles/img/default.png"
+                  class="center"/>
               </div>
             </div>
           </div>

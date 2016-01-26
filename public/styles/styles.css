@@ -30,6 +30,11 @@ a .black-link{
   color: black !important;
 }
 
+hr {
+    max-width: 400px;
+    border-color: #999999 !important;
+}
+
 .button-collapse {
   color: #ee6e73;
 }
@@ -214,4 +219,10 @@ h1,h2,h3,h4,h5,h6 {
 
 .lean-overlay {
   display: none !important;
+}
+
+.modal {
+  -webkit-box-shadow: 0 0px 150px 0 rgba(6, 35, 80, 1), 0 0px 100px 0 rgba(0,0,0, 1) !important;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    0 0px 150px 0 rgba(6, 35, 80, 1), 0 0px 100px 0 rgba(0,0,0, 1) !important;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         0 0px 150px 0 rgba(6, 35, 80, 1), 0 0px 100px 0 rgba(0,0,0, 1) !important;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
