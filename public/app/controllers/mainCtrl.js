@@ -123,8 +123,7 @@ $scope.deleteUser = function (userId) {
       .success(function(response) {
         $scope.aboutUs = response;
         Materialize.toast("Your text has been updated", 3000);
-        Materialize.toast("Refresh page to view changes", 3000);
-  			$scope.closeThisModal('aboutUsModal');
+  			$scope.closeThisModal('editAboutUsModal');
       })
       .error(function(error) {
   			Materialize.toast("Error occured while creating text.", 3000);
