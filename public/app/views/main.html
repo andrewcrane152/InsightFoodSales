@@ -92,8 +92,7 @@
 
     <!-- MISSION STATEMENT -->
     <div id="statement"
-      class="parallax-container valign-wrapper section scrollspy"
-      ng-init="getMission()">
+      class="parallax-container valign-wrapper section scrollspy">
       <div class="section no-pad-bot">
         <div class="container box">
           <div class="center row no-bottom-margin col s3">
@@ -128,11 +127,12 @@
         <div class="row">
 
           <!-- TODO: MAKE THIS AN ANGULAR REPEAT (ALPHABETICAL ORDER) -->
+          <div ng-repeat="mfgr in mfgrs | orderBy:'title'">
           <div class="center col s4 flex-parent">
-            <a href="http://www.chavrie.com/" target="blank">
-              <img class="responsive-img justify-content-center" src="styles/img/chavrie.jpg">
+            <a ng-href="{{mfgr.website}}" target="blank">
+              <img class="responsive-img justify-content-center" ng-src="{{mfgr.imageURL}}">
             </a>
-            <h5>Chavrie</h5>
+            <h5>{{ mfgr.title }}</h5>
             <a href=""
               data-target="editManuModal"
               class="modal-trigger"
@@ -140,6 +140,7 @@
               ng-if="user">
               <i class="fa fa-pencil"></i>
             </a>
+          </div>
           </div>
         </div>
 
@@ -156,8 +157,7 @@
 
     <!-- // ABOUT US // -->
     <div id="aboutus"
-      class="parallax-container valign-wrapper section scrollspy"
-      ng-init="getAboutUs()">
+      class="parallax-container valign-wrapper section scrollspy">
       <div class="section no-pad-bot">
         <div class="container box">
           <div class="center row col no-bottom-margin s3">
@@ -455,14 +455,14 @@
 
           <div class="row">
             <div class="input-field col s12">
-              <input id="manuName" type="text" class="validate center" ng-model="manuName" required>
+              <input id="manuName" type="text" class="validate center" ng-model="newMfgr.title" required>
               <label for="manuName">Manufacturer Name</label>
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12">
-              <input id="manuLink" type="url" class="validate center" ng-model="manuLink" required>
+              <input id="manuLink" type="url" class="validate center" ng-model="newMfgr.website" required>
               <label for="manuLink">Manufacturer's Website URL</label>
             </div>
           </div>
@@ -472,7 +472,13 @@
           <div class="row">
             <div class="col m12">
               <p class="center-align">
-                <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="addManu(imageSrc, file, manuName, manuLink)">Submit</button>
+                <button
+                  class="btn btn-large waves-effect waves-light"
+                  type="submit"
+                  name="action"
+                  ng-click="createMfgr()">
+                  Submit
+                </button>
               </p>
             </div>
           </div>
@@ -522,7 +528,7 @@
           <div class="row">
             <div class="col m4">
               <p class="left-align">
-                <button class="btn btn-large waves-effect waves-light red" type="submit" name="action" ng-click="removeManu(imageSrc, file, manuName, manuLink)">Delete {{name}}</button>
+                <button class="btn btn-large waves-effect waves-light red" type="submit" name="action" ng-click="removeMfgr()">Delete {{name}}</button>
               </p>
             </div>
             <div class="col m8">

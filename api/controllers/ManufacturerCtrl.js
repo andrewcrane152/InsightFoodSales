@@ -3,7 +3,9 @@ var Manufacturer = require('../models/Manufacturer');
 module.exports = {
 
 	get: function(req, res, next) {
-		Manufacturer.find(req.query)
+		Manufacturer
+		.find(req.query)
+		.sort({ title: 1 })
 		.exec(function(err, data) {
 			if (err) return next(err);
 			res.send(data);

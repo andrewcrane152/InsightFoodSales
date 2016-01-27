@@ -1,7 +1,11 @@
 angular.module('Insight')
-.controller('mainCtrl', function($scope, $mdToast, $http, emailService, mfgrsService, userService, contentService){
+.controller('mainCtrl', function($scope, $mdToast, $http, emailService,
+  mfgrsService, userService, contentService, aboutUs, mission, mfgrs) {
   $scope.triggerTitle = '(select name)';
   $scope.triggerEvent = '';
+  $scope.mfgrs = mfgrs.data;
+  $scope.aboutUs = aboutUs.data;
+  $scope.mission = mission.data;
 
 //////////////////////
 //    SEND EMAIL    //
@@ -190,51 +194,65 @@ $scope.deleteUser = function (userId) {
     $(closeModalName).closeModal();
   };
 
-  // $scope.getS3SignedURL = (function() {
-  //   // file_name = $scope.manuImgForm.file.name;
-  //   mfgrsService.getS3SignedURL('random')
-  //   .success(function(response) {
-  //     $scope.s3SignedURL = response;
-  //   })
-  //   .error(function(error) {
-  //     console.log(error);
-  //   });
-  // })();
 
-	// $scope.initUpload = function() {
-	// 	console.log($scope.file);
-	// 	var file = document.getElementById('file').files[0];
-	// 	// if(!file) return;
-	// 	var reader = new FileReader();
-	// 	reader.onloadend = function(e){
-	// 		var data = e.target.result;
-	// 		$http({
-	// 			method: 'GET',
-	// 			url: '/s3_signed_url?file_name=' + file.name
-	// 		}).then(function successCallback(response) {
-	// 			console.log(response);
-	// 			url = response.url;
-	// 			data = new FormData();
-	// 			data.append('file', file.blob, file.name);
-	// 			$http({
-	// 				method: 'PUT',
-	// 				url: response.signed_request,
-	// 				data: data,
-	// 				withCredentials: true
-	// 			}).then(function successCallback(response) {
-	// 				console.log(response);
-	// 			}, function errorCallback(response) {
-	//     		console.log(response);
-	// 		  });
-	// 		}, function errorCallback(response) {
-  //   		console.log(response);
-	// 	  });
-	// 	};
-	// 	reader.readAsBinaryString(file);
-	// };
+  // MANUFACTURERS
 
+  $scope.getMfgrs = function() {
+    mfgrsService.getAll()
+    .success(function(response) {
+      $scope.mfgrs = response.data;
+    })
+    .error(function(error) {
+      console.log(error);
+    });
+  };
 
-  // Image S3 Upload
+  $scope.newMfgr = {};
+  $scope.createMfgr = function() {
+    mfgrsService.create($scope.newMfgr)
+    .success(function(response) {
+      $scope.mfgrs.push(response);
+      Materialize.toast("The manfacturer has been included", 3000);
+      $scope.closeThisModal('uploadManuModal');
+    })
+    .error(function(error) {
+      Materialize.toast("Error occured while creating manfacturer.", 3000);
+    });
+  };
+
+  $scope.adjustedMfgr = null;
+  $scope.updateMfgr = function() {
+    if (!adjustedMfgr) return null;
+    mfgrsService.update($scope.adjustedMfgr)
+    .success(function(response) {
+      $scope.adjustedMfgr = null;
+      $scope.mfgrs = $scope.getMfgrs();
+      Materialize.toast("The manfacturer has been updated", 3000);
+      $scope.closeThisModal('editManuModal');
+    })
+    .error(function(error) {
+      $scope.adjustedMfgr = null;
+      Materialize.toast("Error occured while updating manfacturer.", 3000);
+    });
+  };
+
+  $scope.removeMfgr = function(id) {
+    if (!adjustedMfgr) return null;
+    mfgrsService.remove(id)
+    .success(function(response) {
+      $scope.adjustedMfgr = null;
+      $scope.mfgrs = $scope.getMfgrs();
+      Materialize.toast("The manfacturer has been included", 3000);
+      $scope.closeThisModal('editAboutUsModal');
+    })
+    .error(function(error) {
+      $scope.adjustedMfgr = null;
+      Materialize.toast("Error occured while creating text.", 3000);
+    });
+  };
+
+  $scope.adjustedMfgr = null;
+  // S3 Image Upload
   function upload_file(file, signed_request, url) {
     var xhr = new XMLHttpRequest();
     xhr.open("PUT", signed_request);
@@ -242,7 +260,7 @@ $scope.deleteUser = function (userId) {
     xhr.onload = function() {
       if (xhr.status === 200) {
         document.getElementById("preview").src = url;
-        document.getElementById("image_url").value = url;
+        $scope.newMfgr.imageURL = url;
       }
     };
     xhr.onerror = function() { alert("Could not upload file."); };

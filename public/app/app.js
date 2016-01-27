@@ -6,11 +6,14 @@ app.config(function($routeProvider, $httpProvider){
 		templateUrl: 'app/views/main.html',
 		controller: 'mainCtrl',
 		resolve: {
-			aboutUsData: function (contentService) {
+			aboutUs: function (contentService) {
 				return contentService.get('about');
 			},
-			missionData: function (contentService) {
+			mission: function (contentService) {
 				return contentService.get('mission');
+			},
+			mfgrs: function(mfgrsService) {
+				return mfgrsService.getAll();
 			}
 		}
 	}).otherwise({

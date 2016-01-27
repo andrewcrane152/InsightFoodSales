@@ -6,42 +6,33 @@ angular.module('Insight').service('mfgrsService', function($http) {
 		});
 	};
 
-	this.addManu = function(title, price, image, description, category) {
+	this.getAll = function() {
+		return $http({
+			method: 'GET',
+			url: '/mfgrs'
+		});
+	};
+
+	this.create = function(attrs) {
 		return $http({
 			method: 'POST',
-			url: '/',
-			data: {
-				title: title,
-        website: website,
-        imageURL: imageURL
-			}
+			url: '/mfgrs',
+			data: attrs
 		});
 	};
 
-	// this.getManuInfo = function(){
-	// 	return $http({
-	// 		method: 'GET',
-	// 		url: '/info'
-	// 	});
-	// };
-
-	this.updateManuInfo = function(id, title, description, price, category) {
+	this.update = function(attrs) {
 		return $http({
 			method: 'PUT',
-			url: '/info/' + id,
-			data: {
-				title: title,
-				description: description,
-				price: price,
-				category: category
-			}
+			url: '/mfgrs',
+			data: attrs
 		});
 	};
 
-	this.removeManuInfo = function(id) {
+	this.remove = function(id) {
 		return $http({
 			method: 'DELETE',
-			url: '/info/' + id
+			url: '/mfgrs/' + id
 		});
 	};
 
