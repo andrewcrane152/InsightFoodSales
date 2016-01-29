@@ -230,3 +230,33 @@ h1,h2,h3,h4,h5,h6 {
 .no-bottom-margin {
   margin-bottom: 0px !important;
 }
+
+.picture-size {
+  height: 250px;
+}
+
+vertical-center {
+  vertical-align: middle;
+}
+
+.responsive-container {
+  margin: 1em auto;
+  min-width: 100px;       /* cap container min width */
+  max-width: 300px;       /* cap container max width */
+  position: relative;
+  overflow: hidden;       /* crop if image is larger than container */
+  background-color: #fff;
+}
+.responsive-container:before {
+  content: "";            /* using pseudo element for 1:1 ratio */
+  display: block;
+  padding-top: 100%;
+}
+.responsive-container img {
+  position: absolute;
+  top: -999px;            /* use sufficiently large number */
+  bottom: -999px;
+  left: -999px;
+  right: -999px;
+  margin: auto;           /* center horizontally and vertically */
+}

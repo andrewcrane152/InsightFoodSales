@@ -125,13 +125,13 @@
         <!-- <hr> -->
         <br>
         <div class="row">
-
-          <!-- TODO: MAKE THIS AN ANGULAR REPEAT (ALPHABETICAL ORDER) -->
           <div ng-repeat="mfgr in mfgrs | orderBy:'title'">
-          <div class="center col s4 flex-parent">
-            <a ng-href="{{mfgr.website}}" target="blank">
-              <img class="responsive-img justify-content-center" ng-src="{{mfgr.imageURL}}">
-            </a>
+          <div class="center col s4">
+            <div class="responsive-container">
+              <a ng-href="{{mfgr.website}}" target="blank" class="picture-size">
+                <img class="responsive-img justify-content-center vertical-center" ng-src="{{mfgr.imageURL}}">
+              </a>
+            </div>
             <h5>{{ mfgr.title }}</h5>
             <a href=""
               data-target="editManuModal"
