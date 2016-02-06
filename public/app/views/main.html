@@ -126,21 +126,20 @@
         <br>
         <div class="row">
 
-          <!-- TODO: MAKE THIS AN ANGULAR REPEAT (ALPHABETICAL ORDER) -->
-          <div ng-repeat="mfgr in mfgrs | orderBy:'title'">
-          <div class="center col s4 flex-parent">
-            <a ng-href="{{mfgr.website}}" target="blank">
-              <img class="responsive-img justify-content-center" ng-src="{{mfgr.imageURL}}">
-            </a>
-            <h5>{{ mfgr.title }}</h5>
-            <a href=""
-              data-target="editManuModal"
-              class="modal-trigger"
-              ng-click="openThisModal('editManuModal')"
-              ng-if="user">
-              <i class="fa fa-pencil"></i>
-            </a>
-          </div>
+          <div ng-repeat="mfgr in mfgrs track by $index | orderBy:'title'">
+            <div class="center col s4 flex-parent">
+              <a ng-href="{{mfgr.website}}" target="blank">
+                <img class="responsive-img justify-content-center" ng-src="{{mfgr.imageURL}}">
+              </a>
+              <h5>{{ mfgr.title }}</h5>
+              <a href=""
+                data-target="editManuModal"
+                class="modal-trigger"
+                ng-click="openUpdateMfgrModal(mfgr)"
+                ng-if="user">
+                <i class="fa fa-pencil"></i>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -443,10 +442,10 @@
           <div class="row">
             <div class="input-field col s12">
               <div class="flex-row center">
-                <input type="file" id="file_input">
+                <input type="file" id="new_file_input">
                 <p id="status" class="center">Please select an image of the manufacurer's logo to upload</p>
                 <p class="center">Images are not to exceed 300 x 300 pixels in size.</p>
-                <img id="preview"
+                <img id="newMfgrPreview"
                   style="border:1px solid gray;width:300px;"
                   src="styles/img/default.png"/>
               </div>
@@ -493,33 +492,34 @@
   <div class="row">
     <a class="hidemodal" href="" ng-click="closeThisModal('editManuModal')"><i class="fa fa-times-circle-o fa-2x"></i></a>
     <div class="col s12 m12 l12">
-      <h3 class="center-align">Update Info for {{name}}</h3>
+      <h3 class="center-align">Update Info for {{adjustedMfgr.name}}</h3>
       <div class="row">
         <form class="col s12">
           <div class="row">
             <div class="input-field col s12">
-              <div class="flex-row">
-                <label for="manuLogo" class="active">Manufacturer's Logo</label>
-                <form enctype="multipart/form-data">
-                  <input id="manuLogo" class="validate center"type="file" ng-file-select="onFileSelect($files)" required/>
-                </form>
-                <b>Preview:</b><br />
-                <img ng-show="imageSrc" class="image-small" ng-src="{{imageSrc}}" /><br/>
+              <div class="flex-row center">
+                <input type="file" id="edit_file_input">
+                <p id="editMfgrStatus" class="center">Please select an image of the manufacurer's logo to upload</p>
+                <p class="center">Images are not to exceed 300 x 300 pixels in size.</p>
+                <img id="editMfgrPreview"
+                  style="border:1px solid gray;width:300px;"
+                  src="styles/img/default.png"/>
+                  <!-- {{adjustedMfgr.imageURL}} -->
               </div>
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12">
-              <input id="manuName" type="text" class="validate center" ng-model="manuName">
-              <label for="manuName">Manufacturer Name</label>
+              <input id="editMfgrTitle" type="text" class="validate center" ng-model="adjustedMfgr.title" required>
+              <label for="editMfgrTitle">Manufacturer Name</label>
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12">
-              <input id="manuLink" type="url" class="validate center" ng-model="manuLink">
-              <label for="manuLink">Manufacturer's Website URL</label>
+              <input id="editMfgrImageURL" type="url" class="validate center" ng-model="adjustedMfgr.website" required>
+              <label for="editMfgrImageURL">Manufacturer's Website URL</label>
             </div>
           </div>
 
@@ -528,12 +528,25 @@
           <div class="row">
             <div class="col m4">
               <p class="left-align">
-                <button class="btn btn-large waves-effect waves-light red" type="submit" name="action" ng-click="removeMfgr()">Delete {{name}}</button>
+                <button
+                  class="btn btn-large waves-effect waves-light red"
+                  type="submit"
+                  name="action"
+                  ng-click="removeMfgr(adjustedMfgr._id)">
+                  Delete {{adjustedMfgr.title}}
+                </button>
               </p>
             </div>
+
             <div class="col m8">
               <p class="right-align">
-                <button class="btn btn-large waves-effect waves-light" type="submit" name="action" ng-click="updateManu(imageSrc, file, manuName, manuLink)">Save Changes</button>
+                <button
+                  class="btn btn-large waves-effect waves-light"
+                  type="submit"
+                  name="action"
+                  ng-click="updateMfgr()">
+                  Save Changes
+                </button>
               </p>
             </div>
           </div>

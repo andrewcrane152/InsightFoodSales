@@ -211,22 +211,27 @@ $scope.deleteUser = function (userId) {
   $scope.createMfgr = function() {
     mfgrsService.create($scope.newMfgr)
     .success(function(response) {
+      $scope.newMfgr = {};
       $scope.mfgrs.push(response);
       Materialize.toast("The manfacturer has been included", 3000);
       $scope.closeThisModal('uploadManuModal');
     })
     .error(function(error) {
+      $scope.newMfgr = {};
       Materialize.toast("Error occured while creating manfacturer.", 3000);
     });
   };
 
   $scope.adjustedMfgr = null;
-  $scope.updateMfgr = function() {
-    if (!adjustedMfgr) return null;
+  $scope.openUpdateMfgrModal = function(selectedMfgr) {
+    $scope.openThisModal('editManuModal');
+    $scope.adjustedMfgr = selectedMfgr;
+  };
+  $scope.updateMfgr = function(index) {
+    if (!$scope.adjustedMfgr) return null;
     mfgrsService.update($scope.adjustedMfgr)
     .success(function(response) {
       $scope.adjustedMfgr = null;
-      $scope.mfgrs = $scope.getMfgrs();
       Materialize.toast("The manfacturer has been updated", 3000);
       $scope.closeThisModal('editManuModal');
     })
@@ -236,30 +241,28 @@ $scope.deleteUser = function (userId) {
     });
   };
 
-  $scope.removeMfgr = function(id) {
-    if (!adjustedMfgr) return null;
+  $scope.removeMfgr = function(id, index) {
     mfgrsService.remove(id)
     .success(function(response) {
       $scope.adjustedMfgr = null;
-      $scope.mfgrs = $scope.getMfgrs();
-      Materialize.toast("The manfacturer has been included", 3000);
-      $scope.closeThisModal('editAboutUsModal');
+      Materialize.toast("The manfacturer has been removed", 3000);
+      $scope.closeThisModal('editManuModal');
     })
     .error(function(error) {
       $scope.adjustedMfgr = null;
-      Materialize.toast("Error occured while creating text.", 3000);
+      Materialize.toast("Error occured while deleting manfacturer.", 3000);
     });
   };
 
   $scope.adjustedMfgr = null;
   // S3 Image Upload
-  function upload_file(file, signed_request, url) {
+  function upload_file(file, signed_request, url, element_id_prefix) {
     var xhr = new XMLHttpRequest();
     xhr.open("PUT", signed_request);
     xhr.setRequestHeader('x-amz-acl', 'public-read');
     xhr.onload = function() {
       if (xhr.status === 200) {
-        document.getElementById("preview").src = url;
+        document.getElementById(element_id_prefix + 'MfgrPreview').src = url;
         $scope.newMfgr.imageURL = url;
       }
     };
@@ -267,14 +270,14 @@ $scope.deleteUser = function (userId) {
     xhr.send(file);
   }
 
-  function get_signed_request(file) {
+  function get_signed_request(file, element_id_prefix) {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "/s3_signed_url?file_name="+file.name+"&file_type="+file.type);
     xhr.onreadystatechange = function(){
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
           var response = JSON.parse(xhr.responseText);
-          upload_file(file, response.signed_request, response.url);
+          upload_file(file, response.signed_request, response.url, element_id_prefix);
         }
         else alert("Could not get signed URL.");
       }
@@ -282,18 +285,20 @@ $scope.deleteUser = function (userId) {
     xhr.send();
   }
 
-  function init_upload() {
-    console.log("here");
-    var files = document.getElementById("file_input").files;
+  function init_upload(element_id_prefix) {
+    element_id = element_id_prefix + '_file_input';
+    console.log(element_id);
+    var files = document.getElementById(element_id).files;
+    console.log(files);
     var file = files[0];
-    if (file === null) {
-      alert("No file selected.");
-      return;
-    }
-    get_signed_request(file);
+    if (file) get_signed_request(file, element_id_prefix);
   }
 
   (function() {
-    document.getElementById("file_input").onchange = init_upload;
+    document.getElementById('new_file_input').onchange = init_upload('new');
+  })();
+
+  (function() {
+    document.getElementById('edit_file_input').onchange = init_upload('edit');
   })();
 });
