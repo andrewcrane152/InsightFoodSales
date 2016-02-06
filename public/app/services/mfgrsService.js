@@ -24,8 +24,8 @@ angular.module('Insight').service('mfgrsService', function($http) {
 	this.update = function(attrs) {
 		return $http({
 			method: 'PUT',
-			url: '/mfgrs',
-			data: attrs
+			url: '/mfgrs/' + attrs._id,
+			data: { title: attrs.title, website: attrs.website, imageURL: attrs.imageURL }
 		});
 	};
 

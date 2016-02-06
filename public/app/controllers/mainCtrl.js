@@ -200,7 +200,8 @@ $scope.deleteUser = function (userId) {
   $scope.getMfgrs = function() {
     mfgrsService.getAll()
     .success(function(response) {
-      $scope.mfgrs = response.data;
+      console.log('getMfgrs response', response);
+      $scope.mfgrs = response;
     })
     .error(function(error) {
       console.log(error);
@@ -220,38 +221,6 @@ $scope.deleteUser = function (userId) {
     });
   };
 
-  $scope.adjustedMfgr = null;
-  $scope.updateMfgr = function() {
-    if (!adjustedMfgr) return null;
-    mfgrsService.update($scope.adjustedMfgr)
-    .success(function(response) {
-      $scope.adjustedMfgr = null;
-      $scope.mfgrs = $scope.getMfgrs();
-      Materialize.toast("The manfacturer has been updated", 3000);
-      $scope.closeThisModal('editManuModal');
-    })
-    .error(function(error) {
-      $scope.adjustedMfgr = null;
-      Materialize.toast("Error occured while updating manfacturer.", 3000);
-    });
-  };
-
-  $scope.removeMfgr = function(id) {
-    if (!adjustedMfgr) return null;
-    mfgrsService.remove(id)
-    .success(function(response) {
-      $scope.adjustedMfgr = null;
-      $scope.mfgrs = $scope.getMfgrs();
-      Materialize.toast("The manfacturer has been included", 3000);
-      $scope.closeThisModal('editAboutUsModal');
-    })
-    .error(function(error) {
-      $scope.adjustedMfgr = null;
-      Materialize.toast("Error occured while creating text.", 3000);
-    });
-  };
-
-  $scope.adjustedMfgr = null;
   // S3 Image Upload
   function upload_file(file, signed_request, url) {
     var xhr = new XMLHttpRequest();
@@ -296,4 +265,86 @@ $scope.deleteUser = function (userId) {
   (function() {
     document.getElementById("file_input").onchange = init_upload;
   })();
+
+
+  // EDIT MANUFACTURERS
+  $scope.adjustedMfgr = null;
+
+  $scope.openEditManuModal = function(mfgr) {
+    $scope.adjustedMfgr = mfgr;
+    $('#editManuModal').openModal();
+  };
+
+  $scope.updateMfgr = function() {
+    if (!$scope.adjustedMfgr) return null;
+    mfgrsService.update($scope.adjustedMfgr)
+    .success(function(response) {
+      $scope.adjustedMfgr = null;
+      $scope.getMfgrs();
+      Materialize.toast("The manfacturer has been updated", 3000);
+      $scope.closeThisModal('editManuModal');
+    })
+    .error(function(error) {
+      Materialize.toast("Error occured while updating manfacturer.", 3000);
+    });
+  };
+
+  // S3 Image Upload
+  function edit_upload_file(file, signed_request, url) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("PUT", signed_request);
+    xhr.setRequestHeader('x-amz-acl', 'public-read');
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        document.getElementById("editPreview").src = url;
+        $scope.adjustedMfgr.imageURL = url;
+      }
+    };
+    xhr.onerror = function() { alert("Could not upload file."); };
+    xhr.send(file);
+  }
+
+  function edit_get_signed_request(file) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/s3_signed_url?file_name="+file.name+"&file_type="+file.type);
+    xhr.onreadystatechange = function(){
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          var response = JSON.parse(xhr.responseText);
+          edit_upload_file(file, response.signed_request, response.url);
+        }
+        else alert("Could not get signed URL.");
+      }
+    };
+    xhr.send();
+  }
+
+  function edit_init_upload() {
+    console.log("here");
+    var files = document.getElementById("edit_file_input").files;
+    var file = files[0];
+    if (file === null) {
+      alert("No file selected.");
+      return;
+    }
+    edit_get_signed_request(file);
+  }
+
+  (function() {
+    document.getElementById("edit_file_input").onchange = edit_init_upload;
+  })();
+
+  $scope.removeMfgr = function() {
+    if (!$scope.adjustedMfgr) return null;
+    mfgrsService.remove($scope.adjustedMfgr._id)
+    .success(function(response) {
+      $scope.adjustedMfgr = null;
+      $scope.getMfgrs();
+      Materialize.toast("The manfacturer has been removed", 3000);
+      $scope.closeThisModal('editManuModal');
+    })
+    .error(function(error) {
+      Materialize.toast("Error occured while creating text.", 3000);
+    });
+  };
 });
