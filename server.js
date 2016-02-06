@@ -9,6 +9,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
 // CONTROLLERS
 var UserCtrl = require('./api/controllers/UserCtrl');
@@ -29,7 +30,8 @@ app.use(bodyParser.urlencoded());
 app.use(session({
   secret: SECRET,
   saveUninitialized: false,
-  resave: false
+  resave: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 app.use(passport.initialize());
 app.use(passport.session());
