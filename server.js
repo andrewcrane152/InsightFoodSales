@@ -1,5 +1,5 @@
 // CONSTANTS
-var CONFIG = require('./config');
+var CONFIG = require('./config.json');
 var SECRET = process.env.SECRET || CONFIG.SECRET;
 var MONGO_URI = process.env.MONGO_URI || CONFIG.MONGO_URI;
 var PORT = process.env.PORT || CONFIG.PORT || 5000;
@@ -27,7 +27,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(session({
-  secret: 'skfvisnmtj-68385-fjenfkvk-4hfidwjkenfj',
+  secret: SECRET,
   saveUninitialized: false,
   resave: false
 }));
