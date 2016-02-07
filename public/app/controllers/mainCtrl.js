@@ -35,17 +35,15 @@ angular.module('Insight')
 // ////////////////////////
 $scope.login = function (loginEmail, loginPassword) {
 	userService.adminLogin(loginEmail, loginPassword).then(function(response){
-		console.log("user ", response);
 		$scope.user = response.data;
+    $scope.closeThisModal('loginModal');
+    userService.getUsers().then(function(response){
+      $scope.allUsers = response;
+    }, function(_error){
+      console.log('Unable to retrieve users.');
+    });
 	}, function(error){
 		Materialize.toast("Log In Failed", 3000);
-	});
-  $scope.closeThisModal('loginModal');
-	userService.getUsers().then(function(response){
-		console.log("allUsers ", response);
-		$scope.allUsers = response;
-	}, function(error){
-		console.log(error);
 	});
 };
 
@@ -61,10 +59,9 @@ $scope.createNewUser = function (newUserName, newUserEmail, newUserPassword) {
 	userService.createNewUser(newUserName, newUserEmail, newUserPassword).then(function(response){
 			Materialize.toast("New User Added", 3000);
       userService.getUsers().then(function(response){
-        console.log("allUsers ", response);
         $scope.allUsers = response;
-      }, function(error){
-        console.log(error);
+      }, function(_error){
+        console.log('Unable to retrieve users.');
       });
 		}, function(error){
 			Materialize.toast("Error occured while adding user.", 3000);
@@ -85,16 +82,14 @@ $scope.updateUser = function (newName, newEmail, newPassword) {
 };
 
 $scope.deleteUser = function (userId) {
-	console.log("deleteUser invoked ",userId);
 	if(confirm("ARE YOU SURE YOU WANT TO DELET THIS USER?")){
 		userService.deleteUser(userId).then(function(response){
 			Materialize.toast("User Deleted", 3000);
 			// Materialize.toast("Refresh page to view change", 3000);
       userService.getUsers().then(function(response){
-        console.log("allUsers ", response);
         $scope.allUsers = response;
-      }, function(error){
-        console.log(error);
+      }, function(_error){
+        console.log('Unable to retrieve users.');
       });
 			$scope.closeThisModal('updateUserModal');
 		}, function(error){
@@ -115,14 +110,13 @@ $scope.deleteUser = function (userId) {
       $scope.newAbout.title = response.title;
       $scope.newAbout.body = response.body;
     })
-    .error(function(error) {
-      console.log(error);
+    .error(function(_error) {
+      console.log('Unable to retrieve about section content.');
     });
   };
 
   $scope.updateAboutUs = function(newAbout) {
     var amendedBody = newAbout.body.replace("↵", "\n");
-    console.log(amendedBody);
     contentService.update('about', newAbout.title, amendedBody)
       .success(function(response) {
         $scope.aboutUs = response;
@@ -144,7 +138,7 @@ $scope.deleteUser = function (userId) {
       $scope.mission = response;
     })
     .error(function(error) {
-      console.log(error);
+      console.log('Unable to retrieve mission section content.');
     });
   };
 
@@ -184,13 +178,11 @@ $scope.deleteUser = function (userId) {
 
   $scope.openThisModal = function (modalName) {
     var openModalName = "#" + modalName;
-    console.log('openThisModal, ', openModalName);
     $(openModalName).openModal();
 	};
 
   $scope.closeThisModal = function(modalName){
     var closeModalName = "#" + modalName;
-    console.log('closeThisModal, ', closeModalName);
     $(closeModalName).closeModal();
   };
 
@@ -200,11 +192,10 @@ $scope.deleteUser = function (userId) {
   $scope.getMfgrs = function() {
     mfgrsService.getAll()
     .success(function(response) {
-      console.log('getMfgrs response', response);
       $scope.mfgrs = response;
     })
     .error(function(error) {
-      console.log(error);
+      console.log('Unable to retrieve manufacturers.');
     });
   };
 
@@ -252,7 +243,6 @@ $scope.deleteUser = function (userId) {
   }
 
   function init_upload() {
-    console.log("here");
     var files = document.getElementById("file_input").files;
     var file = files[0];
     if (file === null) {
@@ -320,7 +310,6 @@ $scope.deleteUser = function (userId) {
   }
 
   function edit_init_upload() {
-    console.log("here");
     var files = document.getElementById("edit_file_input").files;
     var file = files[0];
     if (file === null) {

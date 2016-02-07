@@ -35,11 +35,16 @@ module.exports = {
     });
   },
 
-
   update: function(req, res, next) {
-    User.findByIdAndUpdate(req.params._id, req.body, { new: true }, function(err, result) {
+    User.findById(req.params._id, function(err, user) {
       if (err) return next(err);
-      res.status(200).json(result);
+      if (req.body.name) user.name = req.body.name;
+      if (req.body.email) user.email = req.body.email;
+      if (req.body.password) user.password = req.body.password;
+      user.save(function(err, result) {
+        if (err) return next(err);
+        res.status(200).json(result);
+      });
     });
   },
 

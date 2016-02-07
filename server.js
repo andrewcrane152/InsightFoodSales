@@ -37,13 +37,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-var logger = function(req, res, next) {
-  console.log(req.file);
-  console.log(req.files);
-  console.log(req.body);
-  next();
-};
-
 // ROUTES -- COMMON
 app.post('/login', passport.authenticate('local', {
   successRedirect: '/users/me',
@@ -66,19 +59,19 @@ var checkAuth = function(req, res, next) {
   return next();
 };
 
-app.get('/users', UserCtrl.get);
-app.get('/users/:_id', UserCtrl.show);
-app.post('/users', UserCtrl.create);
-app.put('/users/:_id', UserCtrl.update);
-app.delete('/users/:_id', UserCtrl.destroy);
+app.get('/users', checkAuth, UserCtrl.get);
+app.get('/users/:_id', checkAuth, UserCtrl.show);
+app.post('/users', checkAuth, UserCtrl.create);
+app.put('/users/:_id', checkAuth, UserCtrl.update);
+app.delete('/users/:_id', checkAuth, UserCtrl.destroy);
 
-app.put('/content/:section', ContentCtrl.update);
+app.put('/content/:section', checkAuth, ContentCtrl.update);
 
-app.post('/mfgrs', ManufacturerCtrl.create);
-app.put('/mfgrs/:_id', ManufacturerCtrl.update);
-app.delete('/mfgrs/:_id', ManufacturerCtrl.destroy);
+app.post('/mfgrs', checkAuth, ManufacturerCtrl.create);
+app.put('/mfgrs/:_id', checkAuth, ManufacturerCtrl.update);
+app.delete('/mfgrs/:_id', checkAuth, ManufacturerCtrl.destroy);
 
-app.get('/s3_signed_url', s3.getSignedUrl);
+app.get('/s3_signed_url', checkAuth, s3.getSignedUrl);
 
 
 //CONNECTIONS
