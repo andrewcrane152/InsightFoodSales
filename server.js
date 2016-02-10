@@ -1,8 +1,8 @@
 // CONSTANTS
-var CONFIG = require('./config.json');
-var SECRET = process.env.SECRET || CONFIG.SECRET;
-var MONGO_URI = process.env.MONGO_URI || CONFIG.MONGO_URI;
-var PORT = process.env.PORT || CONFIG.PORT || 5000;
+require('dotenv').config();
+var SECRET = process.env.SECRET;
+var MONGO_URI = process.env.MONGO_URI;
+var PORT = process.env.PORT;
 
 // MODULES
 var express = require('express');
@@ -26,7 +26,6 @@ var app = express();
 app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
 app.use(session({
   secret: SECRET,
   saveUninitialized: false,

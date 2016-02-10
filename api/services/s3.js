@@ -1,9 +1,8 @@
-var CONFIG = require('../../config');
-var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY || CONFIG.AWS_ACCESS_KEY;
-var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY || CONFIG.AWS_SECRET_KEY;
-var AWS_REGION = process.env.AWS_REGION || CONFIG.AWS_REGION;
-var AWS_SIGNATURE_VERSION = process.env.AWS_SIGNATURE_VERSION || CONFIG.AWS_SIGNATURE_VERSION;
-var S3_BUCKET = process.env.S3_BUCKET || CONFIG.S3_BUCKET;
+var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
+var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
+var AWS_REGION = process.env.AWS_REGION;
+var AWS_SIGNATURE_VERSION = process.env.AWS_SIGNATURE_VERSION;
+var S3_BUCKET = process.env.S3_BUCKET;
 var S3_BUCKET_URL = 'https://' + S3_BUCKET + '.s3.amazonaws.com/';
 
 var aws = require('aws-sdk');
