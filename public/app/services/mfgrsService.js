@@ -29,6 +29,7 @@ angular.module('Insight').service('mfgrsService', function($http) {
 		});
 	};
 
+
 	this.remove = function(id) {
 		return $http({
 			method: 'DELETE',
