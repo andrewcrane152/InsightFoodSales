@@ -29,5 +29,4 @@ module.exports = {
       res.json(return_data);
     });
   }
-
 };
