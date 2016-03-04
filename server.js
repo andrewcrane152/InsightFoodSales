@@ -1,5 +1,5 @@
 // CONSTANTS
-require('dotenv').config({path: './.env'});
+// require('dotenv').config({path: './.env'});
 var SECRET = process.env.SECRET;
 var MONGO_URI = process.env.MONGO_URI;
 var PORT = process.env.PORT;
