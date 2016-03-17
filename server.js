@@ -1,5 +1,5 @@
 // CONSTANTS
-// require('dotenv').config({path: './.env'});
+require('dotenv').config({path: './.env'});
 var SECRET = process.env.SECRET;
 var MONGO_URI = process.env.MONGO_URI;
 var PORT = process.env.PORT;
@@ -72,9 +72,8 @@ app.delete('/mfgrs/:_id', checkAuth, ManufacturerCtrl.destroy);
 
 app.get('/s3_signed_url', checkAuth, s3.getSignedUrl);
 
-
 //CONNECTIONS
-mongoose.connect(MONGO_URI);
+mongoose.connect(process.env.MONGOLAB_URI);
 mongoose.connection.once('open', function(){
   app.listen(PORT);
 });
