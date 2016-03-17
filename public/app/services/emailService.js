@@ -10,7 +10,7 @@ angular.module('Insight').service('emailService', function($http) {
 					'from_email': fromEmail,
 					'to': [
 						{
-							'email': 'cranium152@gmail.com',
+							'email': 'admin@insightfoodsales.com',
 							'name': 'Website Email',
 							'type': 'to'
 						}
