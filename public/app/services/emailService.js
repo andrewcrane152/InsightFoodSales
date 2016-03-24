@@ -35,7 +35,7 @@ angular.module('Insight').service('emailService', function($http) {
 							'name': contactName,
 							'type': 'to'
 						}],
-					'html': contactName + ', <b><b><i><p style="font-size:1.3em;">Thank you for taking the time to reach out to us.  We have received your message and will be in touch with you.</p></i></b><br><strong><i><p style="font-size:1.8em; color:#1a237e;">Insight Food Sales</p></i></strong><br><p style="font-size:1.1em;">1938 N. Batavia St., Suite K</p><p style="font-size:1.1em">Orange, CA 92865</p><p style="font-size:1.1em;">Tel: (714)685-9323</p><p style="font-size:1.1em;">Fax: (714)685-9773</p><br>'
+					'html': '<b><i><p style="font-size:1.3em;">' + contactName + ', </p><p style="font-size:1.3em;">Thank you for taking the time to reach out to us.  We have received your message and will be in touch with you.</p></i></b><br><strong><i><p style="font-size:1.8em; color:#1a237e;">Insight Food Sales</p></i></strong><br><p style="font-size:1.1em;">1938 N. Batavia St., Suite K</p><p style="font-size:1.1em">Orange, CA 92865</p><p style="font-size:1.1em;">Tel: (714)685-9323</p><p style="font-size:1.1em;">Fax: (714)685-9773</p><br>'
 				}
 			}
 		});
