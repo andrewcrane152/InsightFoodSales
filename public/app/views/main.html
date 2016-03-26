@@ -130,12 +130,12 @@
         <div class="row">
           <div ng-repeat="mfgr in mfgrs | orderBy:'title'">
           <div class="center col s4">
-            <div class="responsive-container">
+            <div class="responsive-container no-bottom-margin">
               <a ng-href="{{mfgr.website}}" target="blank" class="picture-size">
                 <img class="responsive-img justify-content-center vertical-center" ng-src="{{mfgr.imageURL}}">
               </a>
             </div>
-            <h5>{{ mfgr.title }}</h5>
+            <h5 class="no-top-margin">{{ mfgr.title }}</h5>
             <a href=""
               data-target="editManuModal"
               class="modal-trigger"

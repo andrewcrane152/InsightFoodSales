@@ -283,6 +283,10 @@ h1,h2,h3,h4,h5,h6 {
   margin-bottom: 0px !important;
 }
 
+.no-top-margin {
+  margin-top: 0px !important;
+}
+
 .picture-size {
   height: 250px;
 }
