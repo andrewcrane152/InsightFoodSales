@@ -94,8 +94,10 @@ footer.page-footer {
   margin: 0;
 }
 
-.italic {
+.sub-header {
+  font-family: Open sans;
   font-style: italic;
+  font-weight: bold;
 }
 
 .logo-height {
@@ -103,6 +105,8 @@ footer.page-footer {
   width: auto;
   max-width: 300px;
   max-height: 90px !important;
+  margin-bottom: -27px;
+  margin-right: -10px;
 }
 
 .navbar-height {
@@ -120,8 +124,8 @@ footer.page-footer {
 .map-height {
   height: auto;
   width: auto;
-  max-width: 600px;
-  max-height: 400px !important;
+  max-width: 350px;
+  max-height: 225px !important;
 }
 
 .remove-top-margin {
