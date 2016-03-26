@@ -80,8 +80,10 @@ hr {
   iframe {
     width: 300px;
   }
-  .brand-logo {
-    height: 55px;
+  .navbar-height {
+    height: auto;
+    width: auto;
+    max-height: 55px !important;
   }
 }
 
